@@ -1,4 +1,4 @@
-import TestimonialCard from "./TestimonialCard";
+import TestimonialsGrid from "./TestimonialsGrid";
 import { siteConfig, testimonials } from "@/lib/site-data";
 
 const mapQuery = encodeURIComponent("Propre Éclat nettoyage Caen");
@@ -13,10 +13,8 @@ export default function GoogleReviewsSection() {
           fiche Google Business.
         </p>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {testimonials.map((testimonial) => (
-            <TestimonialCard key={testimonial.name} {...testimonial} />
-          ))}
+        <div className="mt-10">
+          <TestimonialsGrid testimonials={testimonials} />
         </div>
 
         <div className="mt-12 grid gap-8 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-navy/5 md:grid-cols-2 md:items-center md:p-8">
