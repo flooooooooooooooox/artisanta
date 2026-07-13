@@ -1,4 +1,5 @@
-import { siteConfig } from "@/lib/site-data";
+import TestimonialCard from "./TestimonialCard";
+import { siteConfig, testimonials } from "@/lib/site-data";
 
 const mapQuery = encodeURIComponent("Propre Éclat nettoyage Caen");
 
@@ -8,17 +9,23 @@ export default function GoogleReviewsSection() {
       <div className="mx-auto max-w-6xl px-6">
         <h2 className="text-center text-3xl font-bold text-navy">Avis Google</h2>
         <p className="mx-auto mt-3 max-w-xl text-center text-navy/70">
-          Retrouvez notre fiche Google et les avis de nos clients directement
-          depuis Google Maps.
+          Ce que nos clients disent de Propre Éclat, directement issu de notre
+          fiche Google Business.
         </p>
 
-        <div className="mt-10 grid gap-8 md:grid-cols-2 md:items-center">
-          <div className="overflow-hidden rounded-2xl shadow-sm ring-1 ring-navy/5">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {testimonials.map((testimonial) => (
+            <TestimonialCard key={testimonial.name} {...testimonial} />
+          ))}
+        </div>
+
+        <div className="mt-12 grid gap-8 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-navy/5 md:grid-cols-2 md:items-center md:p-8">
+          <div className="overflow-hidden rounded-xl ring-1 ring-navy/5">
             <iframe
               title="Propre Éclat sur Google Maps"
               src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
               width="100%"
-              height="320"
+              height="260"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               className="block"
@@ -26,24 +33,17 @@ export default function GoogleReviewsSection() {
           </div>
 
           <div className="text-center md:text-left">
-            <div className="flex items-center justify-center gap-1 text-brand md:justify-start" aria-hidden="true">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <svg key={i} width="22" height="22" viewBox="0 0 20 20" fill="currentColor">
-                  <path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.61.99-5.79-4.21-4.1 5.82-.85z" />
-                </svg>
-              ))}
-            </div>
-            <p className="mt-4 text-navy/70">
-              Consultez l&apos;ensemble des avis vérifiés laissés par nos clients
-              sur notre fiche Google Business.
+            <p className="text-navy/70">
+              Envie de lire tous nos avis ou d&apos;en laisser un ? Retrouvez notre
+              fiche complète sur Google.
             </p>
             <a
               href={siteConfig.googleReviewsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-block rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-dark"
+              className="mt-4 inline-block rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-dark"
             >
-              Voir nos avis sur Google
+              Voir tous nos avis sur Google
             </a>
           </div>
         </div>
