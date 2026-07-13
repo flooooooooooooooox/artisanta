@@ -1,0 +1,54 @@
+{
+  "client": {
+    "companyName": "Propre Éclat",
+    "sector": "Nettoyage",
+    "values": "La différence de propreté"
+  },
+  "project": {
+    "goal": "Acquisition de clients",
+    "goalDetails": "Gagner en crédibilité, présenter les services, générer des appels, rassurer, attirer des prospects locaux.",
+    "targetAudience": "Professionnels et particuliers, chantiers exceptionnels"
+  },
+  "branding": {
+    "colors": "Bleu et blanc",
+    "fonts": null,
+    "ambiance": "Colorée",
+    "visualStyle": "Aéré et clair",
+    "designNotes": "Design épuré et professionnel, couleurs douces (crème/beige en fond) et accents bleu foncé pour les titres, cohérent avec une identité de marque de type « Floxia ».",
+    "assetsToProvide": ["Logo (envoyé par email)", "Photos de chantier (si disponibles)"]
+  },
+  "sitemap": {
+    "requiredPages": ["Mentions Légales", "Accueil", "À propos", "Contact", "Services / Prestations"],
+    "detailServices": true,
+    "services": [
+      "Nettoyage des vitres",
+      "Nettoyage des bureaux",
+      "Nettoyage de copropriété",
+      "Nettoyage de fin de chantier"
+    ],
+    "contentAuthor": "À définir ensemble",
+    "languages": "Mono-langue"
+  },
+  "functional": {
+    "contactFormFields": ["Email", "Téléphone", "Ville", "Code postal"],
+    "contactAlternative": "Floxia agent réceptionniste + WhatsApp",
+    "serviceArea": "Caen et alentours + 20 km",
+    "legalMentionsRequired": [
+      "SIRET",
+      "Assurance (décennale)",
+      "Forme juridique",
+      "Adresse du siège social",
+      "RCS",
+      "Qualifications (RGE, Qualibat, etc. si applicable)"
+    ],
+    "googleBusinessProfile": {
+      "status": "A une fiche Google",
+      "link": "https://share.google/IAJtgDi8Bh3LiFfIH"
+    },
+    "displayReviews": true,
+    "socialLinks": {
+      "facebook": null
+    }
+  },
+  "contactEmail": "Propreeclat@gmail.com"
+}
