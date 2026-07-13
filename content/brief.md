@@ -35,7 +35,8 @@
 - **Mentions légales obligatoires** : SIRET, assurance décennale, forme juridique, adresse siège, RCS, qualifications éventuelles
 - **Google Business Profile** : existant — https://share.google/IAJtgDi8Bh3LiFfIH
 - **Avis clients** : à afficher sur le site
-- **Réseaux sociaux** : Facebook (lien à obtenir)
+- **Réseaux sociaux** : Facebook — https://www.facebook.com/p/La-touche-brico-et-Propre-Eclat-services-100064082501529/
+- **Photos de chantier** : Facebook bloque le scraping automatisé ; photos à récupérer manuellement par le client et à transmettre (upload ou email)
 
 ## Contact
 - **Email** : Propreeclat@gmail.com
