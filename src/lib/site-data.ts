@@ -45,11 +45,13 @@ export const beforeAfterGallery = [
   },
   {
     title: "Fauteuil en tissu",
-    combined: "/images/chantier/fauteuil-tissu-avant-apres.webp",
+    before: "/images/chantier/fauteuil-tissu-avant.webp",
+    after: "/images/chantier/fauteuil-tissu-apres.webp",
   },
   {
     title: "Terrasse en bois",
-    combined: "/images/chantier/terrasse-bois-avant-apres.webp",
+    before: "/images/chantier/terrasse-bois-avant.webp",
+    after: "/images/chantier/terrasse-bois-apres.webp",
   },
   {
     title: "Intérieur de véhicule",
