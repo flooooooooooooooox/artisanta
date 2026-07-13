@@ -22,7 +22,11 @@
         "public/images/chantier/banquette-tissu-avant.webp",
         "public/images/chantier/banquette-tissu-apres.webp",
         "public/images/chantier/terrasse-bois-avant-apres.webp",
-        "public/images/chantier/canape-tissu-avant.webp"
+        "public/images/chantier/canape-tissu-avant.webp",
+        "public/images/chantier/canape-gris-avant.webp",
+        "public/images/chantier/fauteuil-tissu-avant-apres.webp",
+        "public/images/chantier/voiture-interieur-avant.webp",
+        "public/images/chantier/voiture-interieur-apres.webp"
       ],
       "note": "Photos supplémentaires à venir du client"
     }
