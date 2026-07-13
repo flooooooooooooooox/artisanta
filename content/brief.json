@@ -15,7 +15,17 @@
     "ambiance": "Colorée",
     "visualStyle": "Aéré et clair",
     "designNotes": "Design épuré et professionnel, couleurs douces (crème/beige en fond) et accents bleu foncé pour les titres, cohérent avec une identité de marque de type « Floxia ».",
-    "assetsToProvide": ["Logo (envoyé par email)", "Photos de chantier (si disponibles)"]
+    "assetsToProvide": ["Logo (envoyé par email)", "Photos de chantier (si disponibles)"],
+    "assets": {
+      "logo": "public/images/logo/logo-propre-eclat.png",
+      "chantierPhotos": [
+        "public/images/chantier/banquette-tissu-avant.webp",
+        "public/images/chantier/banquette-tissu-apres.webp",
+        "public/images/chantier/terrasse-bois-avant-apres.webp",
+        "public/images/chantier/canape-tissu-avant.webp"
+      ],
+      "note": "Photos supplémentaires à venir du client"
+    }
   },
   "sitemap": {
     "requiredPages": ["Mentions Légales", "Accueil", "À propos", "Contact", "Services / Prestations"],
