@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import BeforeAfterCard from "@/components/BeforeAfterCard";
+import GoogleReviewsSection from "@/components/GoogleReviewsSection";
 import { beforeAfterGallery, services, siteConfig } from "@/lib/site-data";
 
 export default function Home() {
@@ -102,12 +103,13 @@ export default function Home() {
         </div>
       </section>
 
+      <GoogleReviewsSection />
+
       <section className="bg-navy py-16">
         <div className="mx-auto max-w-3xl px-6 text-center">
           <h2 className="text-3xl font-bold text-white">Prêt à retrouver un espace impeccable ?</h2>
           <p className="mt-4 text-cream/80">
-            Contactez-nous pour un devis gratuit et sans engagement, ou consultez
-            nos avis sur Google.
+            Contactez-nous pour un devis gratuit et sans engagement.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link
@@ -116,14 +118,6 @@ export default function Home() {
             >
               Demander un devis
             </Link>
-            <a
-              href={siteConfig.googleReviewsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full border border-cream/30 px-6 py-3 text-sm font-semibold text-cream transition-colors hover:bg-cream/10"
-            >
-              Voir nos avis Google
-            </a>
           </div>
         </div>
       </section>
