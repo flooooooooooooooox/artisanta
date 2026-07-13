@@ -59,12 +59,9 @@ export const beforeAfterGallery = [
     after: "/images/chantier/voiture-interieur-apres.webp",
   },
   {
-    title: "Canapé en tissu",
+    title: "Canapé d'angle en tissu",
     before: "/images/chantier/canape-tissu-avant.webp",
-  },
-  {
-    title: "Canapé d'angle",
-    before: "/images/chantier/canape-gris-avant.webp",
+    after: "/images/chantier/canape-gris-avant.webp",
   },
 ];
 
