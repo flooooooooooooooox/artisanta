@@ -1,4 +1,4 @@
-import TestimonialsGrid from "./TestimonialsGrid";
+import TestimonialsCarousel from "./TestimonialsCarousel";
 import { siteConfig, testimonials } from "@/lib/site-data";
 
 const mapQuery = encodeURIComponent("Propre Éclat nettoyage Caen");
@@ -14,7 +14,7 @@ export default function GoogleReviewsSection() {
         </p>
 
         <div className="mt-10">
-          <TestimonialsGrid testimonials={testimonials} />
+          <TestimonialsCarousel testimonials={testimonials} />
         </div>
 
         <div className="mt-12 grid gap-8 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-navy/5 md:grid-cols-2 md:items-center md:p-8">
@@ -39,7 +39,7 @@ export default function GoogleReviewsSection() {
               href={siteConfig.googleReviewsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-block rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-dark"
+              className="btn btn-primary mt-4"
             >
               Voir tous nos avis sur Google
             </a>

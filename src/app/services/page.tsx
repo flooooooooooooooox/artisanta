@@ -54,10 +54,7 @@ export default function ServicesPage() {
         <p className="mt-3 text-navy/70">
           Contactez-nous pour un devis gratuit adapté à votre besoin.
         </p>
-        <Link
-          href="/contact"
-          className="mt-6 inline-block rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-dark"
-        >
+        <Link href="/contact" className="btn btn-primary mt-6">
           Demander un devis
         </Link>
       </div>

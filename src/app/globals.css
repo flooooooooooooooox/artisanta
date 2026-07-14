@@ -32,6 +32,105 @@ body {
   color: var(--foreground);
 }
 
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    padding: 0.75rem 1.6rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.2;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: transform 0.18s ease, box-shadow 0.25s ease,
+      background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+    will-change: transform;
+  }
+
+  .btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(47, 150, 216, 0.45);
+  }
+
+  .btn:active {
+    transform: translateY(1px) scale(0.98);
+  }
+
+  /* Primary — dégradé bleu, ombre colorée, léger relief au survol */
+  .btn-primary {
+    color: #fff;
+    background: linear-gradient(135deg, var(--color-brand), var(--color-brand-dark));
+    box-shadow: 0 6px 16px -4px rgba(28, 116, 176, 0.55);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px -6px rgba(28, 116, 176, 0.65);
+    background: linear-gradient(135deg, var(--color-brand-dark), var(--color-brand-dark));
+  }
+
+  /* Reflet clair sur fond sombre (hero, CTA) */
+  .btn-ghost {
+    color: var(--color-cream);
+    border: 1px solid rgba(250, 246, 236, 0.3);
+    background: rgba(250, 246, 236, 0.04);
+    backdrop-filter: blur(4px);
+  }
+
+  .btn-ghost:hover {
+    transform: translateY(-2px);
+    border-color: rgba(250, 246, 236, 0.6);
+    background: rgba(250, 246, 236, 0.12);
+  }
+
+  /* Contour sombre sur fond clair */
+  .btn-outline {
+    color: var(--color-navy);
+    border: 1px solid rgba(15, 58, 92, 0.2);
+    background: #fff;
+    box-shadow: 0 2px 8px -4px rgba(15, 58, 92, 0.25);
+  }
+
+  .btn-outline:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-brand);
+    color: var(--color-brand-dark);
+    box-shadow: 0 8px 18px -6px rgba(15, 58, 92, 0.3);
+  }
+
+  .btn-sm {
+    padding: 0.55rem 1.2rem;
+    font-size: 0.8125rem;
+  }
+
+  .btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .btn:hover,
+  .btn:active {
+    transform: none;
+  }
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 @keyframes float {
   0%, 100% { transform: translateY(0) rotate(-0.6deg); }
   50% { transform: translateY(-10px) rotate(0.6deg); }

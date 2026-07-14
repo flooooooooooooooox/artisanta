@@ -46,7 +46,7 @@ export default function Header() {
         <div className="flex items-center gap-3">
           <Link
             href="/contact"
-            className="hidden rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-dark sm:inline-block"
+            className="btn btn-primary btn-sm hidden sm:inline-flex"
           >
             Demander un devis
           </Link>
@@ -83,7 +83,7 @@ export default function Header() {
           <Link
             href="/contact"
             onClick={() => setOpen(false)}
-            className="mt-2 rounded-full bg-brand px-5 py-2.5 text-center text-sm font-semibold text-white sm:hidden"
+            className="btn btn-primary btn-sm mt-2 sm:hidden"
           >
             Demander un devis
           </Link>

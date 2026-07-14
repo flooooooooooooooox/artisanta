@@ -39,16 +39,13 @@ export default function Home() {
               à Caen et dans un rayon de 20 km, avec exigence et rigueur.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href="/contact"
-                className="rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-dark"
-              >
+              <Link href="/contact" className="btn btn-primary group">
                 Demander un devis gratuit
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform group-hover:translate-x-0.5">
+                  <path d="M4 10h11M11 5l5 5-5 5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
               </Link>
-              <Link
-                href="/services"
-                className="rounded-full border border-cream/30 px-6 py-3 text-sm font-semibold text-cream transition-colors hover:bg-cream/10"
-              >
+              <Link href="/services" className="btn btn-ghost">
                 Voir nos prestations
               </Link>
             </div>
@@ -143,11 +140,11 @@ export default function Home() {
             Contactez-nous pour un devis gratuit et sans engagement.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link
-              href="/contact"
-              className="rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-dark"
-            >
+            <Link href="/contact" className="btn btn-primary group">
               Demander un devis
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform group-hover:translate-x-0.5">
+                <path d="M4 10h11M11 5l5 5-5 5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </Link>
           </div>
         </div>

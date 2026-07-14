@@ -65,7 +65,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={pending}
-        className="w-full rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+        className="btn btn-primary w-full sm:w-auto"
       >
         {pending ? "Envoi en cours..." : "Envoyer ma demande"}
       </button>

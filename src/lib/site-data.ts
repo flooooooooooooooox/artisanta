@@ -98,9 +98,138 @@ export const testimonials = [
   },
   {
     name: "Morgane Lemaire",
+    date: "Janvier 2025",
     rating: 5,
     quote:
       "Je suis très satisfaite des services de Propre Éclat pour le nettoyage de nos bureaux. L'équipe est professionnelle, ponctuelle et fait un travail vraiment soigné. Nos locaux sont toujours impeccables après leur passage, ce qui est agréable pour tout le monde. Ils sont aussi très réactifs en cas de besoin ou de demande particulière.",
+  },
+  {
+    name: "Benjamin Valès",
+    context: "Nettoyage de vitres",
+    date: "Novembre 2023",
+    rating: 5,
+    quote:
+      "Une satisfaction totale pour le nettoyage de mes vitres sur Caen ! L'équipe a délivré un service exceptionnel, avec une efficacité remarquable. Mes vitres brillent comme jamais. Une référence incontournable pour quiconque recherche un nettoyage de qualité.",
+  },
+  {
+    name: "Coraline Savard",
+    context: "Nettoyage de bureaux",
+    date: "Octobre 2023",
+    rating: 5,
+    quote:
+      "Nous sommes extrêmement satisfaits des services de nettoyage de bureaux fournis par Propre Éclat à Caen. Leur équipe est ponctuelle, fiable et toujours prête à aller au-delà de nos besoins. Leur souci du détail est véritablement impressionnant, ils ne laissent aucune zone non nettoyée. Nous les recommandons vivement.",
+  },
+  {
+    name: "Agathe P.",
+    context: "Voiture & canapés",
+    date: "Août 2023",
+    rating: 5,
+    quote:
+      "Superbe prestation effectuée par l'équipe. J'ai contacté l'entreprise pour nettoyer l'intérieur de ma voiture et mes canapés usés par le temps. Ma voiture n'a jamais été aussi propre et mon canapé est comme neuf ! Toutes les taches ont disparu. Le matériel utilisé nettoie tout en prenant soin des tissus !",
+  },
+  {
+    name: "Alicia Cassiat",
+    context: "Clinique de beauté",
+    date: "Novembre 2023",
+    rating: 5,
+    quote:
+      "Extrêmement satisfaite du nettoyage de ma clinique de beauté à Caen ! Un service exceptionnel, professionnel et minutieux. La propreté impeccable contribue à créer une atmosphère accueillante. Recommande vivement !",
+  },
+  {
+    name: "Chloé Guillou",
+    context: "Nettoyage de canapé",
+    date: "Mai 2023",
+    rating: 5,
+    quote:
+      "Propre Éclat est intervenu en nettoyant mon canapé comme neuf alors que mon chat avait uriné. Les auréoles et les odeurs se sont complètement enlevées. Je suis incroyablement surprise de leur travail. Une équipe très professionnelle. Rien à dire, continuez comme ça !",
+  },
+  {
+    name: "Victor Lebeaut",
+    context: "Restaurant à Cabourg",
+    date: "Septembre 2023",
+    rating: 5,
+    quote:
+      "Très satisfait de la prestation de Propre Éclat. Nous sommes un restaurant à Cabourg et la société nous entretient tous les vendredis matins l'intégralité des baies vitrées, le résultat est super. Une équipe sérieuse et régulière.",
+  },
+  {
+    name: "Sylvie Lesage",
+    context: "Canapés",
+    date: "Juin 2023",
+    rating: 5,
+    quote:
+      "Équipe très professionnelle et très sympathique. Ils sont intervenus chez ma sœur et moi. Résultat de l'intervention sur nos canapés juste magnifique ! Merci encore à vous et n'hésitez pas à les solliciter car ils ont d'autres compétences : canapés, matelas, façades, etc. Un énorme merci.",
+  },
+  {
+    name: "Julie D.",
+    context: "Nettoyage de vitres",
+    date: "Septembre 2023",
+    rating: 5,
+    quote:
+      "J'ai fait appel à la société de nettoyage Propre Éclat pour le nettoyage de l'ensemble de mes vitres à Caen, et il faut dire que l'équipe est très dynamique, organisée et rapide. Le nettoyage intérieur et extérieur ainsi que les encadrements de mes fenêtres était parfait. Le prix est vraiment abordable. Je recommande vivement.",
+  },
+  {
+    name: "Fayona",
+    context: "Vitres à domicile",
+    date: "Décembre 2023",
+    rating: 5,
+    quote:
+      "Je suis extrêmement satisfaite des services de nettoyage de vitres à domicile fournis par cette entreprise à Caen. Leur équipe professionnelle a dépassé mes attentes en assurant un service efficace et minutieux. Les résultats sont impeccables, et le personnel est courtois et ponctuel.",
+  },
+  {
+    name: "Anaïs G.",
+    context: "Nettoyage de vitres",
+    date: "Novembre 2023",
+    rating: 5,
+    quote:
+      "Extrêmement satisfaite du service de nettoyage de vitres complet (intérieur, extérieur ainsi que l'encadrement des vitres) effectué par l'entreprise Propre Éclat sur Caen. Le professionnalisme de l'équipe a été remarquable. Je recommande vivement leurs services.",
+  },
+  {
+    name: "Amandine Marcadet",
+    context: "Nettoyage de bureaux",
+    date: "Février 2024",
+    rating: 5,
+    quote:
+      "Je suis extrêmement satisfaite des services de nettoyage de bureaux fournis par Propre Éclat. Chaque recoin était méticuleusement nettoyé, et l'attention portée aux détails était impressionnante. Le personnel était également courtois et respectueux. Je recommande vivement.",
+  },
+  {
+    name: "Dorcas Bonheur",
+    context: "Nettoyage de vitres",
+    date: "Novembre 2023",
+    rating: 5,
+    quote:
+      "Éblouie par le service de nettoyage de vitres de l'équipe de Propre Éclat à Caen ! Mes fenêtres n'ont jamais été aussi éclatantes. Professionnalisme, ponctualité et des résultats qui brillent littéralement. Recommandation sans réserve !",
+  },
+  {
+    name: "Amélie",
+    context: "Intérieur de voiture",
+    date: "Août 2023",
+    rating: 5,
+    quote:
+      "Merci pour votre professionnalisme, ma voiture est comme neuve. Contente du résultat de l'intérieur, impressionnant ! Une entreprise à l'écoute et engagée.",
+  },
+  {
+    name: "Stéphanie Bailleux",
+    context: "Nettoyage de vitres",
+    date: "Novembre 2023",
+    rating: 5,
+    quote:
+      "Très bonne expérience avec cette entreprise. L'équipe travaille efficacement et rigoureusement. Appelé pour un nettoyage complet des vitres intérieur/extérieur et c'est nickel ! Je recommande vivement cette entreprise !",
+  },
+  {
+    name: "Linghou Valdania",
+    context: "Nettoyage de canapé",
+    date: "Mai 2023",
+    rating: 5,
+    quote:
+      "Merci d'avoir apporté de la valeur à mon canapé, il était vraiment taché. Votre personnel est vraiment organisé, en 1h mon canapé était nettoyé et il a séché en 2h seulement. Une équipe très compétente et aimable. Super rapport qualité-prix, je recommande les yeux fermés !",
+  },
+  {
+    name: "Chloé",
+    context: "Nettoyage de vitres",
+    date: "Novembre 2023",
+    rating: 5,
+    quote:
+      "Excellence en nettoyage de vitres ! Leur service à Caen est vraiment top. Des vitres étincelantes, un travail minutieux. Hautement recommandé pour un nettoyage de vitres impeccable !",
   },
 ];
 
