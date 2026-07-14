@@ -136,19 +136,43 @@ export default function Home() {
 
       <GoogleReviewsSection />
 
-      <section className="bg-navy py-16">
-        <div className="mx-auto max-w-3xl px-6 text-center">
-          <h2 className="text-3xl font-bold text-white">Prêt à retrouver un espace impeccable ?</h2>
-          <p className="mt-4 text-cream/80">
-            Contactez-nous pour un devis gratuit et sans engagement.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link href="/contact" className="btn btn-primary group">
-              Demander un devis
-              <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform group-hover:translate-x-0.5">
-                <path d="M4 10h11M11 5l5 5-5 5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </Link>
+      <section className="px-6 py-16">
+        <div className="relative mx-auto max-w-5xl overflow-hidden rounded-3xl bg-gradient-to-br from-navy via-navy to-navy-light px-6 py-14 text-center shadow-xl sm:px-12 sm:py-16">
+          {/* Formes décoratives */}
+          <div aria-hidden="true" className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand/20 blur-3xl" />
+          <div aria-hidden="true" className="absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-brand/10 blur-3xl" />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 opacity-[0.05]"
+            style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "26px 26px" }}
+          />
+
+          <div className="relative">
+            <span className="inline-flex items-center gap-2 rounded-full bg-brand/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand">
+              Devis gratuit
+            </span>
+            <h2 className="mt-5 text-3xl font-bold text-white sm:text-4xl">
+              Prêt à retrouver un espace impeccable ?
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-cream/80">
+              Contactez-nous dès aujourd&apos;hui, nous vous répondons rapidement pour
+              organiser votre intervention — sans engagement.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+              <Link href="/contact" className="btn btn-primary group">
+                Demander un devis
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform group-hover:translate-x-0.5">
+                  <path d="M4 10h11M11 5l5 5-5 5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
+              <a href={`mailto:${siteConfig.email}`} className="btn btn-ghost">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="3" y="5" width="18" height="14" rx="2" />
+                  <path d="M3 7l9 6 9-6" />
+                </svg>
+                Nous écrire
+              </a>
+            </div>
           </div>
         </div>
       </section>
