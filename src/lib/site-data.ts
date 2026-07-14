@@ -28,6 +28,9 @@ export const siteConfig = {
   ],
   // URL de production — à mettre à jour dès que le nom de domaine est connu
   url: "https://www.propre-eclat.fr",
+  // Note moyenne affichée sur la fiche Google (reviewCount à compléter si connu)
+  googleRating: 4.8,
+  googleReviewCount: null as number | null,
   facebookUrl:
     "https://www.facebook.com/p/La-touche-brico-et-Propre-Eclat-services-100064082501529/",
   googleReviewsUrl:

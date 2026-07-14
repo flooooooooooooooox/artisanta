@@ -1,5 +1,6 @@
 import TestimonialsCarousel from "./TestimonialsCarousel";
 import SparkleHeading from "./SparkleHeading";
+import GoogleRating from "./GoogleRating";
 import { siteConfig, testimonials } from "@/lib/site-data";
 
 export default function GoogleReviewsSection() {
@@ -13,6 +14,10 @@ export default function GoogleReviewsSection() {
           Ce que nos clients disent de Propre Éclat, directement issu de notre
           fiche Google Business.
         </p>
+
+        <div className="flex justify-center">
+          <GoogleRating />
+        </div>
 
         <div className="mt-10">
           <TestimonialsCarousel testimonials={testimonials} />
