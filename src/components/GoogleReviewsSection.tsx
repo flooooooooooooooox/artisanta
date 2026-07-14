@@ -32,7 +32,7 @@ export default function GoogleReviewsSection() {
               height="300"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="block"
+              className="pointer-events-none block"
             />
 
             {/* Périmètre de 20 km autour de Caen (calibré pour le zoom 9) */}
@@ -70,12 +70,28 @@ export default function GoogleReviewsSection() {
                 Voir tous nos avis sur Google
               </a>
               <a
-                href="https://www.google.com/maps/place/Caen"
+                href="https://www.google.com/maps/search/?api=1&query=Propre+Eclat+Caen"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-outline"
               >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M12 21s-7-5.686-7-11a7 7 0 0 1 14 0c0 5.314-7 11-7 11z" strokeLinejoin="round" />
+                  <circle cx="12" cy="10" r="2.5" />
+                </svg>
                 Ouvrir dans Maps
+              </a>
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=Propre+Eclat+Caen"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-outline"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M21.7 12.3 11.7 2.3a1 1 0 0 0-1.4 0l-8 8a1 1 0 0 0 0 1.4l10 10a1 1 0 0 0 1.4 0l8-8a1 1 0 0 0 0-1.4z" strokeLinejoin="round" />
+                  <path d="M9 12h4v3l4-4-4-4v3H8v3" strokeLinejoin="round" />
+                </svg>
+                Itinéraire
               </a>
             </div>
           </div>
