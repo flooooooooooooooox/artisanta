@@ -25,6 +25,37 @@
 }
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(47, 150, 216, 0.08), transparent 45%),
+    radial-gradient(circle at 100% 20%, rgba(47, 150, 216, 0.06), transparent 40%),
+    var(--background);
   color: var(--foreground);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.45; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+@keyframes shine-sweep {
+  0% { transform: translateX(-130%) rotate(12deg); }
+  55%, 100% { transform: translateX(230%) rotate(12deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 4s ease-in-out infinite;
+}
+
+.animate-shine-sweep {
+  animation: shine-sweep 3.2s ease-in-out infinite;
+  animation-delay: 1s;
 }

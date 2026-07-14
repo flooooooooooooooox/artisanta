@@ -7,8 +7,26 @@ import { beforeAfterGallery, services, siteConfig } from "@/lib/site-data";
 export default function Home() {
   return (
     <div>
-      <section className="relative overflow-hidden bg-navy">
-        <div className="mx-auto grid max-w-6xl gap-10 px-6 py-20 md:grid-cols-2 md:items-center md:py-28">
+      <section className="relative overflow-hidden bg-gradient-to-br from-navy via-navy to-navy-light">
+        <div
+          aria-hidden="true"
+          className="absolute -left-24 -top-24 h-80 w-80 rounded-full bg-brand/20 blur-3xl"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute -bottom-32 right-0 h-96 w-96 rounded-full bg-brand/10 blur-3xl"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, white 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+          }}
+        />
+
+        <div className="relative mx-auto grid max-w-6xl gap-10 px-6 py-20 md:grid-cols-2 md:items-center md:py-28">
           <div>
             <p className="text-sm font-semibold uppercase tracking-widest text-brand">
               Nettoyage professionnel à Caen
@@ -35,15 +53,28 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <div className="mx-auto flex h-56 w-56 items-center justify-center rounded-full bg-white/5 p-8 sm:h-72 sm:w-72">
-            <Image
-              src="/images/logo/logo-propre-eclat.png"
-              alt="Logo Propre Éclat"
-              width={280}
-              height={280}
-              className="rounded-2xl"
-              priority
+
+          <div className="relative mx-auto flex h-56 w-56 items-center justify-center sm:h-72 sm:w-72">
+            <div
+              aria-hidden="true"
+              className="animate-glow-pulse absolute inset-0 rounded-full bg-brand/25 blur-2xl"
             />
+            <div className="animate-float relative">
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl shadow-black/30">
+                <Image
+                  src="/images/logo/logo-propre-eclat.png"
+                  alt="Logo Propre Éclat"
+                  width={280}
+                  height={280}
+                  className="relative block"
+                  priority
+                />
+                <div
+                  aria-hidden="true"
+                  className="animate-shine-sweep pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-transparent via-white/40 to-transparent"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
