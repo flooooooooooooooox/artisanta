@@ -1,6 +1,7 @@
 import TestimonialsCarousel from "./TestimonialsCarousel";
 import SparkleHeading from "./SparkleHeading";
 import GoogleRating from "./GoogleRating";
+import ZoneMap from "./ZoneMap";
 import { siteConfig, testimonials } from "@/lib/site-data";
 
 export default function GoogleReviewsSection() {
@@ -25,27 +26,9 @@ export default function GoogleReviewsSection() {
 
         <div className="mt-12 grid gap-8 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-navy/5 md:grid-cols-2 md:items-center md:p-8">
           <div className="relative overflow-hidden rounded-xl ring-1 ring-navy/5">
-            <iframe
-              title="Zone d'intervention de Propre Éclat autour de Caen"
-              src="https://maps.google.com/maps?hl=fr&q=Caen&t=&z=9&ie=UTF8&iwloc=B&output=embed"
-              width="100%"
-              height="300"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="pointer-events-none block"
-            />
+            <ZoneMap />
 
-            {/* Périmètre de 20 km autour de Caen (calibré pour le zoom 9) */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute left-1/2 top-1/2 h-[200px] w-[200px] -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-brand bg-brand/15"
-            />
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand ring-2 ring-white"
-            />
-
-            <span className="pointer-events-none absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold text-navy shadow-sm">
+            <span className="pointer-events-none absolute left-3 top-3 z-[500] inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold text-navy shadow-sm">
               <span className="h-2 w-2 rounded-full bg-brand" />
               Zone d&apos;intervention · 20 km
             </span>
