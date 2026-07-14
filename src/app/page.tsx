@@ -15,11 +15,15 @@ export default function Home() {
       <section className="relative overflow-hidden bg-gradient-to-br from-navy via-navy to-navy-light">
         <div
           aria-hidden="true"
-          className="absolute -left-24 -top-24 h-80 w-80 rounded-full bg-brand/20 blur-3xl"
+          className="animate-drift-a absolute -left-24 -top-24 h-80 w-80 rounded-full bg-brand/25 blur-3xl"
         />
         <div
           aria-hidden="true"
-          className="absolute -bottom-32 right-0 h-96 w-96 rounded-full bg-brand/10 blur-3xl"
+          className="animate-drift-b absolute -bottom-32 right-0 h-96 w-96 rounded-full bg-brand/15 blur-3xl"
+        />
+        <div
+          aria-hidden="true"
+          className="animate-drift-c absolute left-1/2 top-1/3 h-72 w-72 rounded-full bg-brand-dark/20 blur-3xl"
         />
         <div
           aria-hidden="true"
@@ -33,17 +37,17 @@ export default function Home() {
 
         <div className="relative mx-auto grid max-w-6xl gap-10 px-6 py-20 md:grid-cols-2 md:items-center md:py-28">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-widest text-brand">
+            <p className="animate-hero-in text-sm font-semibold uppercase tracking-widest text-brand">
               Nettoyage professionnel à Caen
             </p>
-            <h1 className="mt-4 text-4xl font-bold leading-tight text-white sm:text-5xl">
+            <h1 className="animate-hero-in mt-4 text-4xl font-bold leading-tight text-white sm:text-5xl" style={{ animationDelay: "0.1s" }}>
               {siteConfig.tagline}
             </h1>
-            <p className="mt-5 max-w-lg text-lg text-cream/80">
+            <p className="animate-hero-in mt-5 max-w-lg text-lg text-cream/80" style={{ animationDelay: "0.2s" }}>
               Propre Éclat entretient vos espaces professionnels et particuliers
               à Caen et dans un rayon de 20 km, avec exigence et rigueur.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="animate-hero-in mt-8 flex flex-wrap gap-4" style={{ animationDelay: "0.3s" }}>
               <Link href="/contact" className="btn btn-primary group">
                 Demander un devis gratuit
                 <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform group-hover:translate-x-0.5">
@@ -56,7 +60,10 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="group relative mx-auto flex h-56 w-56 items-center justify-center sm:h-72 sm:w-72">
+          <div
+            className="animate-hero-in group relative mx-auto flex h-56 w-56 items-center justify-center sm:h-72 sm:w-72"
+            style={{ animationDelay: "0.25s" }}
+          >
             {/* Halo bleu doux et discret */}
             <div
               aria-hidden="true"
@@ -67,16 +74,18 @@ export default function Home() {
               aria-hidden="true"
               className="absolute -inset-2 rounded-[2rem] bg-gradient-to-br from-white/25 via-white/10 to-transparent opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100"
             />
-            <div className="relative transition-transform duration-500 ease-out group-hover:scale-[1.04]">
-              <div className="relative overflow-hidden rounded-2xl shadow-xl shadow-black/25 ring-1 ring-white/10 transition-shadow duration-500 group-hover:shadow-2xl group-hover:shadow-white/20">
-                <Image
-                  src="/images/logo/logo-propre-eclat.png"
-                  alt="Logo Propre Éclat"
-                  width={280}
-                  height={280}
-                  className="relative block"
-                  priority
-                />
+            <div className="animate-soft-float">
+              <div className="relative transition-transform duration-500 ease-out group-hover:scale-[1.04]">
+                <div className="relative overflow-hidden rounded-2xl shadow-xl shadow-black/25 ring-1 ring-white/10 transition-shadow duration-500 group-hover:shadow-2xl group-hover:shadow-white/20">
+                  <Image
+                    src="/images/logo/logo-propre-eclat.png"
+                    alt="Logo Propre Éclat"
+                    width={280}
+                    height={280}
+                    className="relative block"
+                    priority
+                  />
+                </div>
               </div>
             </div>
           </div>
