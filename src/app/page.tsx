@@ -9,6 +9,12 @@ import SparkleHeading from "@/components/SparkleHeading";
 import { beforeAfterGallery, services, siteConfig } from "@/lib/site-data";
 import { getFaqSchema } from "@/lib/structured-data";
 
+// Réalisations mises en avant sur la page d'accueil
+const homeTitles = ["Dallage extérieur", "Intérieur de véhicule", "Canapé d'angle en tissu"];
+const homeGallery = homeTitles
+  .map((title) => beforeAfterGallery.find((item) => item.title === title))
+  .filter((item): item is (typeof beforeAfterGallery)[number] => Boolean(item));
+
 export default function Home() {
   return (
     <div>
@@ -157,12 +163,18 @@ export default function Home() {
           </p>
         </Reveal>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {beforeAfterGallery.slice(0, 3).map((item, i) => (
+          {homeGallery.map((item, i) => (
             <Reveal key={item.title} delay={i * 90}>
-              <BeforeAfterCard {...item} />
+              <BeforeAfterCard {...item} showHint={false} />
             </Reveal>
           ))}
         </div>
+        <p className="mt-8 flex items-center justify-center gap-2 text-center text-sm text-navy/60">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-brand">
+            <path d="M8 7l-5 5 5 5M16 7l5 5-5 5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          Glissez les images pour comparer l&apos;avant / après
+        </p>
       </section>
 
       <Reveal>

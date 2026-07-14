@@ -7,9 +7,10 @@ type Props = {
   title: string;
   before: string;
   after: string;
+  showHint?: boolean;
 };
 
-export default function BeforeAfterSlider({ title, before, after }: Props) {
+export default function BeforeAfterSlider({ title, before, after, showHint = true }: Props) {
   const [percent, setPercent] = useState(50);
   const containerRef = useRef<HTMLDivElement>(null);
   const draggingRef = useRef(false);
@@ -88,8 +89,13 @@ export default function BeforeAfterSlider({ title, before, after }: Props) {
           </div>
         </div>
       </div>
-      <figcaption className="px-4 py-3 text-sm font-medium text-navy">
-        {title} <span className="font-normal text-navy/50">— glissez pour comparer</span>
+      <figcaption
+        className={`px-4 py-3 text-sm font-medium text-navy ${showHint ? "" : "text-center"}`}
+      >
+        {title}
+        {showHint && (
+          <span className="font-normal text-navy/50"> — glissez pour comparer</span>
+        )}
       </figcaption>
     </figure>
   );

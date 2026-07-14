@@ -5,11 +5,12 @@ type Props = {
   title: string;
   before?: string;
   after?: string;
+  showHint?: boolean;
 };
 
-export default function BeforeAfterCard({ title, before, after }: Props) {
+export default function BeforeAfterCard({ title, before, after, showHint = true }: Props) {
   if (before && after) {
-    return <BeforeAfterSlider title={title} before={before} after={after} />;
+    return <BeforeAfterSlider title={title} before={before} after={after} showHint={showHint} />;
   }
 
   return (
@@ -23,7 +24,9 @@ export default function BeforeAfterCard({ title, before, after }: Props) {
           className="object-cover"
         />
       </div>
-      <figcaption className="px-4 py-3 text-sm font-medium text-navy">
+      <figcaption
+        className={`px-4 py-3 text-sm font-medium text-navy ${showHint ? "" : "text-center"}`}
+      >
         {title}
       </figcaption>
     </figure>
