@@ -24,6 +24,12 @@ export default function ContactPage() {
 
           <div className="mt-8 space-y-4 text-sm text-navy/80">
             <div>
+              <p className="font-semibold text-navy">Téléphone</p>
+              <a className="text-brand-dark hover:underline" href={siteConfig.phoneHref}>
+                {siteConfig.phone}
+              </a>
+            </div>
+            <div>
               <p className="font-semibold text-navy">Email</p>
               <a className="text-brand-dark hover:underline" href={`mailto:${siteConfig.email}`}>
                 {siteConfig.email}

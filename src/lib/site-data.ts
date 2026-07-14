@@ -2,7 +2,8 @@ export const siteConfig = {
   name: "Propre Éclat",
   tagline: "La différence de propreté",
   sector: "Nettoyage professionnel et particulier",
-  phone: "",
+  phone: "07 68 12 93 19",
+  phoneHref: "tel:+33768129319",
   email: "Propreeclat@gmail.com",
   serviceArea: "Caen et alentours (+20 km)",
   // Localisation (niveau ville — l'adresse exacte du siège reste à compléter dans les mentions légales)

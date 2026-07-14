@@ -15,6 +15,7 @@ export function getLocalBusinessSchema() {
     slogan: siteConfig.tagline,
     url: siteConfig.url,
     email: siteConfig.email,
+    telephone: siteConfig.phoneHref.replace("tel:", ""),
     image: `${siteConfig.url}/icon.png`,
     logo: `${siteConfig.url}/icon.png`,
     address: {
