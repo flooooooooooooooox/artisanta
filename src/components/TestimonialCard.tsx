@@ -10,7 +10,7 @@ export default function TestimonialCard({ name, context, date, rating, quote }: 
   const initial = name.trim().charAt(0).toUpperCase();
 
   return (
-    <figure className="flex h-full flex-col rounded-2xl bg-white p-6 shadow-sm ring-1 ring-navy/5">
+    <figure className="flex h-full flex-col rounded-2xl bg-white p-6 shadow-sm ring-1 ring-navy/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-navy/10 hover:ring-brand/30">
       <div className="flex items-center gap-3">
         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand/15 text-sm font-semibold text-brand-dark">
           {initial}

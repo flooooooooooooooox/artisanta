@@ -131,6 +131,27 @@ body {
   display: none;
 }
 
+/* Défilement infini des avis */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 60s linear infinite;
+}
+
+.group:hover .animate-marquee,
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
+
 @keyframes float {
   0%, 100% { transform: translateY(0) rotate(-0.6deg); }
   50% { transform: translateY(-10px) rotate(0.6deg); }
