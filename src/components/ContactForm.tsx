@@ -70,6 +70,16 @@ export default function ContactForm() {
         {pending ? "Envoi en cours..." : "Envoyer ma demande"}
       </button>
 
+      <p className="text-xs leading-relaxed text-navy/50">
+        En envoyant ce formulaire, vous acceptez que vos informations soient
+        utilisées pour traiter votre demande. Elles ne seront jamais cédées à des
+        tiers. Pour en savoir plus, consultez notre{" "}
+        <a className="underline hover:text-brand-dark" href="/politique-de-confidentialite">
+          politique de confidentialité
+        </a>
+        .
+      </p>
+
       {state.status !== "idle" && (
         <p
           role="status"

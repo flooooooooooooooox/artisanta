@@ -219,6 +219,23 @@ body {
   }
 }
 
+/* Étincelles scintillantes autour des titres */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.6) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1) rotate(20deg); }
+}
+
+.animate-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-twinkle {
+    animation: none;
+    opacity: 0.6;
+  }
+}
+
 /* Léger flottement continu du logo */
 @keyframes soft-float {
   0%, 100% { transform: translateY(0); }

@@ -5,6 +5,7 @@ import GoogleReviewsSection from "@/components/GoogleReviewsSection";
 import FaqSection from "@/components/FaqSection";
 import JsonLd from "@/components/JsonLd";
 import Reveal from "@/components/Reveal";
+import SparkleHeading from "@/components/SparkleHeading";
 import { beforeAfterGallery, services, siteConfig } from "@/lib/site-data";
 import { getFaqSchema } from "@/lib/structured-data";
 
@@ -114,7 +115,9 @@ export default function Home() {
       <section className="bg-cream-alt py-16">
         <div className="mx-auto max-w-6xl px-6">
           <Reveal>
-            <h2 className="text-center text-3xl font-bold text-navy">Nos prestations</h2>
+            <h2 className="text-center text-3xl font-bold text-navy">
+              <SparkleHeading>Nos prestations</SparkleHeading>
+            </h2>
             <p className="mx-auto mt-3 max-w-xl text-center text-navy/70">
               Des services de nettoyage adaptés à chaque besoin, pour les particuliers
               comme pour les professionnels.
@@ -146,7 +149,9 @@ export default function Home() {
 
       <section className="mx-auto max-w-6xl px-6 py-16">
         <Reveal>
-          <h2 className="text-center text-3xl font-bold text-navy">Nos réalisations</h2>
+          <h2 className="text-center text-3xl font-bold text-navy">
+            <SparkleHeading>Nos réalisations</SparkleHeading>
+          </h2>
           <p className="mx-auto mt-3 max-w-xl text-center text-navy/70">
             Un aperçu avant / après de nos interventions récentes.
           </p>

@@ -1,4 +1,5 @@
 import { faq } from "@/lib/site-data";
+import SparkleHeading from "./SparkleHeading";
 
 export default function FaqSection() {
   return (
@@ -7,7 +8,9 @@ export default function FaqSection() {
         <p className="text-sm font-semibold uppercase tracking-widest text-brand-dark">
           Questions fréquentes
         </p>
-        <h2 className="mt-3 text-3xl font-bold text-navy">Vous vous posez une question ?</h2>
+        <h2 className="mt-3 text-3xl font-bold text-navy">
+          <SparkleHeading>Vous vous posez une question ?</SparkleHeading>
+        </h2>
         <p className="mx-auto mt-3 max-w-xl text-navy/70">
           Les réponses aux questions les plus courantes sur nos services de
           nettoyage à Caen et alentours.

@@ -44,6 +44,7 @@ export default function Footer() {
               { href: "/services", label: "Services" },
               { href: "/contact", label: "Contact" },
               { href: "/mentions-legales", label: "Mentions légales" },
+              { href: "/politique-de-confidentialite", label: "Confidentialité" },
             ].map((link) => (
               <li key={link.href}>
                 <Link

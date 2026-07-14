@@ -1,11 +1,14 @@
 import TestimonialsCarousel from "./TestimonialsCarousel";
+import SparkleHeading from "./SparkleHeading";
 import { siteConfig, testimonials } from "@/lib/site-data";
 
 export default function GoogleReviewsSection() {
   return (
     <section className="bg-cream-alt py-16">
       <div className="mx-auto max-w-6xl px-6">
-        <h2 className="text-center text-3xl font-bold text-navy">Avis Google</h2>
+        <h2 className="text-center text-3xl font-bold text-navy">
+          <SparkleHeading>Avis Google</SparkleHeading>
+        </h2>
         <p className="mx-auto mt-3 max-w-xl text-center text-navy/70">
           Ce que nos clients disent de Propre Éclat, directement issu de notre
           fiche Google Business.
