@@ -32,7 +32,7 @@ export default function GoogleReviewsSection() {
               height="300"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="pointer-events-none block"
+              className="block"
             />
 
             {/* Périmètre de 20 km autour de Caen (calibré pour le zoom 9) */}
