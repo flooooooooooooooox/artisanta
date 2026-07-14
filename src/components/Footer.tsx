@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import ShareButtons from "./ShareButtons";
 import { siteConfig } from "@/lib/site-data";
 
 export default function Footer() {
@@ -115,6 +116,11 @@ export default function Footer() {
             </Link>
           </div>
         </div>
+      </div>
+
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 border-t border-cream/10 px-6 py-6 sm:flex-row sm:justify-between">
+        <span className="text-sm font-semibold text-cream/70">Partager le site</span>
+        <ShareButtons />
       </div>
 
       <div className="border-t border-cream/10 px-6 py-5 text-center text-xs text-cream/50">
