@@ -104,6 +104,11 @@ export const beforeAfterGallery = [
     after: "/images/chantier/banquette-tissu-apres.webp",
   },
   {
+    title: "Accoudoir de canapé",
+    before: "/images/chantier/accoudoir-tissu-avant.webp",
+    after: "/images/chantier/accoudoir-tissu-apres.webp",
+  },
+  {
     title: "Terrasse en bois",
     before: "/images/chantier/terrasse-bois-avant.webp",
     after: "/images/chantier/terrasse-bois-apres.webp",
