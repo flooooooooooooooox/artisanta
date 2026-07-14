@@ -51,13 +51,19 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative mx-auto flex h-56 w-56 items-center justify-center sm:h-72 sm:w-72">
+          <div className="group relative mx-auto flex h-56 w-56 items-center justify-center sm:h-72 sm:w-72">
+            {/* Halo lumineux */}
             <div
               aria-hidden="true"
-              className="animate-glow-pulse absolute inset-0 rounded-full bg-brand/25 blur-2xl"
+              className="animate-glow-pulse absolute inset-0 rounded-full bg-brand/25 blur-2xl transition-all duration-500 group-hover:bg-brand/40 group-hover:blur-3xl"
             />
-            <div className="animate-float relative">
-              <div className="relative overflow-hidden rounded-2xl shadow-2xl shadow-black/30">
+            {/* Panneau dégradé légèrement incliné derrière le logo */}
+            <div
+              aria-hidden="true"
+              className="absolute inset-2 -rotate-6 rounded-3xl bg-gradient-to-br from-brand/50 to-brand-dark/60 blur-sm transition-transform duration-500 ease-out group-hover:-rotate-12 group-hover:scale-105"
+            />
+            <div className="animate-float relative transition-transform duration-500 ease-out group-hover:-translate-y-1 group-hover:rotate-2 group-hover:scale-105">
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl shadow-black/30 ring-1 ring-white/10 transition-shadow duration-500 group-hover:shadow-brand/40">
                 <Image
                   src="/images/logo/logo-propre-eclat.png"
                   alt="Logo Propre Éclat"
@@ -69,6 +75,11 @@ export default function Home() {
                 <div
                   aria-hidden="true"
                   className="animate-shine-sweep pointer-events-none absolute -inset-y-4 left-0 w-1/2 bg-gradient-to-r from-transparent via-white/25 to-transparent blur-md"
+                />
+                {/* Éclat supplémentaire au survol */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 bg-white/0 transition-colors duration-500 group-hover:bg-white/10"
                 />
               </div>
             </div>
