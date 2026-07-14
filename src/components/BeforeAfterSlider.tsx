@@ -52,6 +52,7 @@ export default function BeforeAfterSlider({ title, before, after }: Props) {
           src={after}
           alt={`${title} après nettoyage`}
           fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           draggable={false}
           className="pointer-events-none object-cover"
         />
@@ -63,6 +64,7 @@ export default function BeforeAfterSlider({ title, before, after }: Props) {
             src={before}
             alt={`${title} avant nettoyage`}
             fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             draggable={false}
             className="object-cover"
           />

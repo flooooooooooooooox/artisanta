@@ -2,11 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import BeforeAfterCard from "@/components/BeforeAfterCard";
 import GoogleReviewsSection from "@/components/GoogleReviewsSection";
+import FaqSection from "@/components/FaqSection";
+import JsonLd from "@/components/JsonLd";
 import { beforeAfterGallery, services, siteConfig } from "@/lib/site-data";
+import { getFaqSchema } from "@/lib/structured-data";
 
 export default function Home() {
   return (
     <div>
+      <JsonLd data={getFaqSchema()} />
       <section className="relative overflow-hidden bg-gradient-to-br from-navy via-navy to-navy-light">
         <div
           aria-hidden="true"
@@ -135,6 +139,8 @@ export default function Home() {
       </section>
 
       <GoogleReviewsSection />
+
+      <FaqSection />
 
       <section className="px-6 py-16">
         <div className="relative mx-auto max-w-5xl overflow-hidden rounded-3xl bg-gradient-to-br from-navy via-navy to-navy-light px-6 py-14 text-center shadow-xl sm:px-12 sm:py-16">

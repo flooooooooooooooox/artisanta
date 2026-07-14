@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import JsonLd from "@/components/JsonLd";
 import { siteConfig } from "@/lib/site-data";
+import { getLocalBusinessSchema, getWebSiteSchema } from "@/lib/structured-data";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -60,6 +62,7 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-cream text-[var(--foreground)]">
+        <JsonLd data={[getLocalBusinessSchema(), getWebSiteSchema()]} />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

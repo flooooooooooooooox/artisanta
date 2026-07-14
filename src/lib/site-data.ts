@@ -5,6 +5,27 @@ export const siteConfig = {
   phone: "",
   email: "Propreeclat@gmail.com",
   serviceArea: "Caen et alentours (+20 km)",
+  // Localisation (niveau ville — l'adresse exacte du siège reste à compléter dans les mentions légales)
+  city: "Caen",
+  postalCode: "14000",
+  region: "Normandie",
+  country: "FR",
+  geo: { lat: 49.1829, lng: -0.3707 },
+  // Communes couvertes dans le rayon de 20 km (SEO local)
+  areaServed: [
+    "Caen",
+    "Hérouville-Saint-Clair",
+    "Ifs",
+    "Mondeville",
+    "Colombelles",
+    "Ouistreham",
+    "Bretteville-sur-Odon",
+    "Fleury-sur-Orne",
+    "Giberville",
+    "Cormelles-le-Royal",
+    "Épron",
+    "Douvres-la-Délivrande",
+  ],
   // URL de production — à mettre à jour dès que le nom de domaine est connu
   url: "https://www.propre-eclat.fr",
   facebookUrl:
@@ -37,6 +58,39 @@ export const services = [
     title: "Nettoyage de fin de chantier",
     description:
       "Remise en état complète après travaux : poussière, résidus et traces éliminés avant livraison.",
+  },
+];
+
+export const faq = [
+  {
+    question: "Dans quelles villes intervenez-vous ?",
+    answer:
+      "Propre Éclat intervient à Caen et dans un rayon d'environ 20 km : Hérouville-Saint-Clair, Ifs, Mondeville, Colombelles, Ouistreham, Bretteville-sur-Odon et les communes alentour. Contactez-nous pour vérifier que votre adresse est couverte.",
+  },
+  {
+    question: "Le devis est-il gratuit ?",
+    answer:
+      "Oui, l'établissement du devis est entièrement gratuit et sans engagement. Décrivez-nous votre besoin via le formulaire de contact ou par email, et nous vous répondons rapidement.",
+  },
+  {
+    question: "Quels types de prestations proposez-vous ?",
+    answer:
+      "Nous réalisons le nettoyage des vitres, le nettoyage de bureaux et locaux professionnels, l'entretien des parties communes de copropriété et le nettoyage de fin de chantier. Nous intervenons aussi bien pour les particuliers que pour les professionnels.",
+  },
+  {
+    question: "Travaillez-vous avec les particuliers et les professionnels ?",
+    answer:
+      "Oui. Nous accompagnons les particuliers comme les entreprises, syndics et gestionnaires d'immeubles, ainsi que les chantiers exceptionnels, avec une prestation adaptée à chaque contexte.",
+  },
+  {
+    question: "Comment demander une intervention ?",
+    answer:
+      "Le plus simple est de remplir le formulaire de contact en indiquant votre email, votre téléphone, votre ville et votre code postal. Vous pouvez aussi nous écrire directement à Propreeclat@gmail.com.",
+  },
+  {
+    question: "Utilisez-vous des produits respectueux des surfaces et de l'environnement ?",
+    answer:
+      "Nous adaptons notre matériel et nos produits à chaque surface (tissus, vitres, sols, bois…) afin d'obtenir un résultat impeccable tout en préservant vos équipements.",
   },
 ];
 
