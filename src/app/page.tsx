@@ -6,6 +6,9 @@ import FaqSection from "@/components/FaqSection";
 import JsonLd from "@/components/JsonLd";
 import Reveal from "@/components/Reveal";
 import SparkleHeading from "@/components/SparkleHeading";
+import Particles from "@/components/Particles";
+import WhyUsSection from "@/components/WhyUsSection";
+import ProcessSection from "@/components/ProcessSection";
 import { beforeAfterGallery, services, siteConfig } from "@/lib/site-data";
 import { getFaqSchema } from "@/lib/structured-data";
 
@@ -32,6 +35,7 @@ export default function Home() {
           aria-hidden="true"
           className="animate-drift-c absolute left-1/2 top-1/3 h-72 w-72 rounded-full bg-brand-dark/20 blur-3xl"
         />
+        <Particles />
         <div
           aria-hidden="true"
           className="absolute inset-0 opacity-[0.04]"
@@ -92,6 +96,11 @@ export default function Home() {
                     className="relative block"
                     priority
                   />
+                  {/* Reflet brillant qui balaie le logo */}
+                  <div
+                    aria-hidden="true"
+                    className="animate-shine-sweep pointer-events-none absolute -inset-y-4 left-0 w-1/2 bg-gradient-to-r from-transparent via-white/30 to-transparent blur-md"
+                  />
                 </div>
               </div>
             </div>
@@ -106,7 +115,7 @@ export default function Home() {
             { label: "Cible", value: "Particuliers & professionnels" },
             { label: "Notre promesse", value: "La différence de propreté" },
           ].map((item, i) => (
-            <Reveal key={item.label} delay={i * 90}>
+            <Reveal key={item.label} delay={i * 90} replay>
               <div className="rounded-2xl bg-white p-6 text-center shadow-sm ring-1 ring-navy/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-navy/10 hover:ring-brand/30">
                 <p className="text-xs font-semibold uppercase tracking-wide text-brand-dark">
                   {item.label}
@@ -117,6 +126,8 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      <WhyUsSection />
 
       <section className="bg-cream-alt py-16">
         <div className="mx-auto max-w-6xl px-6">
@@ -131,7 +142,7 @@ export default function Home() {
           </Reveal>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {services.map((service, i) => (
-              <Reveal key={service.slug} delay={i * 80}>
+              <Reveal key={service.slug} delay={i * 80} replay>
                 <div className="group/card relative h-full overflow-hidden rounded-2xl bg-white p-6 shadow-sm ring-1 ring-navy/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-navy/10 hover:ring-brand/30">
                   <span className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-brand to-brand-dark transition-transform duration-300 group-hover/card:scale-x-100" />
                   <h3 className="text-lg font-semibold text-navy transition-colors group-hover/card:text-brand-dark">
@@ -164,7 +175,7 @@ export default function Home() {
         </Reveal>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {homeGallery.map((item, i) => (
-            <Reveal key={item.title} delay={i * 90}>
+            <Reveal key={item.title} delay={i * 90} replay>
               <BeforeAfterCard {...item} showHint={false} />
             </Reveal>
           ))}
@@ -181,6 +192,8 @@ export default function Home() {
         <GoogleReviewsSection />
       </Reveal>
 
+      <ProcessSection />
+
       <Reveal>
         <FaqSection />
       </Reveal>
@@ -190,6 +203,7 @@ export default function Home() {
           {/* Formes décoratives */}
           <div aria-hidden="true" className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand/20 blur-3xl" />
           <div aria-hidden="true" className="absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-brand/10 blur-3xl" />
+          <Particles />
           <div
             aria-hidden="true"
             className="absolute inset-0 opacity-[0.05]"

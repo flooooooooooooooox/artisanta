@@ -6,9 +6,11 @@ type Props = {
   children: ReactNode;
   delay?: number;
   className?: string;
+  /** Rejoue l'animation à chaque fois que l'élément revient à l'écran */
+  replay?: boolean;
 };
 
-export default function Reveal({ children, delay = 0, className = "" }: Props) {
+export default function Reveal({ children, delay = 0, className = "", replay = false }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -20,7 +22,9 @@ export default function Reveal({ children, delay = 0, className = "" }: Props) {
       ([entry]) => {
         if (entry.isIntersecting) {
           setVisible(true);
-          observer.disconnect();
+          if (!replay) observer.disconnect();
+        } else if (replay) {
+          setVisible(false);
         }
       },
       { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
@@ -28,7 +32,7 @@ export default function Reveal({ children, delay = 0, className = "" }: Props) {
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [replay]);
 
   return (
     <div

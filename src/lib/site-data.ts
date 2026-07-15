@@ -65,6 +65,44 @@ export const services = [
   },
 ];
 
+export const benefits = [
+  {
+    icon: "quote",
+    title: "Devis gratuit & sans engagement",
+    text: "Une réponse rapide et un tarif clair, adapté à votre besoin, sans aucune obligation.",
+  },
+  {
+    icon: "sparkle",
+    title: "Travail soigné & minutieux",
+    text: "Le souci du détail à chaque intervention, jusqu'à la vérification finale du résultat.",
+  },
+  {
+    icon: "users",
+    title: "Particuliers & professionnels",
+    text: "Maisons, bureaux, copropriétés, chantiers : une prestation adaptée à chaque contexte.",
+  },
+  {
+    icon: "pin",
+    title: "Local & réactif",
+    text: "Basés à Caen, nous intervenons dans un rayon de 20 km avec disponibilité et ponctualité.",
+  },
+];
+
+export const processSteps = [
+  {
+    title: "Vous nous contactez",
+    text: "Par téléphone ou via le formulaire, décrivez-nous votre besoin en quelques mots.",
+  },
+  {
+    title: "Devis gratuit",
+    text: "Nous revenons vers vous rapidement avec un devis clair et adapté, sans engagement.",
+  },
+  {
+    title: "Intervention",
+    text: "Notre équipe intervient avec rigueur et vous laisse un espace impeccable.",
+  },
+];
+
 export const faq = [
   {
     question: "Dans quelles villes intervenez-vous ?",
