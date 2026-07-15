@@ -115,8 +115,8 @@ export default function Home() {
             { label: "Cible", value: "Particuliers & professionnels" },
             { label: "Notre promesse", value: "La différence de propreté" },
           ].map((item, i) => (
-            <Reveal key={item.label} delay={i * 90} replay>
-              <div className="rounded-2xl bg-white p-6 text-center shadow-sm ring-1 ring-navy/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-navy/10 hover:ring-brand/30">
+            <Reveal key={item.label} delay={i * 90}>
+              <div className="rounded-2xl bg-white p-6 text-center shadow-sm ring-1 ring-navy/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-navy/10 hover:ring-brand/30 active:-translate-y-1 active:shadow-lg active:ring-brand/30">
                 <p className="text-xs font-semibold uppercase tracking-wide text-brand-dark">
                   {item.label}
                 </p>
@@ -142,10 +142,10 @@ export default function Home() {
           </Reveal>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {services.map((service, i) => (
-              <Reveal key={service.slug} delay={i * 80} replay>
-                <div className="group/card relative h-full overflow-hidden rounded-2xl bg-white p-6 shadow-sm ring-1 ring-navy/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-navy/10 hover:ring-brand/30">
-                  <span className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-brand to-brand-dark transition-transform duration-300 group-hover/card:scale-x-100" />
-                  <h3 className="text-lg font-semibold text-navy transition-colors group-hover/card:text-brand-dark">
+              <Reveal key={service.slug} delay={i * 80}>
+                <div className="group/card relative h-full overflow-hidden rounded-2xl bg-white p-6 shadow-sm ring-1 ring-navy/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-navy/10 hover:ring-brand/30 active:-translate-y-1.5 active:shadow-xl active:ring-brand/30">
+                  <span className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-brand to-brand-dark transition-transform duration-300 group-hover/card:scale-x-100 group-active/card:scale-x-100" />
+                  <h3 className="text-lg font-semibold text-navy transition-colors group-hover/card:text-brand-dark group-active/card:text-brand-dark">
                     {service.title}
                   </h3>
                   <p className="mt-2 text-sm text-navy/70">{service.description}</p>
@@ -175,7 +175,7 @@ export default function Home() {
         </Reveal>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {homeGallery.map((item, i) => (
-            <Reveal key={item.title} delay={i * 90} replay>
+            <Reveal key={item.title} delay={i * 90}>
               <BeforeAfterCard {...item} showHint={false} />
             </Reveal>
           ))}

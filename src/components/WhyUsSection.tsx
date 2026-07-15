@@ -40,9 +40,9 @@ export default function WhyUsSection() {
 
       <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {benefits.map((benefit, i) => (
-          <Reveal key={benefit.title} delay={i * 80} replay>
-            <div className="h-full rounded-2xl bg-white p-6 shadow-sm ring-1 ring-navy/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-navy/10 hover:ring-brand/30">
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand/10 text-brand-dark">
+          <Reveal key={benefit.title} delay={i * 80}>
+            <div className="group/b h-full rounded-2xl bg-white p-6 shadow-sm ring-1 ring-navy/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-navy/10 hover:ring-brand/30 active:-translate-y-1.5 active:shadow-xl active:ring-brand/30">
+              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand/10 text-brand-dark transition-transform duration-300 group-hover/b:scale-110 group-active/b:scale-110">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill={benefit.icon === "sparkle" ? "currentColor" : "none"} stroke={benefit.icon === "sparkle" ? "none" : "currentColor"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   {icons[benefit.icon]}
                 </svg>

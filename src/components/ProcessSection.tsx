@@ -17,8 +17,8 @@ export default function ProcessSection() {
 
         <div className="mt-12 grid gap-8 sm:grid-cols-3">
           {processSteps.map((step, i) => (
-            <Reveal key={step.title} delay={i * 100} replay>
-              <div className="relative h-full rounded-2xl bg-white p-6 pt-8 text-center shadow-sm ring-1 ring-navy/5">
+            <Reveal key={step.title} delay={i * 100}>
+              <div className="relative h-full rounded-2xl bg-white p-6 pt-8 text-center shadow-sm ring-1 ring-navy/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-navy/10 hover:ring-brand/30 active:-translate-y-1.5 active:shadow-xl active:ring-brand/30">
                 <span className="absolute -top-5 left-1/2 flex h-11 w-11 -translate-x-1/2 items-center justify-center rounded-full bg-gradient-to-br from-brand to-brand-dark text-lg font-bold text-white shadow-md">
                   {i + 1}
                 </span>
