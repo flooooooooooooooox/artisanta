@@ -4,7 +4,8 @@ import BeforeAfterCard from "@/components/BeforeAfterCard";
 import { beforeAfterGallery, services } from "@/lib/site-data";
 
 export const metadata: Metadata = {
-  title: "Services | Propre Éclat",
+  title: "Nettoyage à Caen : vitres, bureaux, copropriété, fin de chantier",
+  alternates: { canonical: "/services" },
   description:
     "Nettoyage des vitres, des bureaux, de copropriété et fin de chantier : découvrez les prestations de Propre Éclat à Caen et alentours.",
 };

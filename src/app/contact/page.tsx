@@ -3,9 +3,10 @@ import ContactForm from "@/components/ContactForm";
 import { siteConfig } from "@/lib/site-data";
 
 export const metadata: Metadata = {
-  title: "Contact | Propre Éclat",
+  title: "Contact & devis gratuit — Nettoyage à Caen",
   description:
-    "Demandez votre devis gratuit à Propre Éclat, entreprise de nettoyage à Caen et alentours.",
+    "Demandez votre devis gratuit à Propre Éclat, entreprise de nettoyage à Caen et alentours (+20 km). Réponse rapide par téléphone ou email.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {

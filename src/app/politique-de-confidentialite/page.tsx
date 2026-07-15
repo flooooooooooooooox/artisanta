@@ -6,6 +6,8 @@ export const metadata: Metadata = {
   title: "Politique de confidentialité",
   description:
     "Politique de confidentialité et gestion des données personnelles (RGPD) de Propre Éclat.",
+  alternates: { canonical: "/politique-de-confidentialite" },
+  robots: { index: false },
 };
 
 export default function PrivacyPage() {

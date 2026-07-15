@@ -5,6 +5,8 @@ import { legalMentions, siteConfig } from "@/lib/site-data";
 export const metadata: Metadata = {
   title: "Mentions légales",
   description: "Mentions légales du site Propre Éclat.",
+  alternates: { canonical: "/mentions-legales" },
+  robots: { index: false },
 };
 
 export default function LegalPage() {

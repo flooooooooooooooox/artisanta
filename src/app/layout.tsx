@@ -51,7 +51,7 @@ export const metadata: Metadata = {
       "Entreprise de nettoyage à Caen et alentours (+20 km). La différence de propreté.",
   },
   alternates: {
-    canonical: siteConfig.url,
+    canonical: "/",
   },
 };
 

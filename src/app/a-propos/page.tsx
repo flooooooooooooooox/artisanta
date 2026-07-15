@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site-data";
 
 export const metadata: Metadata = {
-  title: "À propos | Propre Éclat",
+  title: "À propos — Entreprise de nettoyage à Caen",
   description:
     "Découvrez Propre Éclat, entreprise de nettoyage à Caen : nos valeurs, notre approche et notre zone d'intervention.",
+  alternates: { canonical: "/a-propos" },
 };
 
 export default function AboutPage() {

@@ -48,10 +48,10 @@ export default function Home() {
 
         <div className="relative mx-auto grid max-w-6xl gap-10 px-6 py-20 md:grid-cols-2 md:items-center md:py-28">
           <div>
-            <p className="animate-hero-in text-sm font-semibold uppercase tracking-widest text-brand">
-              Nettoyage professionnel à Caen
-            </p>
-            <h1 className="animate-hero-in mt-4 text-4xl font-bold leading-tight text-white sm:text-5xl" style={{ animationDelay: "0.1s" }}>
+            <h1 className="animate-hero-in text-4xl font-bold leading-tight text-white sm:text-5xl">
+              <span className="mb-3 block text-sm font-semibold uppercase tracking-widest text-brand">
+                Nettoyage professionnel à Caen
+              </span>
               {siteConfig.tagline}
             </h1>
             <p className="animate-hero-in mt-5 max-w-lg text-lg text-cream/80" style={{ animationDelay: "0.2s" }}>

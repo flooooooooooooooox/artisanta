@@ -39,9 +39,10 @@ export default function GoogleReviewsSection() {
               Notre zone d&apos;intervention
             </p>
             <p className="mt-2 text-navy/70">
-              Nous intervenons à Caen et dans un rayon de 20 km alentour. Envie de
-              lire tous nos avis ou d&apos;en laisser un ? Retrouvez notre fiche
-              complète sur Google.
+              Nous intervenons à Caen et dans un rayon de 20 km alentour :
+              Hérouville-Saint-Clair, Ifs, Mondeville, Colombelles, Ouistreham,
+              Bretteville-sur-Odon, Giberville, Cormelles-le-Royal et les communes
+              voisines. Retrouvez aussi tous nos avis sur notre fiche Google.
             </p>
             <div className="mt-5 flex flex-wrap justify-center gap-3 md:justify-start">
               <a
