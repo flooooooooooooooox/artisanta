@@ -37,6 +37,10 @@ export default function ContactPage() {
               </a>
             </div>
             <div>
+              <p className="font-semibold text-navy">Horaires</p>
+              <p>{siteConfig.hours.display}</p>
+            </div>
+            <div>
               <p className="font-semibold text-navy">Zone d&apos;intervention</p>
               <p>{siteConfig.serviceArea}</p>
             </div>

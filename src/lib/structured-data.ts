@@ -30,6 +30,20 @@ export function getLocalBusinessSchema() {
       latitude: siteConfig.geo.lat,
       longitude: siteConfig.geo.lng,
     },
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ],
+      opens: siteConfig.hours.opens,
+      closes: siteConfig.hours.closes,
+    },
     areaServed: siteConfig.areaServed.map((city) => ({
       "@type": "City",
       name: city,

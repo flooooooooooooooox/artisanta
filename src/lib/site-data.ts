@@ -6,6 +6,13 @@ export const siteConfig = {
   phoneHref: "tel:+33768129319",
   email: "Propreeclat@gmail.com",
   serviceArea: "Caen et alentours (+20 km)",
+  // Horaires d'ouverture (identiques 7j/7)
+  hours: {
+    display: "Tous les jours · 8h30 – 19h00",
+    short: "7j/7 · 8h30–19h00",
+    opens: "08:30",
+    closes: "19:00",
+  },
   // Localisation (niveau ville — l'adresse exacte du siège reste à compléter dans les mentions légales)
   city: "Caen",
   postalCode: "14000",
