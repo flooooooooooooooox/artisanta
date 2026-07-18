@@ -14,12 +14,23 @@ description: >-
 Objectif : produire, en **une seule session**, un site vitrine complet, cohérent et prêt à
 déployer pour un artisan. Basé sur l'implémentation de référence « Propre Éclat ».
 
+## Standard NON négociable
+Chaque site doit viser **deux objectifs à la fois**, à tout moment de la construction :
+1. **Un design « wow », premium** → respecter `design-excellence.md` (rythme, typo, profondeur,
+   hero animé, micro-interactions dosées, finition).
+2. **Un maximum de conversions** → respecter `conversion.md` (CTA + tél au-dessus de la ligne
+   de flottaison, preuve sociale près des CTA, avant/après, formulaire court + réassurance,
+   FAQ anti-objections, click-to-call partout).
+Ne jamais livrer un site qui ne coche pas les deux checklists (design + conversion).
+
 ## Fichiers de référence (à lire au démarrage)
 - `references/sectors.md` — **secteur → SEO adapté** (type Schema.org, mots-clés, variante)
 - `references/questionnaire.md` — toutes les questions (le **secteur en premier**)
 - `references/design-variants.md` — 20 variantes de design **à usage unique** + suivi
 - `references/features.md` — fonctionnalités à la carte + garde-fous
 - `references/build-guide.md` — architecture, thème, code des composants clés, SEO
+- `references/design-excellence.md` — **barre de qualité design « wow »** (obligatoire)
+- `references/conversion.md` — **règles de conversion (CRO)** (obligatoire)
 - `references/deployment.md` — mise en ligne Vercel + Resend + domaine
 - `template/` — **squelette de code pré-fait** (composants + CSS + config) à copier pour aller vite
 
@@ -61,6 +72,9 @@ Suivre `build-guide.md`. **Gagner du temps avec `template/`** : copier les fichi
 `npx tsc --noEmit && npm run lint && npm run build`. Vérifier : 1 H1/page, titres uniques,
 canonicals corrects, JSON-LD présent, images avec `alt`, formulaire testé. Lister les
 placeholders `[à compléter]` restants pour le client.
+**Puis dérouler les 2 checklists** : `design-excellence.md` (barre de qualité) et
+`conversion.md` (CRO). Corriger tant que les deux ne sont pas cochées. Idéalement, faire une
+capture d'écran (desktop + mobile) pour juger le rendu réel avant de livrer.
 
 ### 6. Déploiement
 Guider le client avec `deployment.md` (Vercel → variables Resend → redeploy → test → domaine).
