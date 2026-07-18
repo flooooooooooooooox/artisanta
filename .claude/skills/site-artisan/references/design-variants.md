@@ -96,6 +96,62 @@ Les polices sont chargées via `next/font/google` (remplacer la paire Geist par 
 - brand `#a9863f` · brand-dark `#87692b`
 - Typo : **Bitter** + **Inter** · Ambiance : authentique, robuste, terroir
 
+## V13 — Cyan Frais · piscine, climatisation, vitrerie
+- background `#f2f7f9` · foreground `#122a33`
+- cream `#f2f7f9` · cream-alt `#dceaef`
+- navy `#0f3440` · navy-light `#1a5061`
+- brand `#1fb6d6` · brand-dark `#128ba6`
+- Typo : **Manrope** + **Inter** · Ambiance : frais, net, aquatique
+
+## V14 — Indigo Tech · domotique, électricité moderne, alarme
+- background `#f4f4f8` · foreground `#1a1b2e`
+- cream `#f4f4f8` · cream-alt `#e4e4ee`
+- navy `#191a2e` · navy-light `#2c2e4d`
+- brand `#5b5bf0` · brand-dark `#3f3fce`
+- Typo : **Space Grotesk** + **Inter** · Ambiance : moderne, tech, précis
+
+## V15 — Olive Terroir · maçonnerie pierre, restauration, terroir
+- background `#f6f5ee` · foreground `#2c2a1c`
+- cream `#f6f5ee` · cream-alt `#e8e5d5`
+- navy `#3a3722` · navy-light `#575234`
+- brand `#8a8b3a` · brand-dark `#6b6c28`
+- Typo : **Fraunces** + **Inter** · Ambiance : naturel, patrimoine, sobre
+
+## V16 — Corail Doux · décoration, home-staging, tapissier
+- background `#faf5f3` · foreground `#33211f`
+- cream `#faf5f3` · cream-alt `#f1e0db`
+- navy `#4a2b28` · navy-light `#6c403b`
+- brand `#e07a5f` · brand-dark `#c25c42`
+- Typo : **DM Serif Display** + **DM Sans** · Ambiance : chaleureux, créatif, doux
+
+## V17 — Bleu Acier · métallier, ferronnier, serrurier
+- background `#f3f5f6` · foreground `#1b2429`
+- cream `#f3f5f6` · cream-alt `#e2e7ea`
+- navy `#1f2a30` · navy-light `#324249`
+- brand `#4a7c95` · brand-dark `#356075`
+- Typo : **Archivo** + **Inter** · Ambiance : industriel, solide, sérieux
+
+## V18 — Or Noir Luxe · haut de gamme, sur-mesure, agencement premium
+- background `#f5f4f2` · foreground `#1a1814`
+- cream `#f5f4f2` · cream-alt `#e6e3dc`
+- navy `#17140f` · navy-light `#2c261c`
+- brand `#c8a24a` · brand-dark `#a5822f`
+- Typo : **Cormorant Garamond** + **Inter** · Ambiance : luxe, élégance, rare
+
+## V19 — Vert Menthe Éco · éco-rénovation, isolation, énergies
+- background `#f2f7f4` · foreground `#153029`
+- cream `#f2f7f4` · cream-alt `#dcece5`
+- navy `#153a30` · navy-light `#215747`
+- brand `#2fb37e` · brand-dark `#1f8a60`
+- Typo : **Sora** + **Inter** · Ambiance : écologique, moderne, positif
+
+## V20 — Sable Chaud · plâtrier, enduit, façade
+- background `#f8f5ef` · foreground `#332a1e`
+- cream `#f8f5ef` · cream-alt `#ece2d1`
+- navy `#463829` · navy-light `#67523c`
+- brand `#d1a15a` · brand-dark `#af8140`
+- Typo : **Bitter** + **Inter** · Ambiance : minéral, doux, artisanal
+
 ---
 
 ## 📋 Suivi d'utilisation
@@ -114,6 +170,14 @@ Les polices sont chargées via `next/font/google` (remplacer la paire Geist par 
 | V10 Gris Béton Moderne | ✅ libre | — | — |
 | V11 Bordeaux Élégant | ✅ libre | — | — |
 | V12 Forêt Profonde | ✅ libre | — | — |
+| V13 Cyan Frais | ✅ libre | — | — |
+| V14 Indigo Tech | ✅ libre | — | — |
+| V15 Olive Terroir | ✅ libre | — | — |
+| V16 Corail Doux | ✅ libre | — | — |
+| V17 Bleu Acier | ✅ libre | — | — |
+| V18 Or Noir Luxe | ✅ libre | — | — |
+| V19 Vert Menthe Éco | ✅ libre | — | — |
+| V20 Sable Chaud | ✅ libre | — | — |
 
 > Règle : au démarrage, ne proposer que les variantes `✅ libre`. Après attribution,
 > passer la ligne à `🔒 utilisée` avec le nom du client et le mois, puis committer ce fichier.

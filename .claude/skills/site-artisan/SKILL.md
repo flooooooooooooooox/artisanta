@@ -15,18 +15,22 @@ Objectif : produire, en **une seule session**, un site vitrine complet, cohéren
 déployer pour un artisan. Basé sur l'implémentation de référence « Propre Éclat ».
 
 ## Fichiers de référence (à lire au démarrage)
-- `references/questionnaire.md` — toutes les questions à poser
-- `references/design-variants.md` — 12 variantes de design **à usage unique** + suivi
+- `references/sectors.md` — **secteur → SEO adapté** (type Schema.org, mots-clés, variante)
+- `references/questionnaire.md` — toutes les questions (le **secteur en premier**)
+- `references/design-variants.md` — 20 variantes de design **à usage unique** + suivi
 - `references/features.md` — fonctionnalités à la carte + garde-fous
 - `references/build-guide.md` — architecture, thème, code des composants clés, SEO
 - `references/deployment.md` — mise en ligne Vercel + Resend + domaine
+- `template/` — **squelette de code pré-fait** (composants + CSS + config) à copier pour aller vite
 
 ## Déroulé
 
-### 1. Questionnaire
-Poser toutes les questions de `questionnaire.md` de façon groupée (AskUserQuestion pour les
-choix fermés, conversation pour le texte libre et les fichiers logo/photos). Récupérer les
-images fournies (logo, avant/après) et les enregistrer dans `public/images/`.
+### 1. Questionnaire (commencer par le SECTEUR)
+D'abord demander le **secteur** → lire `sectors.md` pour fixer le **type Schema.org**, les
+**mots-clés locaux** (title/H1/description) et la **variante suggérée**. Puis poser le reste
+des questions de `questionnaire.md` de façon groupée (AskUserQuestion pour les choix fermés,
+conversation pour le texte libre et les fichiers). Enregistrer les images (logo, avant/après)
+dans `public/images/`.
 
 ### 2. Choix de la variante de design
 Lire `design-variants.md`, ne proposer que les variantes `✅ libre`. Suggérer celle qui colle
@@ -39,14 +43,19 @@ Demander quelles sections activer (`features.md`). Ne générer que celles-ci. P
 masquage automatique des sections sans données.
 
 ### 4. Construction
-Suivre `build-guide.md` pas à pas :
+Suivre `build-guide.md`. **Gagner du temps avec `template/`** : copier les fichiers pré-faits
+(composants difficiles + `globals.css` + config), cf. `template/README.md`.
 1. Scaffold Next.js (App Router, TS, Tailwind v4). Lire `node_modules/next/dist/docs/` si besoin.
-2. Appliquer le **thème de la variante** (variables CSS + paire de polices).
-3. Remplir `src/lib/site-data.ts` avec les infos client (placeholders `[à compléter]` sinon).
-4. Générer les composants/sections choisis (réutiliser les patterns de référence).
-5. SEO complet : métadonnées par page, canonical, sitemap, robots, OpenGraph, favicon = logo,
-   données structurées (type Schema.org adapté au secteur), horaires, noindex pages légales.
-6. Pages : Accueil, À propos, Services, Contact, Mentions légales, Confidentialité (RGPD), 404.
+2. Copier `template/globals.css` et **changer les 8 variables de couleur** selon la variante
+   (+ paire de polices).
+3. Copier les composants de `template/components/` ; remplir `src/lib/site-data.ts` d'après
+   `template/lib/site-data.example.ts` avec les infos client (placeholders `[à compléter]` sinon).
+4. Adapter `template/lib/structured-data.ts` : **`@type` selon le secteur** (`sectors.md`).
+5. Générer les sections/pages restantes (Header, Footer, Hero, sections choisies, layout, SEO).
+6. SEO complet : métadonnées par page, canonical, sitemap, robots, OpenGraph, favicon = logo,
+   données structurées adaptées au secteur, horaires, noindex pages légales. H1 accueil =
+   « [Métier] à [Ville] ».
+7. Pages : Accueil, À propos, Services, Contact, Mentions légales, Confidentialité (RGPD), 404.
 
 ### 5. Vérification
 `npx tsc --noEmit && npm run lint && npm run build`. Vérifier : 1 H1/page, titres uniques,

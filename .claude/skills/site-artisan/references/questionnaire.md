@@ -4,11 +4,19 @@ Poser ces questions de façon groupée et efficace. Utiliser `AskUserQuestion` p
 fermés (secteur, langues, options), et le fil de conversation pour le texte libre et les
 fichiers (logo, photos). Tout ce qui manque = laisser un placeholder `[à compléter]` visible.
 
+## 0. Secteur (PREMIÈRE question — pilote tout le SEO)
+Demander le **secteur d'activité** en tout premier (nettoyage, plomberie, électricité,
+peinture, paysagiste, menuiserie, maçonnerie, carrelage, couvreur, chauffagiste, serrurier,
+charpente, rénovation/multi-services, déménagement, piscine, vitrerie…).
+→ Consulter `sectors.md` : le secteur détermine automatiquement le **type Schema.org**, les
+**mots-clés locaux** (title/H1/description), la **variante de design suggérée** et des
+**suggestions de prestations/FAQ/étapes**. Adapter tout le SEO en conséquence.
+
 ## 1. Entreprise
 - Nom commercial
-- Secteur d'activité (nettoyage, plomberie, électricité, peinture, paysagiste, menuiserie, maçonnerie…)
 - Valeurs / promesse client (1 phrase)
 - Cible (particuliers, professionnels, syndics, collectivités…)
+- Ville principale (sert au mot-clé local « [métier] à [ville] »)
 
 ## 2. Identité visuelle
 - Logo (fichier à envoyer) — sinon on génère un logo texte provisoire
