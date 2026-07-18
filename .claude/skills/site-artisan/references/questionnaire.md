@@ -47,10 +47,15 @@ charpente, rénovation/multi-services, déménagement, piscine, vitrerie…).
 - Section « Comment ça se passe » ? (oui/non)
 - Barre d'action fixe mobile (Appeler + Devis) ? (oui/non)
 
-## 6. Mentions légales (obligatoire avant mise en ligne)
-- Forme juridique · SIRET · RCS · adresse du siège
-- Assurance (RC Pro / décennale)
-- Responsable de publication · Hébergeur (Vercel par défaut)
+## 6. Mentions légales (obligatoire avant mise en ligne — voir legal.md)
+- Forme juridique · capital social (si société)
+- SIRET / SIREN · RCS **ou** RM (Répertoire des Métiers) + ville d'immatriculation
+- N° TVA intracommunautaire (ou statut « TVA non applicable, art. 293 B du CGI »)
+- Adresse du siège social
+- **Assurance décennale + RC Pro** (assureur, n°, zone) — obligatoire si bâtiment
+- Qualifications éventuelles (RGE, Qualibat…)
+- Responsable de la publication · Hébergeur (Vercel par défaut — coordonnées à jour)
+- **Médiateur de la consommation** (nom + adresse + site) — obligatoire si clients particuliers
 
 ## 7. Technique / déploiement
 - Clé API Resend (pour l'envoi des demandes) — cf. deployment.md

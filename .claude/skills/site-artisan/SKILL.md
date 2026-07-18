@@ -31,6 +31,7 @@ Ne jamais livrer un site qui ne coche pas les deux checklists (design + conversi
 - `references/build-guide.md` — architecture, thème, code des composants clés, SEO
 - `references/design-excellence.md` — **barre de qualité design « wow »** (obligatoire)
 - `references/conversion.md` — **règles de conversion (CRO)** (obligatoire)
+- `references/legal.md` — **toutes les obligations légales françaises** (bloquant avant publication)
 - `references/deployment.md` — mise en ligne Vercel + Resend + domaine
 - `template/` — **squelette de code pré-fait** (composants + CSS + config) à copier pour aller vite
 
@@ -80,6 +81,9 @@ capture d'écran (desktop + mobile) pour juger le rendu réel avant de livrer.
 Guider le client avec `deployment.md` (Vercel → variables Resend → redeploy → test → domaine).
 
 ## Règles importantes
+- **Légal = bloquant** : appliquer intégralement `legal.md` (mentions légales complètes, RGPD,
+  cookies, assurance décennale si bâtiment, médiateur conso si particuliers, hébergeur…).
+  Ne pas déclarer le site « prêt à publier » tant que les champs légaux sont en `[à compléter]`.
 - **Ne jamais inventer** d'infos légales, d'avis, de note Google, de SIRET → placeholder visible.
 - **Pas de balisage d'avis** (`aggregateRating`) : avis auto-hébergés interdits par Google.
 - **Accessibilité** : toutes les images avec `alt`, animations désactivables (`prefers-reduced-motion`).
