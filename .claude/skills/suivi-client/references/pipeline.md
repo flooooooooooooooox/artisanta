@@ -11,6 +11,7 @@ Le skill affiche toujours l'étape + ce qui bloque.
 | 4 | **Construit** | Site généré, `npm run build` OK, rendu validé (captures) |
 | 5 | **Validation client** | Le client a vu la preview et validé (ou demandé des retouches) |
 | 6 | **Légal complété** | Tous les champs légaux fournis (fin des `[à compléter]`) — cf. legal.md |
+| 6b | **Contrôle final** | Lancer **`/controle-final`** → verdict ✅ GO obligatoire avant de livrer/déployer |
 | 7 | **Déployé** | Vercel en ligne + Resend configuré + formulaire testé |
 | 8 | **En ligne (domaine)** | Domaine branché + `siteConfig.url` à jour + fiche Google cohérente |
 | 9 | **Maintenance** | Contrat de suivi / relances périodiques (avis, mises à jour) |
