@@ -22,8 +22,11 @@ tant que ce contrôle n'est pas passé au **vert**. Le **légal est bloquant abs
    - Lancer le site (`npm run start`) et **crawler** chaque page (recette dans checklists.md) :
      statut HTTP, `<title>`, meta description, canonical, 1 seul H1, meta robots, JSON-LD,
      images `alt`, liens internes, 404.
-2. **Dérouler les checklists** de `checklists.md` : Technique, SEO, Conversion, Design,
-   Contenu, **Légal**, Déploiement.
+2. **Dérouler les checklists** de `checklists.md` : Technique, SEO, **GEO (IA)**, Conversion,
+   Design, Contenu, **Légal**, Déploiement.
+   - **GEO** : vérifier que `/llms.txt` répond (`curl` → décrit métier + ville + rayon + tél),
+     que `/robots.txt` autorise les bots IA (GPTBot, PerplexityBot, ClaudeBot, Google-Extended…),
+     et que le JSON-LD contient `foundingDate`, un `GeoCircle` avec `geoRadius` et `knowsAbout`.
 3. **Rechercher les placeholders** restants : `grep -rn "à compléter" src/` doit renvoyer 0.
 4. **Rendre le verdict** :
    - 🔴 **NO-GO** si un seul item **bloquant** échoue (surtout légal ou build).
@@ -36,7 +39,7 @@ tant que ce contrôle n'est pas passé au **vert**. Le **légal est bloquant abs
 - `npm run build` échoue
 - Un champ **légal obligatoire** en `[à compléter]` (mentions, SIRET, assurance décennale si
   bâtiment, hébergeur, médiateur conso si particuliers) — cf. legal.md
-- **Canonical / sitemap pointent vers un domaine qui n'existe pas** (site non indexable)
+- **Canonical / sitemap pointent vers un domaine qui n'existe pas** (site non indexable ; casse aussi le GEO)
 - Formulaire de contact **non fonctionnel** (Resend non configuré) au moment de la mise en ligne
 - Texte de remplissage visible (lorem, `[à compléter]`, fausses données)
 

@@ -19,7 +19,11 @@ export const siteConfig = {
   region: "Normandie",
   country: "FR",
   geo: { lat: 49.1829, lng: -0.3707 },
-  // Communes couvertes dans le rayon de 20 km (SEO local)
+  // Rayon d'intervention en km (carte + données structurées GEO)
+  serviceRadiusKm: 20,
+  // Année de création de l'entreprise (GEO / autorité) — [à compléter]
+  foundingYear: "2023",
+  // Communes couvertes dans le rayon (SEO local + GEO)
   areaServed: [
     "Caen",
     "Hérouville-Saint-Clair",
@@ -346,7 +350,9 @@ export const testimonials = [
 export const legalMentions = {
   companyName: "Propre Éclat",
   legalForm: "[Forme juridique à compléter]",
+  siren: "[Numéro SIREN à compléter]",
   siret: "[Numéro SIRET à compléter]",
+  vatNumber: "[N° TVA intracommunautaire à compléter]",
   rcs: "[Ville et numéro RCS à compléter]",
   headOffice: "[Adresse du siège social à compléter]",
   insurance: "[Référence assurance décennale / RC Pro à compléter]",

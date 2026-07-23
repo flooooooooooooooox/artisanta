@@ -12,6 +12,9 @@ Seules la config et les couleurs changent d'un client à l'autre.
 - `components/ZoneMap.tsx` — carte OSM (changer `CENTER` = coords ville + `radius`)
 - `components/ContactForm.tsx` + `app/actions.ts` → `src/app/contact/` — formulaire Resend
 - `components/Reveal.tsx`, `Particles.tsx`, `MobileCtaBar.tsx`, `SparkleHeading.tsx`, `JsonLd.tsx`
+- `app/llms.txt/route.ts` → `src/app/llms.txt/route.ts` — **résumé GEO pour les IA** (généré
+  depuis `site-data`, adapter le vocabulaire au secteur) — cf. `../references/geo.md`
+- `app/robots.ts` → `src/app/robots.ts` — autorise le crawl **+ les robots IA** (GEO)
 
 ## À adapter au client
 - `lib/site-data.example.ts` → `src/lib/site-data.ts` : **remplacer tout le contenu** par les
@@ -21,7 +24,7 @@ Seules la config et les couleurs changent d'un client à l'autre.
 
 ## À générer (pas dans le squelette, car spécifiques)
 Header, Footer, Hero, sections (Services, WhyUs, Process, FAQ, GoogleReviews), pages
-(`app/*/page.tsx`), `layout.tsx`, `sitemap.ts`, `robots.ts`, `opengraph-image.tsx`, icônes.
+(`app/*/page.tsx`), `layout.tsx`, `sitemap.ts`, `opengraph-image.tsx`, icônes.
 → suivre `../references/build-guide.md`.
 
 ## Dépendances

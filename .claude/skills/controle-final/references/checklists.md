@@ -21,6 +21,15 @@ Légende : 🔴 = **bloquant** (NO-GO si échoue) · 🟡 = recommandé (réserv
 - 🟡 OpenGraph + favicon = logo, image de partage soignée
 - 🟡 Pages légales en `noindex`, communes voisines en contenu visible
 
+## B-bis. GEO — cité par les IA 🔴/🟡 (cf. geo.md du skill site-artisan)
+- 🔴 **`/llms.txt` répond** (`text/plain`) et décrit l'entreprise : métier, ville, **rayon**, téléphone, communes
+- 🔴 **`/robots.txt` autorise les robots IA** (au moins GPTBot, PerplexityBot, ClaudeBot, Google-Extended) — aucun en `disallow`
+- 🔴 **JSON-LD enrichi GEO** : `foundingDate`, `areaServed` avec un **`GeoCircle`** (`geoRadius`), `knowsAbout`
+- 🔴 `siteConfig.url` = URL réelle (un domaine inexistant casse le GEO comme le SEO)
+- 🟡 `makesOffer` par service, identifiants légaux (`vatID`/SIREN/SIRET) dans le schéma
+- 🟡 **≥ 2 FAQ en langage naturel géolocalisées** (« Quelle entreprise de [métier] à [ville] ? »)
+- 🟡 Note Google en **texte** (jamais en `aggregateRating` sur le site)
+
 ## C. Conversion 🔴/🟡 (cf. conversion.md)
 - 🔴 CTA principal + **téléphone cliquable** visibles au-dessus de la ligne de flottaison
 - 🔴 **Barre d'appel fixe mobile** (si activée) fonctionnelle
@@ -66,6 +75,11 @@ done
 curl -s http://localhost:3000/robots.txt
 curl -s http://localhost:3000/sitemap.xml | grep -oE '<loc>[^<]*</loc>'
 grep -rn "à compléter" src/ | wc -l   # doit être 0 avant livraison
+
+# GEO : présence des signaux pour les moteurs de réponse IA
+curl -s http://localhost:3000/llms.txt | head -5                       # doit décrire l'entreprise
+curl -s http://localhost:3000/robots.txt | grep -iE "GPTBot|PerplexityBot|ClaudeBot|Google-Extended"
+curl -s http://localhost:3000/ | grep -o '"foundingDate"\|"GeoCircle"\|"geoRadius"\|"knowsAbout"'  # 4 signaux attendus
 ```
 
 ## Format du verdict à rendre

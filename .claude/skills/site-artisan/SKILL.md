@@ -31,6 +31,7 @@ Ne jamais livrer un site qui ne coche pas les deux checklists (design + conversi
 - `references/build-guide.md` — architecture, thème, code des composants clés, SEO
 - `references/design-excellence.md` — **barre de qualité design « wow »** (obligatoire)
 - `references/conversion.md` — **règles de conversion (CRO)** (obligatoire)
+- `references/geo.md` — **GEO : être cité par les IA** (llms.txt, robots IA, schéma enrichi) (obligatoire)
 - `references/legal.md` — **toutes les obligations légales françaises** (bloquant avant publication)
 - `references/deployment.md` — mise en ligne Vercel + Resend + domaine
 - `template/` — **squelette de code pré-fait** (composants + CSS + config) à copier pour aller vite
@@ -67,12 +68,18 @@ Suivre `build-guide.md`. **Gagner du temps avec `template/`** : copier les fichi
 6. SEO complet : métadonnées par page, canonical, sitemap, robots, OpenGraph, favicon = logo,
    données structurées adaptées au secteur, horaires, noindex pages légales. H1 accueil =
    « [Métier] à [Ville] ».
-7. Pages : Accueil, À propos, Services, Contact, Mentions légales, Confidentialité (RGPD), 404.
+7. **GEO (obligatoire, cf. `geo.md`)** : copier `template/app/llms.txt/route.ts` (résumé IA) et
+   `template/app/robots.ts` (autorise les bots IA) ; utiliser le `structured-data.ts` enrichi
+   (foundingDate, GeoCircle, knowsAbout, makesOffer, identifiants légaux) ; renseigner
+   `foundingYear` + `serviceRadiusKm` dans `site-data.ts` ; ajouter ≥ 2 FAQ géolocalisées en
+   langage naturel.
+8. Pages : Accueil, À propos, Services, Contact, Mentions légales, Confidentialité (RGPD), 404.
 
 ### 5. Vérification
 `npx tsc --noEmit && npm run lint && npm run build`. Vérifier : 1 H1/page, titres uniques,
-canonicals corrects, JSON-LD présent, images avec `alt`, formulaire testé. Lister les
-placeholders `[à compléter]` restants pour le client.
+canonicals corrects, JSON-LD présent, images avec `alt`, formulaire testé. **GEO** : `/llms.txt`
+répond, `/robots.txt` autorise les bots IA, JSON-LD contient `foundingDate` + `GeoCircle` +
+`knowsAbout` (checklist `geo.md`). Lister les placeholders `[à compléter]` restants pour le client.
 **Puis dérouler les 2 checklists** : `design-excellence.md` (barre de qualité) et
 `conversion.md` (CRO). Corriger tant que les deux ne sont pas cochées. Idéalement, faire une
 capture d'écran (desktop + mobile) pour juger le rendu réel avant de livrer.
