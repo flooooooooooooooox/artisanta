@@ -13,10 +13,7 @@ import { beforeAfterGallery, services, siteConfig } from "@/lib/site-data";
 import { getFaqSchema } from "@/lib/structured-data";
 
 // Réalisations mises en avant sur la page d'accueil
-const homeTitles = ["Dallage extérieur", "Intérieur de véhicule", "Canapé d'angle en tissu"];
-const homeGallery = homeTitles
-  .map((title) => beforeAfterGallery.find((item) => item.title === title))
-  .filter((item): item is (typeof beforeAfterGallery)[number] => Boolean(item));
+const homeGallery = beforeAfterGallery.slice(0, 3);
 
 export default function Home() {
   return (

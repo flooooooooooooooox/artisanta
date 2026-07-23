@@ -139,21 +139,11 @@ export const faq = [
   {
     question: "Utilisez-vous des produits respectueux des surfaces et de l'environnement ?",
     answer:
-      "Nous adaptons notre matériel et nos produits à chaque surface (tissus, vitres, sols, bois…) afin d'obtenir un résultat impeccable tout en préservant vos équipements.",
+      "Nous adaptons notre matériel et nos produits à chaque surface (vitres, sols, bois, surfaces professionnelles…) afin d'obtenir un résultat impeccable tout en préservant vos locaux.",
   },
 ];
 
 export const beforeAfterGallery = [
-  {
-    title: "Banquette en tissu",
-    before: "/images/chantier/banquette-tissu-avant.webp",
-    after: "/images/chantier/banquette-tissu-apres.webp",
-  },
-  {
-    title: "Accoudoir de canapé",
-    before: "/images/chantier/accoudoir-tissu-avant.webp",
-    after: "/images/chantier/accoudoir-tissu-apres.webp",
-  },
   {
     title: "Terrasse en bois",
     before: "/images/chantier/terrasse-bois-avant.webp",
@@ -163,16 +153,6 @@ export const beforeAfterGallery = [
     title: "Dallage extérieur",
     before: "/images/chantier/dallage-exterieur-avant.webp",
     after: "/images/chantier/dallage-exterieur-apres.webp",
-  },
-  {
-    title: "Intérieur de véhicule",
-    before: "/images/chantier/voiture-interieur-avant.webp",
-    after: "/images/chantier/voiture-interieur-apres.webp",
-  },
-  {
-    title: "Canapé d'angle en tissu",
-    before: "/images/chantier/canape-tissu-avant.webp",
-    after: "/images/chantier/canape-gris-avant.webp",
   },
 ];
 
@@ -230,14 +210,6 @@ export const testimonials = [
       "Nous sommes extrêmement satisfaits des services de nettoyage de bureaux fournis par Propre Éclat à Caen. Leur équipe est ponctuelle, fiable et toujours prête à aller au-delà de nos besoins. Leur souci du détail est véritablement impressionnant, ils ne laissent aucune zone non nettoyée. Nous les recommandons vivement.",
   },
   {
-    name: "Agathe P.",
-    context: "Voiture & canapés",
-    date: "Août 2023",
-    rating: 5,
-    quote:
-      "Superbe prestation effectuée par l'équipe. J'ai contacté l'entreprise pour nettoyer l'intérieur de ma voiture et mes canapés usés par le temps. Ma voiture n'a jamais été aussi propre et mon canapé est comme neuf ! Toutes les taches ont disparu. Le matériel utilisé nettoie tout en prenant soin des tissus !",
-  },
-  {
     name: "Alicia Cassiat",
     context: "Clinique de beauté",
     date: "Novembre 2023",
@@ -246,28 +218,12 @@ export const testimonials = [
       "Extrêmement satisfaite du nettoyage de ma clinique de beauté à Caen ! Un service exceptionnel, professionnel et minutieux. La propreté impeccable contribue à créer une atmosphère accueillante. Recommande vivement !",
   },
   {
-    name: "Chloé Guillou",
-    context: "Nettoyage de canapé",
-    date: "Mai 2023",
-    rating: 5,
-    quote:
-      "Propre Éclat est intervenu en nettoyant mon canapé comme neuf alors que mon chat avait uriné. Les auréoles et les odeurs se sont complètement enlevées. Je suis incroyablement surprise de leur travail. Une équipe très professionnelle. Rien à dire, continuez comme ça !",
-  },
-  {
     name: "Victor Lebeaut",
     context: "Restaurant à Cabourg",
     date: "Septembre 2023",
     rating: 5,
     quote:
       "Très satisfait de la prestation de Propre Éclat. Nous sommes un restaurant à Cabourg et la société nous entretient tous les vendredis matins l'intégralité des baies vitrées, le résultat est super. Une équipe sérieuse et régulière.",
-  },
-  {
-    name: "Sylvie Lesage",
-    context: "Canapés",
-    date: "Juin 2023",
-    rating: 5,
-    quote:
-      "Équipe très professionnelle et très sympathique. Ils sont intervenus chez ma sœur et moi. Résultat de l'intervention sur nos canapés juste magnifique ! Merci encore à vous et n'hésitez pas à les solliciter car ils ont d'autres compétences : canapés, matelas, façades, etc. Un énorme merci.",
   },
   {
     name: "Julie D.",
@@ -310,28 +266,12 @@ export const testimonials = [
       "Éblouie par le service de nettoyage de vitres de l'équipe de Propre Éclat à Caen ! Mes fenêtres n'ont jamais été aussi éclatantes. Professionnalisme, ponctualité et des résultats qui brillent littéralement. Recommandation sans réserve !",
   },
   {
-    name: "Amélie",
-    context: "Intérieur de voiture",
-    date: "Août 2023",
-    rating: 5,
-    quote:
-      "Merci pour votre professionnalisme, ma voiture est comme neuve. Contente du résultat de l'intérieur, impressionnant ! Une entreprise à l'écoute et engagée.",
-  },
-  {
     name: "Stéphanie Bailleux",
     context: "Nettoyage de vitres",
     date: "Novembre 2023",
     rating: 5,
     quote:
       "Très bonne expérience avec cette entreprise. L'équipe travaille efficacement et rigoureusement. Appelé pour un nettoyage complet des vitres intérieur/extérieur et c'est nickel ! Je recommande vivement cette entreprise !",
-  },
-  {
-    name: "Linghou Valdania",
-    context: "Nettoyage de canapé",
-    date: "Mai 2023",
-    rating: 5,
-    quote:
-      "Merci d'avoir apporté de la valeur à mon canapé, il était vraiment taché. Votre personnel est vraiment organisé, en 1h mon canapé était nettoyé et il a séché en 2h seulement. Une équipe très compétente et aimable. Super rapport qualité-prix, je recommande les yeux fermés !",
   },
   {
     name: "Chloé",
@@ -345,11 +285,15 @@ export const testimonials = [
 
 export const legalMentions = {
   companyName: "Propre Éclat",
-  legalForm: "[Forme juridique à compléter]",
-  siret: "[Numéro SIRET à compléter]",
-  rcs: "[Ville et numéro RCS à compléter]",
-  headOffice: "[Adresse du siège social à compléter]",
-  insurance: "[Référence assurance décennale / RC Pro à compléter]",
-  publicationDirector: "[Nom du responsable de publication à compléter]",
-  host: "[Nom et adresse de l'hébergeur du site à compléter]",
+  legalForm: "EURL — entreprise unipersonnelle à responsabilité limitée",
+  siren: "939 987 855",
+  siret: "939 987 855 00011",
+  vatNumber: "FR44939987855",
+  rcs: "RCS Caen 939 987 855 (immatriculée le 23/01/2025)",
+  headOffice:
+    "Chez Madame Linghou, 7 rue des Prémontrés, 14280 Saint-Germain-la-Blanche-Herbe",
+  insurance:
+    "Propre Éclat est couverte par une assurance responsabilité civile professionnelle. Cette assurance couvre l’ensemble des dommages matériels ou immatériels qui pourraient être causés dans le cadre de nos interventions professionnelles, conformément aux garanties prévues par notre contrat d’assurance. Notre priorité est d’intervenir en toute sécurité et d’offrir à chacun de nos clients la sérénité d’un prestataire pleinement assuré et responsable.",
+  publicationDirector: "[Nom du gérant / responsable de la publication à compléter]",
+  host: "Vercel Inc. — 340 S Lemon Ave #4133, Walnut, CA 91789, USA — vercel.com",
 };

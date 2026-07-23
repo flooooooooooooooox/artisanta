@@ -20,9 +20,17 @@ export default function LegalPage() {
           <ul className="mt-2 space-y-1">
             <li>Nom commercial : {legalMentions.companyName}</li>
             <li>Forme juridique : {legalMentions.legalForm}</li>
-            <li>SIRET : {legalMentions.siret}</li>
-            <li>RCS : {legalMentions.rcs}</li>
+            <li>SIREN : {legalMentions.siren}</li>
+            <li>SIRET (siège) : {legalMentions.siret}</li>
+            <li>N° TVA intracommunautaire : {legalMentions.vatNumber}</li>
+            <li>{legalMentions.rcs}</li>
             <li>Adresse du siège social : {legalMentions.headOffice}</li>
+            <li>
+              Téléphone :{" "}
+              <a className="text-brand-dark hover:underline" href={siteConfig.phoneHref}>
+                {siteConfig.phone}
+              </a>
+            </li>
             <li>
               Email :{" "}
               <a className="text-brand-dark hover:underline" href={`mailto:${siteConfig.email}`}>
