@@ -1,23 +1,46 @@
-import { faq, services, siteConfig } from "./site-data";
+import { faq, legalMentions, services, siteConfig } from "./site-data";
 
 /**
  * Fiche entreprise (LocalBusiness / CleaningService).
  * Pas de balisage d'avis : Google interdit les avis « auto-hébergés » sur son propre site.
+ * Enrichie pour le GEO (moteurs de réponse IA) : date de création, zone géographique
+ * précise (GeoCircle), domaines d'expertise et identifiants légaux.
  */
 export function getLocalBusinessSchema() {
+  // Zone d'intervention : cercle géographique précis + communes nommées
+  const geoMidpoint = {
+    "@type": "GeoCoordinates",
+    latitude: siteConfig.geo.lat,
+    longitude: siteConfig.geo.lng,
+  };
+
   return {
     "@context": "https://schema.org",
     "@type": "CleaningService",
     "@id": `${siteConfig.url}/#business`,
     name: siteConfig.name,
     description:
-      "Entreprise de nettoyage à Caen et alentours : vitres, bureaux, copropriétés et fin de chantier. La différence de propreté.",
+      "Entreprise de nettoyage à Caen et alentours (Calvados, Normandie), pour les particuliers et les professionnels : nettoyage de vitres, de bureaux et locaux professionnels, de copropriétés et de fin de chantier. Créée en 2023. La différence de propreté.",
     slogan: siteConfig.tagline,
     url: siteConfig.url,
     email: siteConfig.email,
     telephone: siteConfig.phoneHref.replace("tel:", ""),
     image: `${siteConfig.url}/icon.png`,
     logo: `${siteConfig.url}/icon.png`,
+    foundingDate: siteConfig.foundingYear,
+    foundingLocation: {
+      "@type": "Place",
+      name: `${siteConfig.city}, ${siteConfig.region}, France`,
+    },
+    priceRange: "€€",
+    currenciesAccepted: "EUR",
+    knowsLanguage: "fr-FR",
+    legalName: legalMentions.companyName,
+    vatID: legalMentions.vatNumber,
+    identifier: [
+      { "@type": "PropertyValue", propertyID: "SIREN", value: legalMentions.siren },
+      { "@type": "PropertyValue", propertyID: "SIRET", value: legalMentions.siret },
+    ],
     address: {
       "@type": "PostalAddress",
       addressLocality: siteConfig.city,
@@ -25,11 +48,7 @@ export function getLocalBusinessSchema() {
       addressRegion: siteConfig.region,
       addressCountry: siteConfig.country,
     },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: siteConfig.geo.lat,
-      longitude: siteConfig.geo.lng,
-    },
+    geo: geoMidpoint,
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: [
@@ -44,11 +63,43 @@ export function getLocalBusinessSchema() {
       opens: siteConfig.hours.opens,
       closes: siteConfig.hours.closes,
     },
-    areaServed: siteConfig.areaServed.map((city) => ({
-      "@type": "City",
-      name: city,
-    })),
+    // GeoCircle (rayon précis) + communes couvertes : aide les IA à répondre par proximité
+    areaServed: [
+      {
+        "@type": "GeoCircle",
+        geoMidpoint,
+        geoRadius: String(siteConfig.serviceRadiusKm * 1000),
+        description: `${siteConfig.serviceRadiusKm} km autour de ${siteConfig.city}`,
+      },
+      ...siteConfig.areaServed.map((city) => ({
+        "@type": "City",
+        name: city,
+      })),
+    ],
+    // Domaines d'expertise explicites — repris par les moteurs de réponse
+    knowsAbout: [
+      "nettoyage professionnel",
+      "nettoyage de vitres",
+      "nettoyage de bureaux et locaux professionnels",
+      "nettoyage de copropriété et parties communes",
+      "nettoyage de fin de chantier",
+      "entretien de locaux à Caen et en Normandie",
+    ],
     serviceType: services.map((s) => s.title),
+    makesOffer: services.map((s) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: s.title,
+        description: s.description,
+        areaServed: {
+          "@type": "GeoCircle",
+          geoMidpoint,
+          geoRadius: String(siteConfig.serviceRadiusKm * 1000),
+        },
+        provider: { "@id": `${siteConfig.url}/#business` },
+      },
+    })),
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Prestations de nettoyage",

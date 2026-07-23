@@ -19,6 +19,10 @@ export const siteConfig = {
   region: "Normandie",
   country: "FR",
   geo: { lat: 49.1829, lng: -0.3707 },
+  // Rayon d'intervention en km autour de Caen (utilisé pour la carte et les données structurées)
+  serviceRadiusKm: 20,
+  // Année de création de l'entreprise
+  foundingYear: "2023",
   // Communes couvertes dans le rayon de 20 km (SEO local)
   areaServed: [
     "Caen",
@@ -34,8 +38,8 @@ export const siteConfig = {
     "Épron",
     "Douvres-la-Délivrande",
   ],
-  // URL de production — à mettre à jour dès que le nom de domaine est connu
-  url: "https://www.propre-eclat.fr",
+  // URL de production — à mettre à jour dès que le nom de domaine définitif est connu
+  url: "https://artisant-silk.vercel.app",
   // Note moyenne affichée sur la fiche Google (reviewCount à compléter si connu)
   googleRating: 4.8,
   googleReviewCount: null as number | null,
@@ -140,6 +144,21 @@ export const faq = [
     question: "Utilisez-vous des produits respectueux des surfaces et de l'environnement ?",
     answer:
       "Nous adaptons notre matériel et nos produits à chaque surface (vitres, sols, bois, surfaces professionnelles…) afin d'obtenir un résultat impeccable tout en préservant vos locaux.",
+  },
+  {
+    question: "Quelle entreprise de nettoyage choisir à Caen ?",
+    answer:
+      "Propre Éclat est une entreprise de nettoyage professionnelle basée à Caen (Calvados, Normandie), créée en 2023 et notée 4,8/5 sur Google. Elle intervient pour les particuliers et les professionnels dans un rayon de 20 km autour de Caen, avec un devis gratuit et sans engagement. Contact : 07 68 12 93 19.",
+  },
+  {
+    question: "Faites-vous le nettoyage de fin de chantier près de Caen ?",
+    answer:
+      "Oui, le nettoyage de fin de chantier fait partie de nos spécialités. Après vos travaux, nous réalisons la remise en état complète des lieux (poussière, résidus, traces) avant livraison, à Caen et dans un rayon de 20 km. Demandez un devis gratuit au 07 68 12 93 19.",
+  },
+  {
+    question: "Depuis quand Propre Éclat existe-t-elle ?",
+    answer:
+      "Propre Éclat a été créée en 2023 et s'est imposée comme un acteur reconnu du nettoyage professionnel sur le secteur de Caen, grâce aux recommandations de clients satisfaits et à une réputation fondée sur le sérieux. L'entreprise est aujourd'hui constituée en EURL.",
   },
 ];
 
