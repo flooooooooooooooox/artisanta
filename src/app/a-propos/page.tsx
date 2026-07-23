@@ -104,23 +104,26 @@ export default function AboutPage() {
       </section>
 
       {/* Chiffres clés */}
-      <section className="mx-auto -mt-10 max-w-4xl px-6">
-        <div className="grid gap-4 rounded-3xl bg-white p-6 shadow-xl shadow-navy/5 ring-1 ring-navy/5 sm:grid-cols-3 sm:p-8">
-          {[
-            { value: "2023", label: "Année de création" },
-            { value: "3", label: "Savoir-faire : bureaux · vitres · fin de chantier" },
-            { value: "+20 km", label: "Rayon d'intervention autour de Caen" },
-          ].map((stat, i) => (
-            <Reveal key={stat.label} delay={i * 90}>
-              <div className="text-center">
+      <section className="relative z-10 mx-auto -mt-6 max-w-4xl px-6 sm:-mt-12">
+        <Reveal>
+          <div className="grid divide-y divide-navy/10 rounded-3xl bg-white p-8 shadow-xl shadow-navy/5 ring-1 ring-navy/5 sm:grid-cols-3 sm:divide-x sm:divide-y-0 sm:p-8">
+            {[
+              { value: "2023", label: "Année de création" },
+              { value: "3", label: "Savoir-faire : bureaux · vitres · fin de chantier" },
+              { value: "+20 km", label: "Rayon d'intervention autour de Caen" },
+            ].map((stat) => (
+              <div
+                key={stat.label}
+                className="px-2 py-5 text-center first:pt-1 last:pb-1 sm:py-0"
+              >
                 <p className="text-3xl font-bold text-brand-dark">{stat.value}</p>
                 <p className="mx-auto mt-1 max-w-[16rem] text-sm text-navy/60">
                   {stat.label}
                 </p>
               </div>
-            </Reveal>
-          ))}
-        </div>
+            ))}
+          </div>
+        </Reveal>
       </section>
 
       {/* L'histoire — frise verticale */}
