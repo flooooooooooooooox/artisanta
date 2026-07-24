@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import BeforeAfterCard from "@/components/BeforeAfterCard";
-import { beforeAfterGallery, services } from "@/lib/site-data";
+import { beforeAfterGallery, localSuffix, servicePages, services } from "@/lib/site-data";
 
 export const metadata: Metadata = {
   title: "Nettoyage à Caen : vitres, bureaux, copropriété, fin de chantier",
@@ -27,18 +27,34 @@ export default function ServicesPage() {
 
       <div className="mx-auto max-w-5xl px-6 pb-16">
         <div className="grid gap-6 sm:grid-cols-2">
-          {services.map((service) => (
-            <div
-              key={service.slug}
-              className="group/card relative overflow-hidden rounded-2xl bg-white p-8 shadow-sm ring-1 ring-navy/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-navy/10 hover:ring-brand/30"
-            >
-              <span className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-brand to-brand-dark transition-transform duration-300 group-hover/card:scale-x-100" />
-              <h2 className="text-xl font-semibold text-navy transition-colors group-hover/card:text-brand-dark">
-                {service.title}
-              </h2>
-              <p className="mt-3 text-sm leading-relaxed text-navy/70">{service.description}</p>
-            </div>
-          ))}
+          {services.map((service) => {
+            const hasPage = Boolean(servicePages[service.slug]);
+            const inner = (
+              <>
+                <span className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-brand to-brand-dark transition-transform duration-300 group-hover/card:scale-x-100" />
+                <h2 className="text-xl font-semibold text-navy transition-colors group-hover/card:text-brand-dark">
+                  {service.title}
+                </h2>
+                <p className="mt-3 text-sm leading-relaxed text-navy/70">{service.description}</p>
+                {hasPage && (
+                  <span className="mt-4 inline-block text-sm font-semibold text-brand-dark">
+                    En savoir plus →
+                  </span>
+                )}
+              </>
+            );
+            const cardClass =
+              "group/card relative block overflow-hidden rounded-2xl bg-white p-8 shadow-sm ring-1 ring-navy/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-navy/10 hover:ring-brand/30";
+            return hasPage ? (
+              <Link key={service.slug} href={`/${service.slug}-${localSuffix}`} className={cardClass}>
+                {inner}
+              </Link>
+            ) : (
+              <div key={service.slug} className={cardClass}>
+                {inner}
+              </div>
+            );
+          })}
         </div>
       </div>
 

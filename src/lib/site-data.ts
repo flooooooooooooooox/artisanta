@@ -76,6 +76,137 @@ export const services = [
   },
 ];
 
+// Suffixe des pages d'atterrissage locales (SEO local) : /nettoyage-vitres-caen, etc.
+export const localSuffix = "caen";
+
+// Contenu détaillé des pages « prestation à Caen » (SEO local — une page par service)
+// Clé = slug du service. Chaque page a un contenu unique (pas de duplication).
+export const servicePages: Record<
+  string,
+  {
+    h1: string;
+    metaTitle: string;
+    metaDescription: string;
+    lead: string;
+    included: string[];
+    forWho: string;
+    faq: { question: string; answer: string }[];
+  }
+> = {
+  "nettoyage-vitres": {
+    h1: "Nettoyage de vitres à Caen",
+    metaTitle: "Nettoyage de vitres à Caen — sans traces | Propre Éclat",
+    metaDescription:
+      "Nettoyage de vitres à Caen et dans un rayon de 20 km : vitres, baies vitrées, vitrines et verrières sans traces. Particuliers et professionnels. Devis gratuit au 07 68 12 93 19.",
+    lead: "Des vitres impeccables changent tout : plus de lumière, une meilleure image et un intérieur qui respire. Propre Éclat nettoie vos vitres à Caen et alentours, en intérieur comme en extérieur, sans traces ni auréoles.",
+    included: [
+      "Vitres, fenêtres et baies vitrées (intérieur et extérieur)",
+      "Vitrines et devantures de commerces",
+      "Verrières, vérandas et surfaces vitrées difficiles d'accès",
+      "Encadrements, rebords et rails nettoyés au passage",
+      "Matériel et produits adaptés pour un résultat sans traces",
+    ],
+    forWho:
+      "Pour les particuliers (maisons, appartements, vérandas) comme pour les professionnels (commerces, vitrines, bureaux) qui veulent des surfaces vitrées nettes toute l'année.",
+    faq: [
+      {
+        question: "Nettoyez-vous les vitres en hauteur ou difficiles d'accès à Caen ?",
+        answer:
+          "Oui, nous adaptons notre matériel aux vitrages en hauteur, vérandas et verrières. Décrivez-nous votre configuration et nous vous proposons la solution adaptée.",
+      },
+      {
+        question: "À quelle fréquence faire nettoyer ses vitres ?",
+        answer:
+          "Pour un commerce avec vitrine, un passage régulier (hebdomadaire ou mensuel) est idéal. Pour un particulier, 2 à 4 fois par an suffisent généralement. Nous proposons des interventions ponctuelles ou régulières.",
+      },
+    ],
+  },
+  "nettoyage-bureaux": {
+    h1: "Nettoyage de bureaux à Caen",
+    metaTitle: "Nettoyage de bureaux et locaux pro à Caen | Propre Éclat",
+    metaDescription:
+      "Entretien de bureaux et locaux professionnels à Caen et alentours : sols, sanitaires, espaces communs. Interventions régulières ou ponctuelles. Devis gratuit au 07 68 12 93 19.",
+    lead: "Un bureau propre, c'est une meilleure image pour vos clients et un cadre plus sain pour vos équipes. Propre Éclat assure l'entretien de vos locaux professionnels à Caen, en journée ou en dehors des heures d'ouverture.",
+    included: [
+      "Bureaux, open-spaces, salles de réunion et accueil",
+      "Sols (aspiration, lavage) adaptés à chaque revêtement",
+      "Sanitaires désinfectés et réapprovisionnés",
+      "Espaces communs, cuisines et points de convivialité",
+      "Vidage des corbeilles et dépoussiérage des surfaces",
+    ],
+    forWho:
+      "Pour les entreprises, cabinets, commerces et professions libérales de Caen qui souhaitent un entretien fiable et régulier de leurs locaux, avec un interlocuteur unique.",
+    faq: [
+      {
+        question: "Intervenez-vous en dehors des heures de bureau à Caen ?",
+        answer:
+          "Oui, nous nous adaptons à vos horaires : tôt le matin, en soirée ou le week-end, pour ne pas gêner votre activité. Nous intervenons 7j/7 de 8h30 à 19h00.",
+      },
+      {
+        question: "Proposez-vous un entretien régulier ou seulement ponctuel ?",
+        answer:
+          "Les deux. Nous mettons en place un planning régulier (quotidien, hebdomadaire, mensuel) ou intervenons ponctuellement selon vos besoins, avec un devis clair et sans engagement.",
+      },
+    ],
+  },
+  "nettoyage-copropriete": {
+    h1: "Nettoyage de copropriété à Caen",
+    metaTitle: "Nettoyage de copropriété et parties communes à Caen | Propre Éclat",
+    metaDescription:
+      "Entretien des parties communes d'immeubles à Caen : halls, escaliers, ascenseurs, abords. Pour syndics et gestionnaires. Devis gratuit au 07 68 12 93 19.",
+    lead: "Des parties communes bien entretenues valorisent l'immeuble et le confort des résidents. Propre Éclat assure le nettoyage des copropriétés à Caen et alentours, avec régularité et rigueur, pour les syndics et gestionnaires.",
+    included: [
+      "Halls d'entrée, couloirs et paliers",
+      "Escaliers, rampes et ascenseurs",
+      "Vitrages des parties communes et boîtes aux lettres",
+      "Abords, locaux poubelles et zones de tri",
+      "Sortie et rentrée des conteneurs (sur demande)",
+    ],
+    forWho:
+      "Pour les syndics de copropriété, bailleurs et gestionnaires d'immeubles de Caen qui recherchent un prestataire fiable et régulier pour l'entretien des parties communes.",
+    faq: [
+      {
+        question: "Travaillez-vous avec les syndics et gestionnaires à Caen ?",
+        answer:
+          "Oui, nous accompagnons les syndics, bailleurs et gestionnaires d'immeubles avec des contrats d'entretien réguliers des parties communes, adaptés à chaque copropriété.",
+      },
+      {
+        question: "Gérez-vous la sortie des poubelles ?",
+        answer:
+          "Sur demande, nous prenons en charge la sortie et la rentrée des conteneurs selon le calendrier de collecte de la commune, en complément du nettoyage des parties communes.",
+      },
+    ],
+  },
+  "nettoyage-fin-de-chantier": {
+    h1: "Nettoyage de fin de chantier à Caen",
+    metaTitle: "Nettoyage de fin de chantier à Caen | Propre Éclat",
+    metaDescription:
+      "Remise en état après travaux à Caen et alentours : poussière, résidus, traces. Livraison d'un chantier propre et prêt à l'emploi. Devis gratuit au 07 68 12 93 19.",
+    lead: "Après des travaux, il reste toujours poussière, résidus et traces. Propre Éclat réalise le nettoyage de fin de chantier à Caen pour vous livrer un espace impeccable, prêt à être habité ou utilisé.",
+    included: [
+      "Élimination des poussières fines sur toutes les surfaces",
+      "Décollage des résidus (peinture, colle, plâtre, adhésifs)",
+      "Nettoyage des vitres et menuiseries neuves",
+      "Sols nettoyés selon le revêtement (carrelage, parquet, béton)",
+      "Sanitaires, cuisines et finitions prêts à l'emploi",
+    ],
+    forWho:
+      "Pour les particuliers en fin de rénovation, les artisans du bâtiment et les professionnels qui doivent livrer ou récupérer un chantier propre à Caen et dans un rayon de 20 km.",
+    faq: [
+      {
+        question: "Intervenez-vous juste avant la livraison du chantier ?",
+        answer:
+          "Oui, nous intervenons en fin de chantier, une fois les travaux terminés, pour livrer un espace propre et prêt à l'emploi. Prévenez-nous quelques jours à l'avance pour caler l'intervention.",
+      },
+      {
+        question: "Enlevez-vous les traces de peinture et de colle ?",
+        answer:
+          "Oui, le nettoyage de fin de chantier comprend le retrait des résidus de peinture, colle, plâtre et adhésifs sur les vitres, sols et surfaces, avec un matériel adapté à chaque support.",
+      },
+    ],
+  },
+};
+
 export const benefits = [
   {
     icon: "quote",
@@ -315,4 +446,6 @@ export const legalMentions = {
     "Propre Éclat est couverte par une assurance responsabilité civile professionnelle. Cette assurance couvre l’ensemble des dommages matériels ou immatériels qui pourraient être causés dans le cadre de nos interventions professionnelles, conformément aux garanties prévues par notre contrat d’assurance. Notre priorité est d’intervenir en toute sécurité et d’offrir à chacun de nos clients la sérénité d’un prestataire pleinement assuré et responsable.",
   publicationDirector: "[Nom du gérant / responsable de la publication à compléter]",
   host: "Vercel Inc. — 340 S Lemon Ave #4133, Walnut, CA 91789, USA — vercel.com",
+  mediator:
+    "[Médiateur de la consommation à compléter — nom de l'organisme + site internet. Obligatoire pour les prestations aux particuliers (art. L.612-1 du Code de la consommation).]",
 };

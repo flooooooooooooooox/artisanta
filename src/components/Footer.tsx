@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import ShareButtons from "./ShareButtons";
-import { services, siteConfig } from "@/lib/site-data";
+import { localSuffix, servicePages, services, siteConfig } from "@/lib/site-data";
 
 export default function Footer() {
   return (
@@ -100,7 +100,7 @@ export default function Footer() {
               <li key={service.slug}>
                 <Link
                   className="group inline-flex items-center gap-2 text-cream/80 transition-colors hover:text-brand"
-                  href="/services"
+                  href={servicePages[service.slug] ? `/${service.slug}-${localSuffix}` : "/services"}
                 >
                   <span className="h-1 w-1 rounded-full bg-brand/50 transition-all group-hover:w-3 group-hover:bg-brand" />
                   {service.title}

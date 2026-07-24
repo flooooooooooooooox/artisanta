@@ -51,6 +51,16 @@ export default function LegalPage() {
         </section>
 
         <section>
+          <h2 className="text-lg font-semibold text-navy">Médiateur de la consommation</h2>
+          <p className="mt-2">
+            Conformément à l&apos;article L.612-1 du Code de la consommation, tout consommateur a
+            le droit de recourir gratuitement à un médiateur de la consommation en vue de la
+            résolution amiable d&apos;un litige qui l&apos;opposerait à {legalMentions.companyName}.
+          </p>
+          <p className="mt-2">{legalMentions.mediator}</p>
+        </section>
+
+        <section>
           <h2 className="text-lg font-semibold text-navy">Hébergement</h2>
           <p className="mt-2">{legalMentions.host}</p>
         </section>
