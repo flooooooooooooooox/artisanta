@@ -2,10 +2,11 @@
 name: suivi-client
 description: >-
   Gère la relation client de bout en bout pour les sites d'artisans : accueil d'un nouveau
-  client, suivi d'un client existant, état d'avancement, ce qui manque, et rédaction des
-  messages à lui envoyer. Utiliser quand l'utilisateur dit « nouveau client », « je rappelle
-  un client », « où en est [client] », « qu'est-ce qui manque pour [client] », « relance
-  [client] ». S'appuie sur le skill /site-artisan pour la construction du site.
+  client, suivi d'un client existant, reprise d'un site déjà commencé, état d'avancement, ce
+  qui manque, et rédaction des messages à lui envoyer. Utiliser quand l'utilisateur dit
+  « nouveau client », « je rappelle un client », « où en est [client] », « qu'est-ce qui manque
+  pour [client] », « relance [client] », ou « j'ai déjà commencé un site / reprise / je l'ai
+  oublié dans le suivi ». S'appuie sur le skill /site-artisan pour la construction du site.
 ---
 
 # Suivi client (chef de projet des sites d'artisans)
@@ -42,6 +43,23 @@ Un dossier par client dans `clients/<slug-client>/dossier.md` (+ assets dans le 
 3. Proposer la suite : relancer (générer le message), continuer la construction (`/site-artisan`),
    déployer, ou passer en maintenance.
 4. Mettre à jour le dossier (historique daté + prochaine action).
+
+### Cas C — Site déjà commencé mais pas suivi (« reprise / j'ai oublié de le créer »)
+À utiliser quand un site a **déjà été démarré ou construit** (parfois déjà en ligne) **sans**
+passer par « nouveau client » → il n'a pas de dossier. Objectif : **le rattraper** et le remettre
+au standard actuel.
+1. **Créer le dossier rétroactivement** (`dossier-template.md`) en remplissant ce qu'on sait déjà
+   depuis le code existant (`src/lib/site-data.ts`, pages, `legalMentions`…).
+2. **Faire l'état des lieux** du site existant (audit) — de préférence via `/controle-final`
+   (crawl + checklists SEO/GEO/légal, + `/seo audit` si le plugin `claude-seo` est dispo).
+3. **Comparer au standard actuel** et lister ce qui manque, en particulier les ajouts récents :
+   - **GEO** : `/llms.txt`, robots IA, schéma enrichi (`geo.md`)
+   - **Pages prestation locales** `/[service]-[ville]` (levier SEO n°1, cf. `features.md`)
+   - **Légal** complet (directeur de publication, médiateur conso si particuliers…)
+   - Fonctionnalités manquantes (avant/après, avis, carte, FAQ…) selon `features.md`
+4. **Ajouter/mettre à niveau** en appelant `/site-artisan` sur le code existant (ne pas repartir
+   de zéro : compléter/retrofit, garder le contenu déjà validé par le client).
+5. Repasser `/controle-final` jusqu'au ✅ GO, puis mettre à jour le dossier (historique + reste à faire).
 
 ### À chaque interaction
 - Tenir à jour la **checklist « ce qui manque »** (surtout légal + technique, cf. `/site-artisan`).

@@ -22,21 +22,25 @@ tant que ce contrôle n'est pas passé au **vert**. Le **légal est bloquant abs
    - Lancer le site (`npm run start`) et **crawler** chaque page (recette dans checklists.md) :
      statut HTTP, `<title>`, meta description, canonical, 1 seul H1, meta robots, JSON-LD,
      images `alt`, liens internes, 404.
-   - **Si le plugin `claude-seo` est installé** : lancer `/seo audit <url>` (+ `/seo local`,
-     `/seo maps` pour un artisan) → score santé + findings. **Traiter les Critical/High** avant
-     de donner le GO. Sinon, dérouler les checklists manuelles ci-dessous (elles suffisent).
-2. **Dérouler les checklists** de `checklists.md` : Technique, SEO, **GEO (IA)**, Conversion,
+2. **Audit SEO — SYSTÉMATIQUE (à chaque contrôle final)** :
+   - **Si le plugin `claude-seo` est installé** (terminal local) : lancer **`/seo audit <url>`**
+     (+ `/seo local`, `/seo maps` pour un artisan) → score santé + findings. **Traiter les
+     Critical/High** avant de donner le GO.
+   - **Sinon** (web/mobile, pas de plugin) : réaliser l'audit **à la main** avec la recette de
+     crawl de `checklists.md` et scorer via les 7 catégories (Technique, Contenu, On-page,
+     Schéma, Performance, GEO, Images). Ne jamais sauter cette étape.
+3. **Dérouler les checklists** de `checklists.md` : Technique, SEO, **GEO (IA)**, Conversion,
    Design, Contenu, **Légal**, Déploiement.
    - **GEO** : vérifier que `/llms.txt` répond (`curl` → décrit métier + ville + rayon + tél),
      que `/robots.txt` autorise les bots IA (GPTBot, PerplexityBot, ClaudeBot, Google-Extended…),
      et que le JSON-LD contient `foundingDate`, un `GeoCircle` avec `geoRadius` et `knowsAbout`.
-3. **Rechercher les placeholders** restants : `grep -rn "à compléter" src/` doit renvoyer 0.
-4. **Rendre le verdict** :
+4. **Rechercher les placeholders** restants : `grep -rn "à compléter" src/` doit renvoyer 0.
+5. **Rendre le verdict** :
    - 🔴 **NO-GO** si un seul item **bloquant** échoue (surtout légal ou build).
    - 🟡 **GO avec réserves** si seuls des items « recommandés » manquent (les lister).
    - ✅ **GO** si tout est vert.
-5. **Rapport clair** : liste des ✅ / ⚠️ / 🔴, puis la **liste d'actions** pour lever les bloquants.
-6. Mettre à jour le **dossier client** (`/suivi-client`) : résultat du contrôle + date.
+6. **Rapport clair** : liste des ✅ / ⚠️ / 🔴, puis la **liste d'actions** pour lever les bloquants.
+7. Mettre à jour le **dossier client** (`/suivi-client`) : résultat du contrôle + date.
 
 ## Bloquants absolus (NO-GO immédiat)
 - `npm run build` échoue
