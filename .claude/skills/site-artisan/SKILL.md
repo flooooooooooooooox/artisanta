@@ -1,5 +1,6 @@
 ---
 name: site-artisan
+user-invocable: true
 description: >-
   Génère un site vitrine professionnel complet (Next.js) pour un artisan à partir d'un
   questionnaire unique. Utiliser quand l'utilisateur veut créer un site pour un artisan /

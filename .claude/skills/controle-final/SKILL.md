@@ -1,5 +1,6 @@
 ---
 name: controle-final
+user-invocable: true
 description: >-
   Contrôle qualité + conformité légale d'un site d'artisan AVANT livraison au client. Utiliser
   quand l'utilisateur dit « contrôle final », « vérifie avant de livrer », « audit avant

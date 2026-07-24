@@ -1,5 +1,6 @@
 ---
 name: suivi-client
+user-invocable: true
 description: >-
   Gère la relation client de bout en bout pour les sites d'artisans : accueil d'un nouveau
   client, suivi d'un client existant, reprise d'un site déjà commencé, état d'avancement, ce
