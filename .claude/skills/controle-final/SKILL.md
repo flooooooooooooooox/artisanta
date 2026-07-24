@@ -22,6 +22,9 @@ tant que ce contrôle n'est pas passé au **vert**. Le **légal est bloquant abs
    - Lancer le site (`npm run start`) et **crawler** chaque page (recette dans checklists.md) :
      statut HTTP, `<title>`, meta description, canonical, 1 seul H1, meta robots, JSON-LD,
      images `alt`, liens internes, 404.
+   - **Si le plugin `claude-seo` est installé** : lancer `/seo audit <url>` (+ `/seo local`,
+     `/seo maps` pour un artisan) → score santé + findings. **Traiter les Critical/High** avant
+     de donner le GO. Sinon, dérouler les checklists manuelles ci-dessous (elles suffisent).
 2. **Dérouler les checklists** de `checklists.md` : Technique, SEO, **GEO (IA)**, Conversion,
    Design, Contenu, **Légal**, Déploiement.
    - **GEO** : vérifier que `/llms.txt` répond (`curl` → décrit métier + ville + rayon + tél),

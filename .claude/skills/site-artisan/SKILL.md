@@ -32,6 +32,7 @@ Ne jamais livrer un site qui ne coche pas les deux checklists (design + conversi
 - `references/design-excellence.md` — **barre de qualité design « wow »** (obligatoire)
 - `references/conversion.md` — **règles de conversion (CRO)** (obligatoire)
 - `references/geo.md` — **GEO : être cité par les IA** (llms.txt, robots IA, schéma enrichi) (obligatoire)
+- `references/seo-plugin.md` — **plugin companion `claude-seo`** (audit SEO automatisé, optionnel)
 - `references/legal.md` — **toutes les obligations légales françaises** (bloquant avant publication)
 - `references/deployment.md` — mise en ligne Vercel + Resend + domaine
 - `template/` — **squelette de code pré-fait** (composants + CSS + config) à copier pour aller vite
@@ -86,6 +87,11 @@ capture d'écran (desktop + mobile) pour juger le rendu réel avant de livrer.
 
 ### 6. Déploiement
 Guider le client avec `deployment.md` (Vercel → variables Resend → redeploy → test → domaine).
+
+### 7. Boost SEO (optionnel — `seo-plugin.md`)
+Si le plugin **`claude-seo`** est installé, lancer `/seo audit` (+ `/seo local`, `/seo maps`
+pour un artisan) et corriger les findings Critical/High. Sinon, les checklists internes
+(`build-guide.md` + `geo.md`) suffisent. Ne jamais rendre la livraison dépendante du plugin.
 
 ## Règles importantes
 - **Légal = bloquant** : appliquer intégralement `legal.md` (mentions légales complètes, RGPD,
