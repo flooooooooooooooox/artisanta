@@ -13,6 +13,21 @@ par le client. Une section sans données doit se **masquer automatiquement** (ga
 | Pourquoi nous choisir | `WhyUsSection` | 4 arguments | valeurs génériques par secteur |
 | Comment ça se passe | `ProcessSection` | 3 étapes | étapes génériques |
 | Barre mobile fixe | `MobileCtaBar` | téléphone | masquée si pas de tél |
+| **Pages prestation locales (SEO++)** | route `app/[servicePage]/page.tsx` | 1 contenu unique/service + ville | non générées (fallback `/services`) |
+
+### Pages « prestation à Ville » (levier SEO local n°1)
+Une page dédiée par prestation, URL riche en mots-clés : `/[slug-service]-[ville]`
+(ex. `/nettoyage-vitres-caen`). **Le plus gros gain de référencement local.**
+- Route **dynamique unique** `app/[servicePage]/page.tsx` avec `generateStaticParams()`
+  (une entrée par service) et `export const dynamicParams = false` (tout autre slug → 404).
+  Cohabite avec les routes statiques (`/contact`, `/services`…) qui restent prioritaires.
+- **Contenu UNIQUE par page** (jamais dupliqué) : H1 « [Prestation] à [Ville] », intro,
+  « ce que comprend la prestation », « pour qui », chips des communes, **2 FAQ spécifiques**,
+  maillage vers les autres prestations, CTA.
+- `generateMetadata` : `title: { absolute: … }` (éviter le double suffixe), description + canonical.
+- **JSON-LD par page** : `Service` (avec `areaServed` GeoCircle + `provider`), `BreadcrumbList`, `FAQPage`.
+- **Relier** : cartes de `/services`, colonne « prestations » du footer, et **sitemap** (priority 0.8).
+- Données : stocker le contenu dans `servicePages` (map par slug) dans `site-data.ts`.
 
 ## Sections toujours présentes (socle)
 - **Header** (logo + nav + tél + CTA + descente animée)
