@@ -91,6 +91,7 @@ export const servicePages: Record<
     included: string[];
     forWho: string;
     faq: { question: string; answer: string }[];
+    photo?: { src: string; alt: string };
   }
 > = {
   "nettoyage-vitres": {
@@ -99,6 +100,10 @@ export const servicePages: Record<
     metaDescription:
       "Nettoyage de vitres à Caen et dans un rayon de 20 km : vitres, baies vitrées, vitrines et verrières sans traces. Particuliers et professionnels. Devis gratuit au 07 68 12 93 19.",
     lead: "Des vitres impeccables changent tout : plus de lumière, une meilleure image et un intérieur qui respire. Propre Éclat nettoie vos vitres à Caen et alentours, en intérieur comme en extérieur, sans traces ni auréoles.",
+    photo: {
+      src: "/images/equipe/agent-vitres.webp",
+      alt: "Agent Propre Éclat nettoyant une vitre à la raclette dans un bureau à Caen",
+    },
     included: [
       "Vitres, fenêtres et baies vitrées (intérieur et extérieur)",
       "Vitrines et devantures de commerces",
@@ -127,6 +132,10 @@ export const servicePages: Record<
     metaDescription:
       "Entretien de bureaux et locaux professionnels à Caen et alentours : sols, sanitaires, espaces communs. Interventions régulières ou ponctuelles. Devis gratuit au 07 68 12 93 19.",
     lead: "Un bureau propre, c'est une meilleure image pour vos clients et un cadre plus sain pour vos équipes. Propre Éclat assure l'entretien de vos locaux professionnels à Caen, en journée ou en dehors des heures d'ouverture.",
+    photo: {
+      src: "/images/equipe/agent-bureaux.webp",
+      alt: "Agent Propre Éclat désinfectant les bureaux d'un open-space à Caen",
+    },
     included: [
       "Bureaux, open-spaces, salles de réunion et accueil",
       "Sols (aspiration, lavage) adaptés à chaque revêtement",
@@ -155,6 +164,10 @@ export const servicePages: Record<
     metaDescription:
       "Entretien des parties communes d'immeubles à Caen : halls, escaliers, ascenseurs, abords. Pour syndics et gestionnaires. Devis gratuit au 07 68 12 93 19.",
     lead: "Des parties communes bien entretenues valorisent l'immeuble et le confort des résidents. Propre Éclat assure le nettoyage des copropriétés à Caen et alentours, avec régularité et rigueur, pour les syndics et gestionnaires.",
+    photo: {
+      src: "/images/equipe/agent-sol-couloir.webp",
+      alt: "Agent Propre Éclat lustrant le sol d'un hall d'immeuble à Caen",
+    },
     included: [
       "Halls d'entrée, couloirs et paliers",
       "Escaliers, rampes et ascenseurs",
@@ -298,6 +311,21 @@ export const beforeAfterGallery = [
     title: "Nettoyage de vitres — baie vitrée",
     before: "/images/chantier/baie-vitree-avant.webp",
     after: "/images/chantier/baie-vitree-apres.webp",
+  },
+  {
+    title: "Local commercial — fin de chantier",
+    before: "/images/chantier/boutique-chantier-avant.webp",
+    after: "/images/chantier/boutique-chantier-apres.webp",
+  },
+  {
+    title: "Vitres de bureaux",
+    before: "/images/chantier/vitres-bureau-avant.webp",
+    after: "/images/chantier/vitres-bureau-apres.webp",
+  },
+  {
+    title: "Sanitaires remis à neuf",
+    before: "/images/chantier/sanitaires-avant.webp",
+    after: "/images/chantier/sanitaires-apres.webp",
   },
   {
     title: "Nettoyage de bureaux",

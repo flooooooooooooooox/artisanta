@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Reveal from "@/components/Reveal";
@@ -141,6 +142,24 @@ export default async function ServiceLandingPage({
           </div>
         </div>
       </section>
+
+      {/* Photo d'intervention */}
+      {content.photo && (
+        <section className="mx-auto -mt-10 max-w-3xl px-6">
+          <Reveal>
+            <div className="overflow-hidden rounded-3xl shadow-xl shadow-navy/10 ring-1 ring-navy/5">
+              <Image
+                src={content.photo.src}
+                alt={content.photo.alt}
+                width={1200}
+                height={800}
+                className="h-auto w-full object-cover"
+                sizes="(max-width: 768px) 100vw, 768px"
+              />
+            </div>
+          </Reveal>
+        </section>
+      )}
 
       {/* Ce que comprend la prestation */}
       <section className="mx-auto max-w-3xl px-6 py-16">

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import SparkleHeading from "@/components/SparkleHeading";
@@ -161,6 +162,25 @@ export default function AboutPage() {
             </Reveal>
           ))}
         </ol>
+      </section>
+
+      {/* Photo d'intervention */}
+      <section className="mx-auto max-w-3xl px-6 pb-4">
+        <Reveal>
+          <figure className="overflow-hidden rounded-3xl shadow-xl shadow-navy/10 ring-1 ring-navy/5">
+            <Image
+              src="/images/equipe/agent-bureaux.webp"
+              alt="Agent Propre Éclat en intervention dans des bureaux à Caen"
+              width={1536}
+              height={1024}
+              className="h-auto w-full object-cover"
+              sizes="(max-width: 768px) 100vw, 768px"
+            />
+            <figcaption className="bg-white px-5 py-3 text-center text-sm text-navy/60">
+              Une intervention Propre Éclat : le souci du détail, à chaque passage.
+            </figcaption>
+          </figure>
+        </Reveal>
       </section>
 
       {/* Citation / philosophie */}
