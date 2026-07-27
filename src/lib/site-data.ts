@@ -313,6 +313,16 @@ export const beforeAfterGallery = [
     after: "/images/chantier/baie-vitree-apres.webp",
   },
   {
+    title: "Hall de copropriété — sol carrelé",
+    before: "/images/chantier/hall-sol-avant.webp",
+    after: "/images/chantier/hall-sol-apres.webp",
+  },
+  {
+    title: "Vitrine de boutique",
+    before: "/images/chantier/vitrine-boutique-avant.webp",
+    after: "/images/chantier/vitrine-boutique-apres.webp",
+  },
+  {
     title: "Local commercial — fin de chantier",
     before: "/images/chantier/boutique-chantier-avant.webp",
     after: "/images/chantier/boutique-chantier-apres.webp",
