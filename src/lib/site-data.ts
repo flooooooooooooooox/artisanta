@@ -295,6 +295,31 @@ export const faq = [
 
 export const beforeAfterGallery = [
   {
+    title: "Nettoyage de vitres — baie vitrée",
+    before: "/images/chantier/baie-vitree-avant.webp",
+    after: "/images/chantier/baie-vitree-apres.webp",
+  },
+  {
+    title: "Nettoyage de bureaux",
+    before: "/images/chantier/bureau-avant.webp",
+    after: "/images/chantier/bureau-apres.webp",
+  },
+  {
+    title: "Sols — local commercial (fin de chantier)",
+    before: "/images/chantier/local-commercial-avant.webp",
+    after: "/images/chantier/local-commercial-apres.webp",
+  },
+  {
+    title: "Hall de copropriété",
+    before: "/images/chantier/hall-copropriete-avant.webp",
+    after: "/images/chantier/hall-copropriete-apres.webp",
+  },
+  {
+    title: "Vitrine de commerce",
+    before: "/images/chantier/vitrine-commerce-avant.webp",
+    after: "/images/chantier/vitrine-commerce-apres.webp",
+  },
+  {
     title: "Terrasse en bois",
     before: "/images/chantier/terrasse-bois-avant.webp",
     after: "/images/chantier/terrasse-bois-apres.webp",
@@ -444,7 +469,7 @@ export const legalMentions = {
     "Chez Madame Linghou, 7 rue des Prémontrés, 14280 Saint-Germain-la-Blanche-Herbe",
   insurance:
     "Propre Éclat est couverte par une assurance responsabilité civile professionnelle. Cette assurance couvre l’ensemble des dommages matériels ou immatériels qui pourraient être causés dans le cadre de nos interventions professionnelles, conformément aux garanties prévues par notre contrat d’assurance. Notre priorité est d’intervenir en toute sécurité et d’offrir à chacun de nos clients la sérénité d’un prestataire pleinement assuré et responsable.",
-  publicationDirector: "[Nom du gérant / responsable de la publication à compléter]",
+  publicationDirector: "Josslyn Linghou (gérant de Propre Éclat)",
   host: "Vercel Inc. — 340 S Lemon Ave #4133, Walnut, CA 91789, USA — vercel.com",
   mediator:
     "[Médiateur de la consommation à compléter — nom de l'organisme + site internet. Obligatoire pour les prestations aux particuliers (art. L.612-1 du Code de la consommation).]",
