@@ -147,13 +147,12 @@ export default async function ServiceLandingPage({
       {content.photo && (
         <section className="mx-auto -mt-10 max-w-3xl px-6">
           <Reveal>
-            <div className="overflow-hidden rounded-3xl shadow-xl shadow-navy/10 ring-1 ring-navy/5">
+            <div className="relative aspect-[16/9] overflow-hidden rounded-3xl shadow-xl shadow-navy/10 ring-1 ring-navy/5">
               <Image
                 src={content.photo.src}
                 alt={content.photo.alt}
-                width={1200}
-                height={800}
-                className="h-auto w-full object-cover"
+                fill
+                className="object-cover object-center"
                 sizes="(max-width: 768px) 100vw, 768px"
               />
             </div>

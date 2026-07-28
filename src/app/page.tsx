@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import BeforeAfterCard from "@/components/BeforeAfterCard";
+import RealisationsCarousel from "@/components/RealisationsCarousel";
 import GoogleReviewsSection from "@/components/GoogleReviewsSection";
 import FaqSection from "@/components/FaqSection";
 import JsonLd from "@/components/JsonLd";
@@ -11,9 +11,6 @@ import WhyUsSection from "@/components/WhyUsSection";
 import ProcessSection from "@/components/ProcessSection";
 import { beforeAfterGallery, services, siteConfig } from "@/lib/site-data";
 import { getFaqSchema } from "@/lib/structured-data";
-
-// Réalisations mises en avant sur la page d'accueil
-const homeGallery = beforeAfterGallery.slice(0, 3);
 
 export default function Home() {
   return (
@@ -170,12 +167,8 @@ export default function Home() {
             Un aperçu avant / après de nos interventions récentes.
           </p>
         </Reveal>
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {homeGallery.map((item, i) => (
-            <Reveal key={item.title} delay={i * 90}>
-              <BeforeAfterCard {...item} showHint={false} />
-            </Reveal>
-          ))}
+        <div className="mt-10">
+          <RealisationsCarousel items={beforeAfterGallery} />
         </div>
         <p className="mt-8 flex items-center justify-center gap-2 text-center text-sm text-navy/60">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-brand">
@@ -183,6 +176,17 @@ export default function Home() {
           </svg>
           Glissez les images pour comparer l&apos;avant / après
         </p>
+        <div className="mt-4 text-center">
+          <Link
+            href="/realisations"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-dark hover:underline"
+          >
+            Voir toutes nos réalisations
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M4 10h11M11 5l5 5-5 5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </Link>
+        </div>
       </section>
 
       <Reveal>

@@ -5,7 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
   // Pages principales indexables (les pages légales sont en noindex)
-  const mainRoutes = ["", "/a-propos", "/services", "/contact"].map((route) => ({
+  const mainRoutes = ["", "/a-propos", "/services", "/realisations", "/contact"].map((route) => ({
     url: `${siteConfig.url}${route}`,
     lastModified,
     changeFrequency: (route === "" ? "weekly" : "monthly") as "weekly" | "monthly",
