@@ -8,9 +8,16 @@ type Props = {
   before: string;
   after: string;
   showHint?: boolean;
+  sizes?: string;
 };
 
-export default function BeforeAfterSlider({ title, before, after, showHint = true }: Props) {
+export default function BeforeAfterSlider({
+  title,
+  before,
+  after,
+  showHint = true,
+  sizes = "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw",
+}: Props) {
   const [percent, setPercent] = useState(50);
   const containerRef = useRef<HTMLDivElement>(null);
   const draggingRef = useRef(false);
@@ -53,7 +60,7 @@ export default function BeforeAfterSlider({ title, before, after, showHint = tru
           src={after}
           alt={`${title} après nettoyage`}
           fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          sizes={sizes}
           draggable={false}
           className="pointer-events-none object-cover"
         />
@@ -65,7 +72,7 @@ export default function BeforeAfterSlider({ title, before, after, showHint = tru
             src={before}
             alt={`${title} avant nettoyage`}
             fill
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            sizes={sizes}
             draggable={false}
             className="object-cover"
           />

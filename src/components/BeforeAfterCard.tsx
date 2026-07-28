@@ -6,11 +6,29 @@ type Props = {
   before?: string;
   after?: string;
   showHint?: boolean;
+  /** Indice de largeur pour servir la bonne taille d'image (perf) */
+  sizes?: string;
 };
 
-export default function BeforeAfterCard({ title, before, after, showHint = true }: Props) {
+const DEFAULT_SIZES = "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw";
+
+export default function BeforeAfterCard({
+  title,
+  before,
+  after,
+  showHint = true,
+  sizes = DEFAULT_SIZES,
+}: Props) {
   if (before && after) {
-    return <BeforeAfterSlider title={title} before={before} after={after} showHint={showHint} />;
+    return (
+      <BeforeAfterSlider
+        title={title}
+        before={before}
+        after={after}
+        showHint={showHint}
+        sizes={sizes}
+      />
+    );
   }
 
   return (
@@ -20,7 +38,7 @@ export default function BeforeAfterCard({ title, before, after, showHint = true 
           src={before ?? after ?? ""}
           alt={title}
           fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          sizes={sizes}
           className="object-cover"
         />
       </div>

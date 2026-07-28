@@ -6,17 +6,20 @@ import BeforeAfterCard from "./BeforeAfterCard";
 type Item = { title: string; before: string; after: string };
 
 /**
- * Galerie de réalisations qui défile en continu.
- * Le défilement s'arrête dès que l'utilisateur interagit (survol, toucher,
- * glissement, flèches) et reprend après un court délai d'inactivité.
+ * Galerie de réalisations qui défile en continu, dans les deux sens.
+ *
+ * La liste est rendue en 3 exemplaires et le défilement démarre au milieu :
+ * l'utilisateur peut donc remonter comme avancer sans jamais buter sur un bord.
+ * Le défilement automatique s'arrête dès qu'il interagit et reprend après un
+ * court délai d'inactivité.
  */
 export default function RealisationsCarousel({ items }: { items: Item[] }) {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const pausedRef = useRef(false);
+  const widthRef = useRef(0); // largeur d'un exemplaire de la liste
   const resumeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Liste dupliquée pour une boucle sans couture
-  const loop = [...items, ...items];
+  const loop = [...items, ...items, ...items];
 
   const pause = useCallback((autoResume = true) => {
     pausedRef.current = true;
@@ -35,31 +38,59 @@ export default function RealisationsCarousel({ items }: { items: Item[] }) {
     }, 600);
   }, []);
 
-  // Défilement automatique
+  // Replace la position dans l'exemplaire du milieu (boucle infinie 2 sens)
+  const wrap = useCallback(() => {
+    const el = scrollerRef.current;
+    const w = widthRef.current;
+    if (!el || w <= 0) return;
+    if (el.scrollLeft >= 2 * w) el.scrollLeft -= w;
+    else if (el.scrollLeft <= 0) el.scrollLeft += w;
+  }, []);
+
   useEffect(() => {
     const el = scrollerRef.current;
     if (!el) return;
+
+    // Mesure d'un exemplaire et démarrage au milieu
+    const measure = () => {
+      widthRef.current = el.scrollWidth / 3;
+      if (el.scrollLeft === 0) el.scrollLeft = widthRef.current;
+    };
+    measure();
+
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+
+    const onScroll = () => wrap();
+    el.addEventListener("scroll", onScroll, { passive: true });
+
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) return;
+    if (reduced) {
+      return () => {
+        ro.disconnect();
+        el.removeEventListener("scroll", onScroll);
+      };
+    }
 
     let raf = 0;
     let last = performance.now();
-    const speed = 40; // px par seconde
+    const speed = 38; // px par seconde
 
     const tick = (now: number) => {
-      const dt = (now - last) / 1000;
+      const dt = Math.min((now - last) / 1000, 0.05); // borne les gros écarts (onglet inactif)
       last = now;
-      if (!pausedRef.current) {
-        el.scrollLeft += speed * dt;
-        // Boucle : on revient au début quand la 1re copie est passée
-        const half = el.scrollWidth / 2;
-        if (half > 0 && el.scrollLeft >= half) el.scrollLeft -= half;
-      }
+      if (!pausedRef.current) el.scrollLeft += speed * dt;
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, []);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      ro.disconnect();
+      el.removeEventListener("scroll", onScroll);
+      if (resumeTimer.current) clearTimeout(resumeTimer.current);
+    };
+  }, [wrap]);
 
   const scrollByCard = (dir: 1 | -1) => {
     const el = scrollerRef.current;
@@ -74,7 +105,7 @@ export default function RealisationsCarousel({ items }: { items: Item[] }) {
     <div className="group relative">
       <div
         ref={scrollerRef}
-        className="no-scrollbar -mx-6 flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth px-6 py-2"
+        className="no-scrollbar -mx-6 flex gap-6 overflow-x-auto px-6 py-2"
         onMouseEnter={() => pause(false)}
         onMouseLeave={resume}
         onPointerDown={() => pause(false)}
@@ -87,14 +118,17 @@ export default function RealisationsCarousel({ items }: { items: Item[] }) {
           <div
             key={`${item.title}-${i}`}
             data-card
-            className="w-[280px] shrink-0 snap-start sm:w-[340px]"
+            className="w-[280px] shrink-0 sm:w-[340px]"
           >
-            <BeforeAfterCard {...item} showHint={false} />
+            <BeforeAfterCard
+              {...item}
+              showHint={false}
+              sizes="(max-width: 640px) 280px, 340px"
+            />
           </div>
         ))}
       </div>
 
-      {/* Flèches de navigation */}
       <button
         type="button"
         aria-label="Réalisations précédentes"

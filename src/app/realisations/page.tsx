@@ -45,7 +45,7 @@ export default function RealisationsPage() {
       <section className="mx-auto max-w-6xl px-6 py-16">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {beforeAfterGallery.map((item, i) => (
-            <Reveal key={item.title} delay={(i % 3) * 80}>
+            <Reveal key={item.title} delay={(i % 3) * 80} className="cv-auto">
               <BeforeAfterCard {...item} showHint={false} />
             </Reveal>
           ))}
