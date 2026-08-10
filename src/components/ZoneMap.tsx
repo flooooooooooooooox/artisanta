@@ -15,6 +15,7 @@ export default function ZoneMap() {
     el.dataset.init = "1";
 
     let map: import("leaflet").Map | undefined;
+    let observer: ResizeObserver | undefined;
 
     (async () => {
       const L = await import("leaflet");
@@ -38,7 +39,7 @@ export default function ZoneMap() {
       }).addTo(map);
 
       // Périmètre de 20 km (vrai cercle géographique)
-      L.circle(CAEN, {
+      const zone = L.circle(CAEN, {
         radius: 20000,
         color: BRAND,
         weight: 2,
@@ -54,9 +55,22 @@ export default function ZoneMap() {
         fillColor: BRAND,
         fillOpacity: 1,
       }).addTo(map);
+
+      // Cadre la carte sur toute la zone : le cercle reste entièrement visible
+      // quelle que soit la largeur de l'écran (sinon il déborde sur mobile).
+      const fit = () => {
+        if (!map) return;
+        map.invalidateSize();
+        map.fitBounds(zone.getBounds(), { padding: [12, 12], animate: false });
+      };
+      fit();
+
+      observer = new ResizeObserver(fit);
+      observer.observe(el);
     })();
 
     return () => {
+      observer?.disconnect();
       map?.remove();
       delete el.dataset.init;
     };
