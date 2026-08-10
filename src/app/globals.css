@@ -186,6 +186,19 @@ body {
   contain-intrinsic-size: auto 380px;
 }
 
+/* Le coût d'un flou grandit avec son rayon : sur mobile on l'allège nettement.
+   Ce sont des halos purement décoratifs, la différence ne se voit pas. */
+@media (max-width: 640px) {
+  .blur-3xl {
+    --tw-blur: blur(28px);
+    filter: blur(28px);
+  }
+  .blur-2xl {
+    --tw-blur: blur(18px);
+    filter: blur(18px);
+  }
+}
+
 /* Hero immersif — halos lumineux qui dérivent lentement */
 @keyframes drift {
   0%, 100% { transform: translate(0, 0) scale(1); }

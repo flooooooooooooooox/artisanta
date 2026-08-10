@@ -3,7 +3,7 @@ import { siteConfig } from "@/lib/site-data";
 
 export default function MobileCtaBar() {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 flex gap-2 border-t border-navy/10 bg-cream/95 p-3 backdrop-blur md:hidden">
+    <div className="fixed inset-x-0 bottom-0 z-50 flex gap-2 border-t border-navy/10 bg-cream p-3 md:hidden">
       <a
         href={siteConfig.phoneHref}
         className="flex flex-1 items-center justify-center gap-2 rounded-full border border-navy/15 bg-white py-3 text-sm font-semibold text-navy shadow-sm"

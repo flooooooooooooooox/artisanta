@@ -25,7 +25,9 @@ export default function GoogleReviewsSection() {
         </div>
 
         <div className="mt-12 grid gap-8 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-navy/5 md:grid-cols-2 md:items-center md:p-8">
-          <div className="relative overflow-hidden rounded-xl ring-1 ring-navy/5">
+          {/* `isolate z-0` : confine les z-index internes de Leaflet (400 à 1000)
+              pour que la carte ne passe pas au-dessus de l'en-tête collant. */}
+          <div className="relative isolate z-0 overflow-hidden rounded-xl ring-1 ring-navy/5">
             <ZoneMap />
 
             <span className="pointer-events-none absolute left-3 top-3 z-[500] inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold text-navy shadow-sm">
