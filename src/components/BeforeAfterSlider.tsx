@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useCallback, useRef, useState } from "react";
+import { blurMap } from "@/lib/image-blur";
 
 type Props = {
   title: string;
@@ -9,6 +10,7 @@ type Props = {
   after: string;
   showHint?: boolean;
   sizes?: string;
+  eager?: boolean;
 };
 
 export default function BeforeAfterSlider({
@@ -17,6 +19,7 @@ export default function BeforeAfterSlider({
   after,
   showHint = true,
   sizes = "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw",
+  eager = false,
 }: Props) {
   const [percent, setPercent] = useState(50);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -61,6 +64,9 @@ export default function BeforeAfterSlider({
           alt={`${title} après nettoyage`}
           fill
           sizes={sizes}
+          placeholder={blurMap[after] ? "blur" : "empty"}
+          blurDataURL={blurMap[after]}
+          loading={eager ? "eager" : "lazy"}
           draggable={false}
           className="pointer-events-none object-cover"
         />
@@ -73,6 +79,9 @@ export default function BeforeAfterSlider({
             alt={`${title} avant nettoyage`}
             fill
             sizes={sizes}
+            placeholder={blurMap[before] ? "blur" : "empty"}
+            blurDataURL={blurMap[before]}
+            loading={eager ? "eager" : "lazy"}
             draggable={false}
             className="object-cover"
           />

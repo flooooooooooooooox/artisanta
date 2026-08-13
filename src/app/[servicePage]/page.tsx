@@ -6,6 +6,7 @@ import Reveal from "@/components/Reveal";
 import SparkleHeading from "@/components/SparkleHeading";
 import Particles from "@/components/Particles";
 import JsonLd from "@/components/JsonLd";
+import { blurMap } from "@/lib/image-blur";
 import {
   localSuffix,
   servicePages,
@@ -154,6 +155,8 @@ export default async function ServiceLandingPage({
                 fill
                 className="object-cover object-center"
                 sizes="(max-width: 768px) 100vw, 768px"
+                placeholder={blurMap[content.photo.src] ? "blur" : "empty"}
+                blurDataURL={blurMap[content.photo.src]}
               />
             </div>
           </Reveal>

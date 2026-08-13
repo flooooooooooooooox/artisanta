@@ -6,6 +6,7 @@ import SparkleHeading from "@/components/SparkleHeading";
 import Particles from "@/components/Particles";
 import GoogleRating from "@/components/GoogleRating";
 import { siteConfig } from "@/lib/site-data";
+import { blurMap } from "@/lib/image-blur";
 
 export const metadata: Metadata = {
   title: "À propos — Entreprise de nettoyage à Caen",
@@ -175,6 +176,8 @@ export default function AboutPage() {
                 fill
                 className="object-cover object-center"
                 sizes="(max-width: 768px) 100vw, 768px"
+                placeholder="blur"
+                blurDataURL={blurMap["/images/equipe/agent-bureaux.webp"]}
               />
             </div>
             <figcaption className="bg-white px-5 py-3 text-center text-sm text-navy/60">

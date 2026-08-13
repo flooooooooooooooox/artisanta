@@ -124,6 +124,9 @@ export default function RealisationsCarousel({ items }: { items: Item[] }) {
               {...item}
               showHint={false}
               sizes="(max-width: 640px) 280px, 340px"
+              // Les premieres cartes de l'exemplaire du milieu sont visibles
+              // d'emblee : on les charge sans attendre le defilement.
+              eager={i >= items.length && i < items.length + 3}
             />
           </div>
         ))}

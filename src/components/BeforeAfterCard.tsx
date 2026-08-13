@@ -8,6 +8,8 @@ type Props = {
   showHint?: boolean;
   /** Indice de largeur pour servir la bonne taille d'image (perf) */
   sizes?: string;
+  /** Charge l'image sans attendre qu'elle entre dans le viewport */
+  eager?: boolean;
 };
 
 const DEFAULT_SIZES = "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw";
@@ -18,6 +20,7 @@ export default function BeforeAfterCard({
   after,
   showHint = true,
   sizes = DEFAULT_SIZES,
+  eager = false,
 }: Props) {
   if (before && after) {
     return (
@@ -27,6 +30,7 @@ export default function BeforeAfterCard({
         after={after}
         showHint={showHint}
         sizes={sizes}
+        eager={eager}
       />
     );
   }
