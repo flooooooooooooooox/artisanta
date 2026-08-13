@@ -167,37 +167,37 @@ export default function Home() {
             Un aperçu avant / après de nos interventions récentes.
           </p>
         </Reveal>
-        <div className="mt-10">
-          <RealisationsCarousel items={beforeAfterGallery} />
-        </div>
-        <p className="mt-8 flex items-center justify-center gap-2 text-center text-sm text-navy/60">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-brand">
-            <path d="M8 7l-5 5 5 5M16 7l5 5-5 5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          Glissez les images pour comparer l&apos;avant / après
-        </p>
-        <div className="mt-4 text-center">
-          <Link
-            href="/realisations"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-dark hover:underline"
-          >
-            Voir toutes nos réalisations
-            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M4 10h11M11 5l5 5-5 5" strokeLinecap="round" strokeLinejoin="round" />
+        <Reveal delay={120}>
+          <div className="mt-10">
+            <RealisationsCarousel items={beforeAfterGallery} />
+          </div>
+        </Reveal>
+        <Reveal delay={200}>
+          <p className="mt-8 flex items-center justify-center gap-2 text-center text-sm text-navy/60">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-brand">
+              <path d="M8 7l-5 5 5 5M16 7l5 5-5 5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-          </Link>
-        </div>
+            Glissez les images pour comparer l&apos;avant / après
+          </p>
+          <div className="mt-4 text-center">
+            <Link
+              href="/realisations"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-dark hover:underline"
+            >
+              Voir toutes nos réalisations
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M4 10h11M11 5l5 5-5 5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </Link>
+          </div>
+        </Reveal>
       </section>
 
-      <Reveal>
-        <GoogleReviewsSection />
-      </Reveal>
+      <GoogleReviewsSection />
 
       <ProcessSection />
 
-      <Reveal>
-        <FaqSection />
-      </Reveal>
+      <FaqSection />
 
       <section className="px-6 py-16">
         <Reveal className="relative mx-auto max-w-5xl overflow-hidden rounded-3xl bg-gradient-to-br from-navy via-navy to-navy-light px-6 py-14 text-center shadow-xl sm:px-12 sm:py-16">

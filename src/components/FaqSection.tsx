@@ -1,10 +1,11 @@
 import { faq } from "@/lib/site-data";
 import SparkleHeading from "./SparkleHeading";
+import Reveal from "./Reveal";
 
 export default function FaqSection() {
   return (
     <section className="mx-auto max-w-3xl px-6 py-16">
-      <div className="text-center">
+      <Reveal className="text-center">
         <p className="text-sm font-semibold uppercase tracking-widest text-brand-dark">
           Questions fréquentes
         </p>
@@ -15,12 +16,12 @@ export default function FaqSection() {
           Les réponses aux questions les plus courantes sur nos services de
           nettoyage à Caen et alentours.
         </p>
-      </div>
+      </Reveal>
 
       <div className="mt-10 space-y-3">
         {faq.map((item, i) => (
+          <Reveal key={item.question} delay={Math.min(i, 4) * 70}>
           <details
-            key={item.question}
             className="group rounded-2xl bg-white p-5 shadow-sm ring-1 ring-navy/5 transition-shadow hover:shadow-md"
             open={i === 0}
           >
@@ -34,6 +35,7 @@ export default function FaqSection() {
             </summary>
             <p className="mt-3 text-sm leading-relaxed text-navy/70">{item.answer}</p>
           </details>
+          </Reveal>
         ))}
       </div>
     </section>

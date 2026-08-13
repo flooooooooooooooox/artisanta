@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import BeforeAfterCard from "@/components/BeforeAfterCard";
+import Reveal from "@/components/Reveal";
 import { beforeAfterGallery, localSuffix, servicePages, services } from "@/lib/site-data";
 
 export const metadata: Metadata = {
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <div>
-      <div className="mx-auto max-w-4xl px-6 py-16 text-center">
+      <Reveal className="mx-auto max-w-4xl px-6 py-16 text-center">
         <p className="text-sm font-semibold uppercase tracking-widest text-brand-dark">
           Nos prestations
         </p>
@@ -23,11 +24,11 @@ export default function ServicesPage() {
           prestations adaptées à chaque besoin, sur Caen et dans un rayon de
           20 km.
         </p>
-      </div>
+      </Reveal>
 
       <div className="mx-auto max-w-5xl px-6 pb-16">
         <div className="grid gap-6 sm:grid-cols-2">
-          {services.map((service) => {
+          {services.map((service, i) => {
             const hasPage = Boolean(servicePages[service.slug]);
             const inner = (
               <>
@@ -45,14 +46,16 @@ export default function ServicesPage() {
             );
             const cardClass =
               "group/card relative block overflow-hidden rounded-2xl bg-white p-8 shadow-sm ring-1 ring-navy/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-navy/10 hover:ring-brand/30";
-            return hasPage ? (
-              <Link key={service.slug} href={`/${service.slug}-${localSuffix}`} className={cardClass}>
-                {inner}
-              </Link>
-            ) : (
-              <div key={service.slug} className={cardClass}>
-                {inner}
-              </div>
+            return (
+              <Reveal key={service.slug} delay={i * 90}>
+                {hasPage ? (
+                  <Link href={`/${service.slug}-${localSuffix}`} className={cardClass}>
+                    {inner}
+                  </Link>
+                ) : (
+                  <div className={cardClass}>{inner}</div>
+                )}
+              </Reveal>
             );
           })}
         </div>
@@ -60,13 +63,17 @@ export default function ServicesPage() {
 
       <section className="bg-cream-alt py-16">
         <div className="mx-auto max-w-6xl px-6">
-          <h2 className="text-center text-3xl font-bold text-navy">Nos réalisations</h2>
-          <p className="mx-auto mt-3 max-w-xl text-center text-navy/70">
-            Quelques exemples de résultats obtenus lors de nos interventions.
-          </p>
+          <Reveal>
+            <h2 className="text-center text-3xl font-bold text-navy">Nos réalisations</h2>
+            <p className="mx-auto mt-3 max-w-xl text-center text-navy/70">
+              Quelques exemples de résultats obtenus lors de nos interventions.
+            </p>
+          </Reveal>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {beforeAfterGallery.map((item) => (
-              <BeforeAfterCard key={item.title} {...item} showHint={false} />
+            {beforeAfterGallery.map((item, i) => (
+              <Reveal key={item.title} delay={(i % 3) * 80} className="cv-auto">
+                <BeforeAfterCard {...item} showHint={false} />
+              </Reveal>
             ))}
           </div>
           <p className="mt-8 flex items-center justify-center gap-2 text-center text-sm text-navy/60">
@@ -78,7 +85,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <div className="mx-auto max-w-3xl px-6 py-16 text-center">
+      <Reveal className="mx-auto max-w-3xl px-6 py-16 text-center">
         <h2 className="text-2xl font-bold text-navy">Une prestation particulière à demander ?</h2>
         <p className="mt-3 text-navy/70">
           Contactez-nous pour un devis gratuit adapté à votre besoin.
@@ -86,7 +93,7 @@ export default function ServicesPage() {
         <Link href="/contact" className="btn btn-primary mt-6">
           Demander un devis
         </Link>
-      </div>
+      </Reveal>
     </div>
   );
 }

@@ -118,7 +118,7 @@ export default function RealisationsCarousel({ items }: { items: Item[] }) {
           <div
             key={`${item.title}-${i}`}
             data-card
-            className="cv-auto w-[280px] shrink-0 sm:w-[340px]"
+            className="w-[280px] shrink-0 sm:w-[340px]"
           >
             <BeforeAfterCard
               {...item}

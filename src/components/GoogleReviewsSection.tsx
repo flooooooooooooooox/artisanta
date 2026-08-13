@@ -2,12 +2,14 @@ import TestimonialsCarousel from "./TestimonialsCarousel";
 import SparkleHeading from "./SparkleHeading";
 import GoogleRating from "./GoogleRating";
 import ZoneMap from "./ZoneMap";
+import Reveal from "./Reveal";
 import { siteConfig, testimonials } from "@/lib/site-data";
 
 export default function GoogleReviewsSection() {
   return (
     <section className="bg-cream-alt py-16">
       <div className="mx-auto max-w-6xl px-6">
+        <Reveal>
         <h2 className="text-center text-3xl font-bold text-navy">
           <SparkleHeading>Avis Google</SparkleHeading>
         </h2>
@@ -19,11 +21,15 @@ export default function GoogleReviewsSection() {
         <div className="flex justify-center">
           <GoogleRating />
         </div>
+        </Reveal>
 
-        <div className="mt-10">
-          <TestimonialsCarousel testimonials={testimonials} />
-        </div>
+        <Reveal delay={120}>
+          <div className="mt-10">
+            <TestimonialsCarousel testimonials={testimonials} />
+          </div>
+        </Reveal>
 
+        <Reveal delay={80}>
         <div className="mt-12 grid gap-8 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-navy/5 md:grid-cols-2 md:items-center md:p-8">
           {/* `isolate z-0` : confine les z-index internes de Leaflet (400 à 1000)
               pour que la carte ne passe pas au-dessus de l'en-tête collant. */}
@@ -82,6 +88,7 @@ export default function GoogleReviewsSection() {
             </div>
           </div>
         </div>
+        </Reveal>
       </div>
     </section>
   );
