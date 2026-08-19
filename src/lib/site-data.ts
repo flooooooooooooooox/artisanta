@@ -76,6 +76,24 @@ export const services = [
   },
 ];
 
+// Communes couvertes avec un contexte réel (SEO local).
+// Contenu volontairement différencié : pas de pages « portes d'entrée » dupliquées,
+// une seule page /zones-intervention qui décrit honnêtement chaque secteur.
+export const zones = [
+  { name: "Caen", cp: "14000", km: 0, note: "Notre base : centre-ville, Vaucelles, Chemin-Vert, Saint-Jean. Bureaux, commerces, copropriétés et fins de chantier." },
+  { name: "Hérouville-Saint-Clair", cp: "14200", km: 4, note: "Zone d'activités et grands ensembles résidentiels : entretien de parties communes et de locaux professionnels." },
+  { name: "Mondeville", cp: "14120", km: 5, note: "Secteur commercial et industriel, avec de nombreux locaux et surfaces vitrées à entretenir." },
+  { name: "Ifs", cp: "14123", km: 5, note: "Résidentiel et zones commerciales du sud de Caen : vitres, bureaux et remises en état après travaux." },
+  { name: "Fleury-sur-Orne", cp: "14123", km: 5, note: "Communes pavillonnaires et petites copropriétés, interventions ponctuelles ou régulières." },
+  { name: "Cormelles-le-Royal", cp: "14123", km: 5, note: "Zone d'entreprises : entretien de bureaux, sanitaires et espaces communs." },
+  { name: "Bretteville-sur-Odon", cp: "14760", km: 6, note: "Ouest de Caen, secteur commercial : vitrines, bureaux et fins de chantier." },
+  { name: "Colombelles", cp: "14460", km: 6, note: "Quartiers récents et locaux d'activité, souvent en fin de chantier ou en entretien régulier." },
+  { name: "Giberville", cp: "14730", km: 7, note: "Résidentiel et petites entreprises, à l'est de l'agglomération caennaise." },
+  { name: "Épron", cp: "14610", km: 7, note: "Commune résidentielle au nord de Caen : vitres, maisons et copropriétés." },
+  { name: "Douvres-la-Délivrande", cp: "14440", km: 14, note: "Axe vers la côte : commerces, résidences et locaux professionnels." },
+  { name: "Ouistreham", cp: "14150", km: 15, note: "Station balnéaire : vitrines de commerces, résidences secondaires et locations." },
+];
+
 // Suffixe des pages d'atterrissage locales (SEO local) : /nettoyage-vitres-caen, etc.
 export const localSuffix = "caen";
 
@@ -98,7 +116,7 @@ export const servicePages: Record<
     h1: "Nettoyage de vitres à Caen",
     metaTitle: "Nettoyage de vitres à Caen — sans traces | Propre Éclat",
     metaDescription:
-      "Nettoyage de vitres à Caen et dans un rayon de 20 km : vitres, baies vitrées, vitrines et verrières sans traces. Particuliers et professionnels. Devis gratuit au 07 68 12 93 19.",
+      "Nettoyage de vitres à Caen et dans un rayon de 20 km : baies vitrées, vitrines, verrières, sans traces. Devis gratuit au 07 68 12 93 19.",
     lead: "Des vitres impeccables changent tout : plus de lumière, une meilleure image et un intérieur qui respire. Propre Éclat nettoie vos vitres à Caen et alentours, en intérieur comme en extérieur, sans traces ni auréoles.",
     photo: {
       src: "/images/equipe/agent-vitres.webp",

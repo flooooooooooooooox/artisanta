@@ -5,7 +5,7 @@ import Reveal from "@/components/Reveal";
 import { beforeAfterGallery, localSuffix, servicePages, services } from "@/lib/site-data";
 
 export const metadata: Metadata = {
-  title: "Nettoyage à Caen : vitres, bureaux, copropriété, fin de chantier",
+  title: "Nos prestations de nettoyage à Caen",
   alternates: { canonical: "/services" },
   description:
     "Nettoyage des vitres, des bureaux, de copropriété et fin de chantier : découvrez les prestations de Propre Éclat à Caen et alentours.",

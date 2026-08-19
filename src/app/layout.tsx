@@ -21,7 +21,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Propre Éclat | Nettoyage professionnel à Caen",
+    default: "Entreprise de nettoyage à Caen | Propre Éclat",
     template: "%s | Propre Éclat",
   },
   description:

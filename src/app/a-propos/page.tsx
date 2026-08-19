@@ -11,7 +11,7 @@ import { blurMap } from "@/lib/image-blur";
 export const metadata: Metadata = {
   title: "À propos — Entreprise de nettoyage à Caen",
   description:
-    "L'histoire de Propre Éclat, entreprise de nettoyage née en 2023 à Caen : nettoyage de bureaux, de vitres et de fin de chantier. Une réputation bâtie sur le sérieux, la rigueur et la recommandation.",
+    "Propre Éclat, entreprise de nettoyage à Caen depuis 2023 : bureaux, vitres, copropriétés et fin de chantier. Notre histoire et nos valeurs.",
   alternates: { canonical: "/a-propos" },
 };
 

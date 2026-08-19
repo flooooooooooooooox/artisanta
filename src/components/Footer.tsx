@@ -74,6 +74,7 @@ export default function Footer() {
               { href: "/a-propos", label: "À propos" },
               { href: "/services", label: "Services" },
               { href: "/realisations", label: "Réalisations" },
+              { href: "/zones-intervention", label: "Zones d'intervention" },
               { href: "/contact", label: "Contact" },
               { href: "/mentions-legales", label: "Mentions légales" },
               { href: "/politique-de-confidentialite", label: "Confidentialité" },
