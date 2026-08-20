@@ -148,7 +148,7 @@ export const servicePages: Record<
     h1: "Nettoyage de bureaux à Caen",
     metaTitle: "Nettoyage de bureaux et locaux pro à Caen | Propre Éclat",
     metaDescription:
-      "Entretien de bureaux et locaux professionnels à Caen et alentours : sols, sanitaires, espaces communs. Interventions régulières ou ponctuelles. Devis gratuit au 07 68 12 93 19.",
+      "Entretien de bureaux et locaux pro à Caen : sols, sanitaires, espaces communs. Interventions régulières ou ponctuelles. Devis gratuit au 07 68 12 93 19.",
     lead: "Un bureau propre, c'est une meilleure image pour vos clients et un cadre plus sain pour vos équipes. Propre Éclat assure l'entretien de vos locaux professionnels à Caen, en journée ou en dehors des heures d'ouverture.",
     photo: {
       src: "/images/equipe/agent-bureaux.webp",
@@ -212,7 +212,7 @@ export const servicePages: Record<
     h1: "Nettoyage de fin de chantier à Caen",
     metaTitle: "Nettoyage de fin de chantier à Caen | Propre Éclat",
     metaDescription:
-      "Remise en état après travaux à Caen et alentours : poussière, résidus, traces. Livraison d'un chantier propre et prêt à l'emploi. Devis gratuit au 07 68 12 93 19.",
+      "Remise en état après travaux à Caen : poussière, résidus, traces éliminés. Un chantier propre et prêt à l'emploi. Devis gratuit au 07 68 12 93 19.",
     lead: "Après des travaux, il reste toujours poussière, résidus et traces. Propre Éclat réalise le nettoyage de fin de chantier à Caen pour vous livrer un espace impeccable, prêt à être habité ou utilisé.",
     included: [
       "Élimination des poussières fines sur toutes les surfaces",
