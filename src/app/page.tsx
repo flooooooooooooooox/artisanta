@@ -9,6 +9,7 @@ import SparkleHeading from "@/components/SparkleHeading";
 import Particles from "@/components/Particles";
 import WhyUsSection from "@/components/WhyUsSection";
 import ProcessSection from "@/components/ProcessSection";
+import GuaranteesSection from "@/components/GuaranteesSection";
 import { beforeAfterGallery, services, siteConfig } from "@/lib/site-data";
 import { getFaqSchema } from "@/lib/structured-data";
 
@@ -196,6 +197,8 @@ export default function Home() {
       <GoogleReviewsSection />
 
       <ProcessSection />
+
+      <GuaranteesSection />
 
       <FaqSection />
 

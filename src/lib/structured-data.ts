@@ -116,6 +116,54 @@ export function getLocalBusinessSchema() {
   };
 }
 
+/**
+ * Nœud Organization autonome.
+ * La fiche entreprise porte déjà le type Organization par héritage, mais de
+ * nombreux outils et LLM ne savent pas lire un `@type` en tableau : un nœud
+ * explicite garantit que l'identité et le propriétaire du site sont reconnus.
+ */
+export function getOrganizationSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${siteConfig.url}/#organization`,
+    name: siteConfig.name,
+    legalName: legalMentions.companyName,
+    alternateName: "Propre Eclat",
+    description:
+      "Entreprise de nettoyage à Caen et alentours : bureaux et locaux professionnels, vitres, parties communes de copropriété et fin de chantier.",
+    url: siteConfig.url,
+    logo: {
+      "@type": "ImageObject",
+      url: `${siteConfig.url}/icon.png`,
+      caption: `Logo ${siteConfig.name}`,
+    },
+    image: `${siteConfig.url}/icon.png`,
+    email: siteConfig.email,
+    telephone: siteConfig.phoneHref.replace("tel:", ""),
+    foundingDate: siteConfig.foundingYear,
+    vatID: legalMentions.vatNumber,
+    taxID: legalMentions.siret,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "7 rue des Prémontrés",
+      addressLocality: "Saint-Germain-la-Blanche-Herbe",
+      postalCode: "14280",
+      addressRegion: siteConfig.region,
+      addressCountry: siteConfig.country,
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer service",
+      telephone: siteConfig.phoneHref.replace("tel:", ""),
+      email: siteConfig.email,
+      areaServed: "FR",
+      availableLanguage: ["French"],
+    },
+    sameAs: [siteConfig.facebookUrl, siteConfig.googleReviewsUrl],
+  };
+}
+
 export function getWebSiteSchema() {
   return {
     "@context": "https://schema.org",
@@ -125,6 +173,8 @@ export function getWebSiteSchema() {
     name: siteConfig.name,
     inLanguage: "fr-FR",
     publisher: { "@id": `${siteConfig.url}/#business` },
+    // Fraîcheur du contenu : renseignée à chaque publication du site
+    dateModified: new Date().toISOString().slice(0, 10),
   };
 }
 

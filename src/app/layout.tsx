@@ -6,7 +6,11 @@ import MobileCtaBar from "@/components/MobileCtaBar";
 import ScrollToTop from "@/components/ScrollToTop";
 import JsonLd from "@/components/JsonLd";
 import { siteConfig } from "@/lib/site-data";
-import { getLocalBusinessSchema, getWebSiteSchema } from "@/lib/structured-data";
+import {
+  getLocalBusinessSchema,
+  getOrganizationSchema,
+  getWebSiteSchema,
+} from "@/lib/structured-data";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -64,7 +68,13 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-cream pb-[68px] text-[var(--foreground)] md:pb-0">
-        <JsonLd data={[getLocalBusinessSchema(), getWebSiteSchema()]} />
+        <JsonLd
+          data={[
+            getOrganizationSchema(),
+            getLocalBusinessSchema(),
+            getWebSiteSchema(),
+          ]}
+        />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
