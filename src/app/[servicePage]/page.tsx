@@ -244,7 +244,9 @@ export default async function ServiceLandingPage({
           <div className="mx-auto max-w-4xl px-6">
             <Reveal>
               <h2 className="text-3xl font-bold text-navy">
-                <SparkleHeading>Cahier des charges</SparkleHeading>
+                <SparkleHeading>
+                  {content.cahierDesCharges.zonesTitle ?? "Cahier des charges"}
+                </SparkleHeading>
               </h2>
               <p className="mt-4 leading-relaxed text-navy/75">
                 {content.cahierDesCharges.intro}
@@ -281,20 +283,30 @@ export default async function ServiceLandingPage({
             {/* Prestations périodiques */}
             <Reveal>
               <h3 className="mt-14 text-2xl font-bold text-navy">
-                Prestations périodiques
+                {content.cahierDesCharges.periodiquesTitle ?? "Prestations périodiques"}
               </h3>
               <p className="mt-2 text-navy/70">
-                À planifier dans le contrat d&apos;entretien annuel, en complément
-                des passages réguliers.
+                {content.cahierDesCharges.periodiquesIntro ??
+                  "À planifier dans le contrat d'entretien annuel, en complément des passages réguliers."}
               </p>
             </Reveal>
             <div className="mt-6 overflow-x-auto">
               <table className="w-full min-w-[540px] border-collapse text-left text-sm">
                 <thead>
                   <tr className="border-b border-navy/15">
-                    <th scope="col" className="py-3 pr-4 font-semibold text-navy">Prestation</th>
-                    <th scope="col" className="py-3 pr-4 font-semibold text-navy">Fréquence</th>
-                    <th scope="col" className="py-3 font-semibold text-navy">Détail</th>
+                    {(content.cahierDesCharges.periodiquesColumns ?? [
+                      "Prestation",
+                      "Fréquence",
+                      "Détail",
+                    ]).map((col, i) => (
+                      <th
+                        key={col}
+                        scope="col"
+                        className={`py-3 font-semibold text-navy${i < 2 ? " pr-4" : ""}`}
+                      >
+                        {col}
+                      </th>
+                    ))}
                   </tr>
                 </thead>
                 <tbody>
@@ -313,7 +325,8 @@ export default async function ServiceLandingPage({
             <Reveal>
               <div className="mt-12 rounded-2xl bg-cream-alt p-6 sm:p-8">
                 <h3 className="text-xl font-semibold text-navy">
-                  Nos engagements auprès du syndic et du conseil syndical
+                  {content.cahierDesCharges.engagementsTitle ??
+                    "Nos engagements auprès du syndic et du conseil syndical"}
                 </h3>
                 <ul className="mt-4 grid gap-3 sm:grid-cols-2">
                   {content.cahierDesCharges.engagements.map((e) => (

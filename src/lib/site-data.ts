@@ -113,8 +113,14 @@ export const servicePages: Record<
     /** Cahier des charges détaillé (pages destinées aux prescripteurs : syndics, gestionnaires) */
     cahierDesCharges?: {
       intro: string;
+      /** Intitulés adaptables selon le métier (entretien récurrent vs chantier ponctuel) */
+      zonesTitle?: string;
       zones: { zone: string; frequence: string; taches: string[] }[];
+      periodiquesTitle?: string;
+      periodiquesIntro?: string;
+      periodiquesColumns?: [string, string, string];
       periodiques: { prestation: string; frequence: string; detail: string }[];
+      engagementsTitle?: string;
       engagements: string[];
     };
   }
@@ -294,10 +300,10 @@ export const servicePages: Record<
   },
   "nettoyage-fin-de-chantier": {
     h1: "Nettoyage de fin de chantier à Caen",
-    metaTitle: "Nettoyage de fin de chantier à Caen | Propre Éclat",
+    metaTitle: "Nettoyage fin de chantier à Caen — après travaux | Propre Éclat",
     metaDescription:
-      "Remise en état après travaux à Caen : poussière, résidus, traces éliminés. Un chantier propre et prêt à l'emploi. Devis gratuit au 07 68 12 93 19.",
-    lead: "Après des travaux, il reste toujours poussière, résidus et traces. Propre Éclat réalise le nettoyage de fin de chantier à Caen pour vous livrer un espace impeccable, prêt à être habité ou utilisé.",
+      "Nettoyage de fin de chantier à Caen : 3 phases, de l'évacuation des gravats à la remise des clés. Pour artisans, promoteurs et particuliers. Devis gratuit.",
+    lead: "Après des travaux, il reste toujours la poussière fine, les projections de peinture et la laitance de ciment — ce que le chantier laisse derrière lui décide de l'impression finale. Propre Éclat réalise le nettoyage de fin de chantier à Caen et dans un rayon de 20 km, en trois phases, pour livrer un bien immédiatement habitable le jour de la réception des travaux.",
     included: [
       "Élimination des poussières fines sur toutes les surfaces",
       "Décollage des résidus (peinture, colle, plâtre, adhésifs)",
@@ -307,16 +313,106 @@ export const servicePages: Record<
     ],
     forWho:
       "Pour les particuliers en fin de rénovation, les artisans du bâtiment et les professionnels qui doivent livrer ou récupérer un chantier propre à Caen et dans un rayon de 20 km.",
+    cahierDesCharges: {
+      intro:
+        "Le nettoyage de fin de chantier ne se résume pas à un coup de balai : c'est la dernière étape avant la réception des travaux, celle qui révèle la qualité de l'ouvrage. Propre Éclat intervient à Caen et dans un rayon de 20 km pour les artisans du bâtiment, maîtres d'œuvre, promoteurs, agences immobilières et particuliers en fin de rénovation. Ce cahier des charges détaille nos trois phases d'intervention et les postes traités, pour livrer un bien immédiatement habitable.",
+      zonesTitle: "Nos trois phases d'intervention",
+      zones: [
+        {
+          zone: "Phase 1 — Nettoyage grossier",
+          frequence: "Dès la fin des travaux lourds",
+          taches: [
+            "Évacuation des gravats, chutes de matériaux et emballages laissés sur place",
+            "Retrait des protections de sol, bâches et rubans de masquage",
+            "Balayage et aspiration industrielle des grosses poussières et débris",
+            "Dégagement des accès, circulations et zones de stockage",
+            "Tri et mise en benne des déchets valorisables selon les consignes du chantier",
+          ],
+        },
+        {
+          zone: "Phase 2 — Nettoyage fin de chantier",
+          frequence: "Cœur de l'intervention",
+          taches: [
+            "Dépoussiérage complet des surfaces hautes et basses : plafonds, murs, plinthes, radiateurs",
+            "Élimination de la poussière fine, celle qui reste en suspension et se redépose après coup",
+            "Décollage des projections de peinture, enduit, plâtre, colle et silicone",
+            "Traitement de la laitance de ciment sur carrelage et sols durs",
+            "Retrait des films de protection, étiquettes et adhésifs sur menuiseries et vitrages",
+            "Nettoyage des rails, seuils, feuillures et gorges de menuiseries",
+          ],
+        },
+        {
+          zone: "Phase 3 — Nettoyage de livraison",
+          frequence: "Juste avant la remise des clés",
+          taches: [
+            "Lavage des sols avec le produit adapté au revêtement (carrelage, parquet, béton ciré, PVC, vinyle)",
+            "Sanitaires et cuisines : retrait des protections, détartrage, robinetterie, joints et silicone",
+            "Vitrerie intérieure et extérieure sans traces, encadrements compris",
+            "Interrupteurs, prises, luminaires, bouches de VMC et grilles d'aération",
+            "Placards, tiroirs et rangements nettoyés intérieur et extérieur",
+            "Contrôle final poste par poste avant remise des clés",
+          ],
+        },
+      ],
+      periodiquesTitle: "Prestations complémentaires",
+      periodiquesIntro:
+        "À ajouter au devis selon la configuration du chantier et le niveau de finition attendu.",
+      periodiquesColumns: ["Prestation", "Quand", "Détail"],
+      periodiques: [
+        {
+          prestation: "Nettoyage des abords et extérieurs",
+          frequence: "En fin de phase 3",
+          detail:
+            "Terrasses, balcons, allées et parkings : retrait des projections, nettoyage haute pression des dalles et pavés.",
+        },
+        {
+          prestation: "Remise en état après dégât",
+          frequence: "Sur devis spécifique",
+          detail:
+            "Intervention après dégât des eaux ou sinistre léger : assèchement de surface, désinfection, traitement des odeurs.",
+        },
+        {
+          prestation: "Nettoyage avant état des lieux",
+          frequence: "Location et vente",
+          detail:
+            "Remise en état d'un logement avant état des lieux de sortie, visite ou mise en vente, pour éviter les retenues sur dépôt de garantie.",
+        },
+      ],
+      engagementsTitle: "Nos engagements envers les professionnels du bâtiment",
+      engagements: [
+        "Intervention calée sur votre planning de réception de travaux",
+        "Coordination directe avec le maître d'œuvre ou le conducteur de travaux",
+        "Devis détaillé par phase et par poste, sans engagement",
+        "Personnel assuré en responsabilité civile professionnelle",
+        "Retouche gratuite si une réserve est levée sur notre prestation",
+        "Intervention possible en soirée ou le week-end pour tenir une date de livraison",
+      ],
+    },
     faq: [
       {
-        question: "Intervenez-vous juste avant la livraison du chantier ?",
+        question: "Intervenez-vous juste avant la réception des travaux à Caen ?",
         answer:
-          "Oui, nous intervenons en fin de chantier, une fois les travaux terminés, pour livrer un espace propre et prêt à l'emploi. Prévenez-nous quelques jours à l'avance pour caler l'intervention.",
+          "Oui. Nous calons notre intervention sur votre planning de livraison et pouvons travailler en soirée ou le week-end pour tenir une date de réception. Prévenez-nous quelques jours à l'avance pour réserver le créneau.",
       },
       {
-        question: "Enlevez-vous les traces de peinture et de colle ?",
+        question: "Enlevez-vous la laitance de ciment et les projections de peinture ?",
         answer:
-          "Oui, le nettoyage de fin de chantier comprend le retrait des résidus de peinture, colle, plâtre et adhésifs sur les vitres, sols et surfaces, avec un matériel adapté à chaque support.",
+          "Oui, c'est le cœur du métier. Nous traitons la laitance de ciment sur carrelage et sols durs, décollons les projections de peinture, d'enduit, de plâtre, la colle et le silicone, et retirons les films de protection et étiquettes sur les menuiseries et vitrages neufs.",
+      },
+      {
+        question: "Travaillez-vous avec les artisans du bâtiment et les promoteurs ?",
+        answer:
+          "Oui. Nous intervenons pour les artisans, maîtres d'œuvre, conducteurs de travaux, promoteurs et agences immobilières de Caen et des communes voisines. Le devis est détaillé par phase et par poste, ce qui permet de l'intégrer directement au budget du chantier.",
+      },
+      {
+        question: "Que se passe-t-il si une réserve est émise sur votre prestation ?",
+        answer:
+          "Nous revenons gratuitement lever la réserve. Un contrôle final poste par poste est réalisé avant la remise des clés, précisément pour éviter ce cas de figure.",
+      },
+      {
+        question: "Combien de temps faut-il pour nettoyer un chantier ?",
+        answer:
+          "Cela dépend de la surface et de l'état des lieux. Comptez généralement une journée pour un appartement de 60 à 80 m² en fin de rénovation, davantage si l'évacuation des gravats est comprise. Nous vous donnons une estimation précise lors du devis.",
       },
     ],
   },
