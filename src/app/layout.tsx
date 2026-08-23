@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MobileCtaBar from "@/components/MobileCtaBar";
+import ScrollToTop from "@/components/ScrollToTop";
 import JsonLd from "@/components/JsonLd";
 import { siteConfig } from "@/lib/site-data";
 import { getLocalBusinessSchema, getWebSiteSchema } from "@/lib/structured-data";
@@ -68,6 +69,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <MobileCtaBar />
+        <ScrollToTop />
       </body>
     </html>
   );
