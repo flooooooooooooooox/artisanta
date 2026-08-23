@@ -38,8 +38,8 @@ export const siteConfig = {
     "Épron",
     "Douvres-la-Délivrande",
   ],
-  // URL de production — à mettre à jour dès que le nom de domaine définitif est connu
-  url: "https://artisant-silk.vercel.app",
+  // URL de production (domaine definitif)
+  url: "https://www.propre-eclat.fr",
   // Note moyenne affichée sur la fiche Google (reviewCount à compléter si connu)
   googleRating: 4.8,
   googleReviewCount: null as number | null,
