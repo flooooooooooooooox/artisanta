@@ -16,7 +16,7 @@ export function getLocalBusinessSchema() {
 
   return {
     "@context": "https://schema.org",
-    "@type": "CleaningService",
+    "@type": ["CleaningService", "LocalBusiness", "Organization"],
     "@id": `${siteConfig.url}/#business`,
     name: siteConfig.name,
     description:

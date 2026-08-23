@@ -19,6 +19,8 @@ export default function TestimonialsCarousel({
         {loop.map((testimonial, i) => (
           <div
             key={`${testimonial.name}-${i}`}
+            // Copie de boucle : pas relue par les lecteurs d'écran
+            aria-hidden={i >= testimonials.length}
             className="mr-6 w-[300px] shrink-0 sm:w-[360px]"
           >
             <TestimonialCard {...testimonial} />

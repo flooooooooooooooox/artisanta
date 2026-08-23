@@ -118,6 +118,9 @@ export default function RealisationsCarousel({ items }: { items: Item[] }) {
           <div
             key={`${item.title}-${i}`}
             data-card
+            // Les 2 copies suivantes ne servent qu'à la boucle infinie : on les
+            // masque aux lecteurs d'écran et on évite de répéter le contenu.
+            aria-hidden={i >= items.length}
             className="w-[280px] shrink-0 sm:w-[340px]"
           >
             <BeforeAfterCard
