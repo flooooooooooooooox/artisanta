@@ -110,6 +110,13 @@ export const servicePages: Record<
     forWho: string;
     faq: { question: string; answer: string }[];
     photo?: { src: string; alt: string };
+    /** Cahier des charges détaillé (pages destinées aux prescripteurs : syndics, gestionnaires) */
+    cahierDesCharges?: {
+      intro: string;
+      zones: { zone: string; frequence: string; taches: string[] }[];
+      periodiques: { prestation: string; frequence: string; detail: string }[];
+      engagements: string[];
+    };
   }
 > = {
   "nettoyage-vitres": {
@@ -178,10 +185,10 @@ export const servicePages: Record<
   },
   "nettoyage-copropriete": {
     h1: "Nettoyage de copropriété à Caen",
-    metaTitle: "Nettoyage de copropriété et parties communes à Caen | Propre Éclat",
+    metaTitle: "Nettoyage parties communes copropriété Caen | Propre Éclat",
     metaDescription:
-      "Entretien des parties communes d'immeubles à Caen : halls, escaliers, ascenseurs, abords. Pour syndics et gestionnaires. Devis gratuit au 07 68 12 93 19.",
-    lead: "Des parties communes bien entretenues valorisent l'immeuble et le confort des résidents. Propre Éclat assure le nettoyage des copropriétés à Caen et alentours, avec régularité et rigueur, pour les syndics et gestionnaires.",
+      "Nettoyage des parties communes de copropriété à Caen : cahier des charges détaillé pour syndics et conseils syndicaux, rotation des bacs Caen la Mer. Devis gratuit.",
+    lead: "Des parties communes bien entretenues valorisent l'immeuble, rassurent les copropriétaires et limitent les réclamations en assemblée générale. Propre Éclat accompagne les syndics de copropriété et les conseils syndicaux de Caen et des communes voisines avec un cahier des charges clair et un contrat d'entretien annuel adapté à chaque résidence.",
     photo: {
       src: "/images/equipe/agent-sol-couloir.webp",
       alt: "Agent Propre Éclat lustrant le sol d'un hall d'immeuble à Caen",
@@ -195,16 +202,93 @@ export const servicePages: Record<
     ],
     forWho:
       "Pour les syndics de copropriété, bailleurs et gestionnaires d'immeubles de Caen qui recherchent un prestataire fiable et régulier pour l'entretien des parties communes.",
+    cahierDesCharges: {
+      intro:
+        "Ce cahier des charges détaille, zone par zone, les prestations que Propre Éclat assure dans les parties communes d'immeubles à Caen et dans un rayon de 20 km. Il sert de base de travail aux syndics de copropriété et aux conseils syndicaux pour comparer les offres et bâtir un contrat d'entretien annuel adapté à la résidence. Chaque fréquence est ajustable selon la taille de l'immeuble, le nombre de lots et le niveau de passage.",
+      zones: [
+        {
+          zone: "Halls d'entrée et paliers",
+          frequence: "1 à 3 passages par semaine",
+          taches: [
+            "Aspiration des sols, tapis de sol et paillassons d'entrée",
+            "Lavage humide des sols avec produit adapté au revêtement (carrelage, marbre, béton ciré, moquette)",
+            "Vitrerie des portes d'accès, sas d'entrée et impostes",
+            "Désinfection des points de contact : blocs de boîtes aux lettres, interphones, digicodes, poignées et boutons d'appel",
+            "Dépoussiérage des plinthes, tableaux d'affichage et extincteurs",
+            "Enlèvement des prospectus et papiers laissés dans le hall",
+          ],
+        },
+        {
+          zone: "Escaliers et ascenseurs",
+          frequence: "1 à 3 passages par semaine",
+          taches: [
+            "Balayage humide puis lavage des marches, contremarches et paliers intermédiaires",
+            "Essuyage désinfectant des rampes et mains courantes sur toute la hauteur",
+            "Nettoyage complet de la cabine d'ascenseur : parois inox, miroirs, sol et plafond",
+            "Nettoyage des rainures de portes palières (point souvent négligé, source de pannes)",
+            "Dépoussiérage des luminaires et détecteurs de présence",
+          ],
+        },
+        {
+          zone: "Local poubelles et rotation des bacs roulants",
+          frequence: "Synchronisée avec le calendrier de collecte Caen la Mer",
+          taches: [
+            "Sortie et rentrée des containers et bacs roulants : ordures ménagères et tri sélectif",
+            "Respect strict du calendrier de collecte de la communauté urbaine Caen la Mer",
+            "Désinfection du local poubelles et traitement odorant (rémanence longue durée)",
+            "Lavage haute pression des bacs, intérieur et extérieur",
+            "Nettoyage des abords, dégagement des encombrants signalés au syndic",
+          ],
+        },
+      ],
+      periodiques: [
+        {
+          prestation: "Vitrerie complète des communs",
+          frequence: "Trimestrielle",
+          detail:
+            "Vitrages des cages d'escalier, coursives, fenêtres de paliers et verrières, intérieur et extérieur, encadrements et rebords compris.",
+        },
+        {
+          prestation: "Dépoussiérage des réseaux de canalisations",
+          frequence: "Annuelle",
+          detail:
+            "Dépoussiérage des canalisations apparentes, gaines techniques et réseaux en sous-sol et parking, avec compte rendu au conseil syndical.",
+        },
+        {
+          prestation: "Relamping de courtoisie",
+          frequence: "En option, au fil des passages",
+          detail:
+            "Remplacement des ampoules grillées des parties communes lors de nos interventions, sur fourniture de la copropriété : un détail qui évite bien des réclamations.",
+        },
+      ],
+      engagements: [
+        "Un interlocuteur unique pour le syndic et le conseil syndical",
+        "Cahier de passage tenu à jour et consultable dans l'immeuble",
+        "Personnel identifiable, assuré en responsabilité civile professionnelle",
+        "Devis détaillé poste par poste, sans engagement, pour le contrat d'entretien annuel",
+        "Remplacement assuré en cas d'absence : aucune interruption de service",
+      ],
+    },
     faq: [
       {
-        question: "Travaillez-vous avec les syndics et gestionnaires à Caen ?",
+        question: "Travaillez-vous avec les syndics de copropriété à Caen ?",
         answer:
-          "Oui, nous accompagnons les syndics, bailleurs et gestionnaires d'immeubles avec des contrats d'entretien réguliers des parties communes, adaptés à chaque copropriété.",
+          "Oui. Nous intervenons pour les syndics de copropriété, les conseils syndicaux, les bailleurs et les gestionnaires d'immeubles de Caen et des communes voisines. Nous remettons un cahier des charges détaillé et un devis poste par poste, qui sert de base au contrat d'entretien annuel présenté en assemblée générale.",
       },
       {
-        question: "Gérez-vous la sortie des poubelles ?",
+        question: "Assurez-vous la rotation des bacs roulants selon le calendrier Caen la Mer ?",
         answer:
-          "Sur demande, nous prenons en charge la sortie et la rentrée des conteneurs selon le calendrier de collecte de la commune, en complément du nettoyage des parties communes.",
+          "Oui. Nous synchronisons la sortie et la rentrée des containers d'ordures ménagères et de tri sélectif avec le calendrier de collecte de Caen la Mer. Nous assurons également la désinfection du local poubelles, son traitement odorant et le lavage haute pression des bacs.",
+      },
+      {
+        question: "À quelle fréquence faut-il nettoyer les parties communes d'un immeuble ?",
+        answer:
+          "Tout dépend du nombre de lots et du passage. Pour une petite copropriété, un passage hebdomadaire suffit généralement. Pour une résidence de standing ou un immeuble à fort passage, nous recommandons 2 à 3 passages par semaine, complétés par la vitrerie trimestrielle des communs.",
+      },
+      {
+        question: "La désinfection des points de contact est-elle comprise ?",
+        answer:
+          "Oui, elle fait partie de chaque passage : interphones, digicodes, blocs de boîtes aux lettres, poignées, rampes et boutons d'ascenseur. C'est un poste explicitement mentionné dans notre cahier des charges.",
       },
     ],
   },

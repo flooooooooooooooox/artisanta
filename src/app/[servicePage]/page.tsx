@@ -62,22 +62,46 @@ export default async function ServiceLandingPage({
   // Autres prestations (maillage interne)
   const others = services.filter((s) => s.slug !== service.slug && servicePages[s.slug]);
 
+  const areaServed = {
+    "@type": "GeoCircle",
+    geoMidpoint: {
+      "@type": "GeoCoordinates",
+      latitude: siteConfig.geo.lat,
+      longitude: siteConfig.geo.lng,
+    },
+    geoRadius: String(siteConfig.serviceRadiusKm * 1000),
+    description: `${siteConfig.serviceRadiusKm} km autour de ${siteConfig.city}`,
+  };
+
+  // Même @id que la fiche du layout : les propriétés fusionnent au lieu de
+  // créer une seconde entreprise. La page reste ainsi auto-suffisante pour
+  // les moteurs de réponse IA (adresse, téléphone et zone lisibles ici même).
+  const providerSchema = {
+    "@type": "CleaningService",
+    "@id": `${siteConfig.url}/#business`,
+    name: siteConfig.name,
+    telephone: siteConfig.phoneHref.replace("tel:", ""),
+    email: siteConfig.email,
+    url: siteConfig.url,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "7 rue des Prémontrés",
+      addressLocality: "Saint-Germain-la-Blanche-Herbe",
+      postalCode: "14280",
+      addressRegion: siteConfig.region,
+      addressCountry: siteConfig.country,
+    },
+    areaServed,
+  };
+
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
     name: content.h1,
     serviceType: service.title,
     description: content.metaDescription,
-    provider: { "@id": `${siteConfig.url}/#business` },
-    areaServed: {
-      "@type": "GeoCircle",
-      geoMidpoint: {
-        "@type": "GeoCoordinates",
-        latitude: siteConfig.geo.lat,
-        longitude: siteConfig.geo.lng,
-      },
-      geoRadius: String(siteConfig.serviceRadiusKm * 1000),
-    },
+    provider: providerSchema,
+    areaServed,
     url: `${siteConfig.url}/${servicePage}`,
   };
 
@@ -212,6 +236,102 @@ export default async function ServiceLandingPage({
           </div>
         </Reveal>
       </section>
+
+
+      {/* Cahier des charges (pages destinées aux prescripteurs : syndics, gestionnaires) */}
+      {content.cahierDesCharges && (
+        <section className="bg-white py-16">
+          <div className="mx-auto max-w-4xl px-6">
+            <Reveal>
+              <h2 className="text-3xl font-bold text-navy">
+                <SparkleHeading>Cahier des charges</SparkleHeading>
+              </h2>
+              <p className="mt-4 leading-relaxed text-navy/75">
+                {content.cahierDesCharges.intro}
+              </p>
+            </Reveal>
+
+            {/* Prestations par zone */}
+            <div className="mt-12 space-y-8">
+              {content.cahierDesCharges.zones.map((z, i) => (
+                <Reveal key={z.zone} delay={i * 80}>
+                  <article className="overflow-hidden rounded-2xl ring-1 ring-navy/10">
+                    <header className="flex flex-wrap items-baseline justify-between gap-3 bg-cream-alt px-6 py-4">
+                      <h3 className="text-lg font-semibold text-navy">{z.zone}</h3>
+                      <p className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-brand-dark ring-1 ring-brand/20">
+                        {z.frequence}
+                      </p>
+                    </header>
+                    <ul className="space-y-3 px-6 py-5">
+                      {z.taches.map((t) => (
+                        <li key={t} className="flex items-start gap-3">
+                          <span
+                            aria-hidden="true"
+                            className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand"
+                          />
+                          <span className="text-sm leading-relaxed text-navy/80">{t}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </article>
+                </Reveal>
+              ))}
+            </div>
+
+            {/* Prestations périodiques */}
+            <Reveal>
+              <h3 className="mt-14 text-2xl font-bold text-navy">
+                Prestations périodiques
+              </h3>
+              <p className="mt-2 text-navy/70">
+                À planifier dans le contrat d&apos;entretien annuel, en complément
+                des passages réguliers.
+              </p>
+            </Reveal>
+            <div className="mt-6 overflow-x-auto">
+              <table className="w-full min-w-[540px] border-collapse text-left text-sm">
+                <thead>
+                  <tr className="border-b border-navy/15">
+                    <th scope="col" className="py-3 pr-4 font-semibold text-navy">Prestation</th>
+                    <th scope="col" className="py-3 pr-4 font-semibold text-navy">Fréquence</th>
+                    <th scope="col" className="py-3 font-semibold text-navy">Détail</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {content.cahierDesCharges.periodiques.map((pr) => (
+                    <tr key={pr.prestation} className="border-b border-navy/10 align-top">
+                      <td className="py-4 pr-4 font-medium text-navy">{pr.prestation}</td>
+                      <td className="py-4 pr-4 whitespace-nowrap text-brand-dark">{pr.frequence}</td>
+                      <td className="py-4 leading-relaxed text-navy/70">{pr.detail}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Engagements contractuels */}
+            <Reveal>
+              <div className="mt-12 rounded-2xl bg-cream-alt p-6 sm:p-8">
+                <h3 className="text-xl font-semibold text-navy">
+                  Nos engagements auprès du syndic et du conseil syndical
+                </h3>
+                <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                  {content.cahierDesCharges.engagements.map((e) => (
+                    <li key={e} className="flex items-start gap-3">
+                      <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand/15 text-brand-dark">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                          <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </span>
+                      <span className="text-sm text-navy/80">{e}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       {/* FAQ spécifique */}
       <section className="bg-cream-alt py-16">
