@@ -43,8 +43,7 @@ export const siteConfig = {
   // Note moyenne affichée sur la fiche Google (reviewCount à compléter si connu)
   googleRating: 4.8,
   googleReviewCount: null as number | null,
-  facebookUrl:
-    "https://www.facebook.com/p/La-touche-brico-et-Propre-Eclat-services-100064082501529/",
+  facebookUrl: "https://www.facebook.com/PropreEclat.fr/",
   googleReviewsUrl:
     "https://www.google.com/search?sa=X&sca_esv=9a055b7939c8dc0b&hl=fr-FR&sxsrf=APpeQnuOEFcBMERQ-aPknSLoohdzAXknnA:1783983854821&q=Propre+Eclat+Avis&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxI2NjcyMzE2MzIzNja3NDUxNjA13MDI-IpRMKAov6AoVcE1OSexRMGxLLN4ESumGADk2IVuQgAAAA&rldimm=3726436263379543051&tbm=lcl&ved=2ahUKEwjumc7f4dCVAxX7TaQEHWd7OdgQ9fQKegQIRRAG&biw=1536&bih=730&dpr=1.25#lkt=LocalPoiReviews",
 };
