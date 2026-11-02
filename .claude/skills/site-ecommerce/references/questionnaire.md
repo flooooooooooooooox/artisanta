@@ -67,17 +67,19 @@ l'affichage des prix sur tout le site.
 - [ ] Avis clients
 - [ ] Blog / conseils (excellent pour le SEO du secteur)
 
-## 7 bis. Facturation ⚠️ BLOQUANT — à poser tôt
-- **Avec quel outil facture-t-il aujourd'hui ?** (Pennylane, Sellsy, Tiime, EBP, Excel…)
+## 7 bis. Outil de gestion et facturation ⚠️ BLOQUANT — à poser tôt
+- **Quel outil de gestion utilise-t-il ?** (Cirrion, Pennylane, Sellsy, Tiime, EBP, Excel…)
 - **Est-il raccordé à une plateforme agréée** (PA, anciennement PDP) ? C'est une obligation
   depuis le 1er septembre 2026 pour **recevoir** les factures électroniques.
+- Cet outil a-t-il une **API**, un **import de fichier**, ou rien du tout ?
+  → détermine le mode de passation (A / B / C dans `passation-gestion.md`)
 - Son comptable est-il au courant de la réforme ? Qui pilote le raccordement ?
-- Veut-il que la boutique génère les **devis** ? (oui en général — les devis ne sont pas
-  concernés par la réforme, contrairement aux factures)
+- **Qui informe le client de l'avancement de la livraison** : la boutique, ou l'outil
+  de gestion ? (par défaut : la boutique, via lien de suivi + emails)
 
-> La boutique n'émettra **pas** la facture légale : elle émet les devis et encaisse via
-> Stripe. Si le client n'a aucun outil de facturation raccordé, le signaler immédiatement —
-> c'est une démarche de son côté, à lancer en parallèle du développement.
+> La boutique n'émettra **pas** la facture légale : elle prépare le dossier et encaisse via
+> Stripe. Si le client n'a aucun outil raccordé, le signaler immédiatement — c'est une
+> démarche de son côté, à lancer en parallèle du développement.
 
 ## 8. Légal ⚠️ BLOQUANT avant publication
 Cf. `legal-ecommerce.md` pour le détail. À collecter :

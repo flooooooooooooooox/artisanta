@@ -29,7 +29,8 @@ Ce que j'ai déjà
 - Seuil de bascule devis/facture : [1 000 € HT / autre]
 - CGV : [oui / non]
 - Adhésion DEEE : [oui / non / à vérifier]
-- Outil de facturation : [Pennylane / Sellsy / Tiime / autre / aucun]
+- Outil de gestion / facturation : [Cirrion / Pennylane / Sellsy / autre / aucun]
+- Cet outil a-t-il une API ou un import de fichier : [oui / non / à vérifier]
 - Raccordé à une plateforme agréée (facturation électronique) : [oui / non / à vérifier]
 
 Stack imposée
@@ -44,23 +45,27 @@ Ce que j'attends
    - sous le seuil → panier + Stripe Checkout, paiement immédiat
    - au-dessus → « Confirmer ma demande d'achat » (pas « Commander », et la page précise
      qu'aucun paiement n'est prélevé) → enregistrement en base → email au vendeur →
-     le vendeur fixe le prix ferme et le délai dans l'admin → « Valider et envoyer le devis »
-     → le client accepte → facture émise depuis l'outil comptable du client →
-     encaissement par lien Stripe (CB ou virement SEPA) → webhook → commande confirmée.
-   La boutique émet les devis, PAS la facture légale : Stripe n'est pas une plateforme
-   agréée et une facture entre pros doit passer par une PA en format structuré.
-   Collecte le SIREN et l'adresse de livraison dès la demande (mentions obligatoires).
-   Pas d'espace client en v1 : les liens partent par email, transmissibles à la
-   comptabilité, depuis le domaine du client et pas depuis un Gmail.
-3. Les caractéristiques techniques sont structurées et comparables (largeur de travail,
+     le vendeur fixe le prix ferme et le délai dans l'admin → bouton « Préparer pour
+     Cirrion » → Cirrion émet le devis et la facture → encaissement par lien Stripe
+     (CB ou virement SEPA) → webhook → commande confirmée → suivi de livraison.
+3. La boutique ne fait PAS la facturation. Elle prépare un dossier complet (SIREN du client,
+   adresse de livraison, catégorie d'opération, lignes avec TVA, éco-participation, frais de
+   port) et Cirrion prend le relais : devis, facture, conformité, archivage. Écris la
+   passation derrière une interface d'adaptateur : mode « récapitulatif prêt à envoyer » en
+   v1, API plus tard si Cirrion en expose une. Ne recode jamais la facturation, ne génère
+   jamais de numéro de facture, ne recalcule jamais la TVA à côté de Cirrion.
+4. Suivi de livraison : page /suivi/[token] (jeton aléatoire, pas de compte — le lien doit
+   être transférable au comptable), email à chaque changement d'étape, récapitulatif PDF
+   téléchargeable. Emails depuis le domaine du client, pas depuis un Gmail.
+5. Les caractéristiques techniques sont structurées et comparables (largeur de travail,
    rendement m²/h, autonomie, capacités des réservoirs, alimentation, puissance, poids).
-4. N'invente aucune caractéristique, aucun délai, aucune garantie, aucun prix :
+6. N'invente aucune caractéristique, aucun délai, aucune garantie, aucun prix :
    mets [à compléter] et liste-le-moi.
-5. Légal bloquant avant publication : CGV, DEEE/éco-participation, prix HT ou TTC selon
+7. Légal bloquant avant publication : CGV, DEEE/éco-participation, prix HT ou TTC selon
    le public, pénalités de retard si B2B.
-6. SEO/GEO : fiches produit avec Schema Product/Offer, guides d'achat par surface,
+8. SEO/GEO : fiches produit avec Schema Product/Offer, guides d'achat par surface,
    /llms.txt, sitemap.
-7. Clés et identifiants uniquement en variables d'environnement.
+9. Clés et identifiants uniquement en variables d'environnement.
 
 Commence par le questionnaire. Ne code rien avant qu'on ait tranché le public
 (pro/particulier) et le mode d'administration.

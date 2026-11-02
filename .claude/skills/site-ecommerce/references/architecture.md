@@ -29,7 +29,7 @@ R2      → images produit, fiches techniques PDF
 | **Neon** | Postgres managé | Joignable par Vercel **et** par un admin privé — c'est la clé de voûte |
 | **Stripe Checkout** | Paiement immédiat sous le seuil | Page hébergée par Stripe → **aucune obligation PCI** à porter |
 | **Stripe Invoicing / Payment Links** | **Encaissement** au-dessus du seuil | Page de paiement hébergée, **virement SEPA**, relances d'impayés. ⚠️ Pas la facture légale : Stripe n'est pas une plateforme agréée |
-| **Outil comptable du client** (raccordé à une plateforme agréée) | **La facture légale** | Obligation française de facturation électronique — hors périmètre du site |
+| **Cirrion** (ERP du client, raccordé à une plateforme agréée) | **Devis, facture, TVA, conformité, archivage** | La boutique prépare le dossier, Cirrion prend le relais — cf. `passation-gestion.md` |
 | **Cloudflare R2** | Images + PDF | Pas de frais de sortie, compatible S3 |
 
 ## ⚠️ Vercel et Tailscale ne se combinent pas

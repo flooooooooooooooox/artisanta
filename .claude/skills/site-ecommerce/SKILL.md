@@ -26,7 +26,7 @@ Un **seuil configurable** (par défaut **1 000 € HT**) décide du parcours :
 | Montant | Parcours | Pourquoi |
 |---|---|---|
 | **Sous le seuil** (consommables, pièces, petits accessoires) | **Panier → Stripe Checkout**, paiement immédiat | Réassort, décision rapide, faible montant |
-| **Au-dessus du seuil** (machines) | **Demande d'achat → validation dans l'admin → devis → facture côté comptabilité → encaissement Stripe** | L'acheteur veut un prix ferme, un délai, une facture à faire payer par sa compta |
+| **Au-dessus du seuil** (machines) | **Demande d'achat → validation dans l'admin → dossier envoyé à Cirrion (devis + facture) → encaissement → suivi de livraison** | L'acheteur veut un prix ferme, un délai, une facture à faire payer par sa compta |
 
 **Aucun paiement par carte au-dessus du seuil.** Le bouton ne dit pas « Commander » mais
 **« Confirmer ma demande d'achat »**, et la page le précise : ce n'est pas une commande, c'est
@@ -38,6 +38,7 @@ une demande qui sera validée et chiffrée. Le parcours complet est détaillé d
 - `references/architecture.md` — la stack, les décisions techniques, ce qui marche et ce qui ne marche pas
 - `references/catalogue.md` — modèle de données produit (machines techniques, variantes, consommables)
 - `references/conversion-b2b.md` — parcours devis, tunnel d'achat, éléments de réassurance B2B
+- `references/passation-gestion.md` — passation à l'outil de gestion (Cirrion) et suivi de livraison
 - `references/legal-ecommerce.md` — **CGV, rétractation, DEEE, mentions B2B** (bloquant avant publication)
 - `references/seo-produit.md` — SEO et GEO des fiches produit (Schema Product, guides d'achat)
 - `references/prompt-demarrage.md` — le prompt à coller pour lancer un nouveau projet
@@ -76,14 +77,15 @@ et présentes dans les données structurées.
 ### 4. Construction
 1. Scaffold Next.js (App Router, TS, Tailwind). Lire `node_modules/next/dist/docs/` avant de coder.
 2. Payload : collections `products`, `categories`, `brands`, `quotes`, `orders`, `users`.
-3. Pages : accueil, catégories, **fiche produit**, comparateur, demande de devis, panier,
-   checkout, compte, légales.
+3. Pages : accueil, catégories, **fiche produit**, comparateur, demande d'achat, panier,
+   checkout, **suivi de livraison à jeton** (`/suivi/[token]`), légales.
 4. Stripe : **Checkout** sous le seuil, **lien de paiement / Invoicing** au-dessus, et un
    webhook qui traite `checkout.session.completed` **et** `invoice.paid`, de façon idempotente.
    Seuil vérifié côté serveur. Dans l'admin : écran de validation d'une demande d'achat
-   (prix ferme, délai, frais de port) avec un bouton « Valider et envoyer le devis ».
-5. R2 : adaptateur S3 pour images et PDF de fiches techniques.
-6. SEO/GEO complet (`seo-produit.md`).
+   (prix ferme, délai, frais de port) avec un bouton **« Préparer pour Cirrion »**.
+5. Suivi de livraison : page à jeton + email à chaque changement d'étape + récapitulatif PDF.
+6. R2 : adaptateur S3 pour images et PDF de fiches techniques.
+7. SEO/GEO complet (`seo-produit.md`).
 
 ### 5. Vérification
 `npx tsc --noEmit && npm run build`. Tester **les deux parcours bout en bout en mode test
@@ -108,8 +110,12 @@ en mode test puis en réel avant d'annoncer la mise en ligne.
   parcours au-dessus du seuil : le vendeur fixe le prix ferme avant que quoi que ce soit parte.
 - **La boutique n'émet pas la facture légale.** En France, une facture entre professionnels
   doit passer par une **plateforme agréée** en format structuré, et **Stripe n'en est pas une**.
-  La boutique émet les devis et encaisse ; la facture sort de l'outil comptable du client.
-  Collecter le **SIREN** et l'adresse de livraison dès la demande. Cf. `legal-ecommerce.md`.
+  La boutique capte la vente et prépare un dossier complet ; **l'outil de gestion du client
+  (Cirrion) émet le devis, la facture et porte la conformité**. Collecter le **SIREN**,
+  l'adresse de livraison et la catégorie d'opération dès la demande, pour que le dossier
+  parte complet du premier coup. Cf. `passation-gestion.md` et `legal-ecommerce.md`.
+- **Une donnée, une source de vérité** : jamais de numéro de facture ni de TVA recalculés
+  côté boutique à côté de l'outil de gestion.
 - **Ne jamais écrire « Commander »** sur une demande d'achat : juridiquement, une demande
   confirmée sans réserve peut s'analyser en commande ferme.
 - **Emails transactionnels depuis le domaine du client** (Resend ou Stripe), jamais depuis un

@@ -71,29 +71,26 @@ Statuts : `à valider` → `facture envoyée` → `payée` → `en préparation`
 > **Stripe n'est pas une plateforme agréée** et produit des PDF, pas des factures
 > structurées. Cf. `legal-ecommerce.md`.
 
-Répartition des rôles qui tient dans le temps :
+Répartition des rôles :
 
 | Qui | Fait quoi |
 |---|---|
-| **La boutique (Payload)** | Demande d'achat, validation, **devis** (les devis ne sont pas concernés par la réforme), suivi de commande |
-| **L'outil de facturation du client**, raccordé à une plateforme agréée | **La facture légale** |
-| **Stripe** | **L'encaissement** : lien de paiement, carte ou virement SEPA, et le webhook qui marque la commande payée |
+| **La boutique (Payload)** | Demande d'achat, validation par le vendeur, **dossier complet prêt à envoyer**, suivi de livraison |
+| **Cirrion** (ERP du client, raccordé à une plateforme agréée) | **Devis, facture, TVA, conformité, archivage** |
+| **Stripe** | **L'encaissement** : lien de paiement, carte ou virement SEPA, webhook qui marque la commande payée |
 
 Parcours concret :
-1. Le vendeur valide la demande dans l'admin → la boutique génère un **devis** PDF et l'envoie
-2. Le client accepte le devis
-3. Le vendeur émet la **facture depuis son outil comptable** (Pennylane, Sellsy, Tiime… —
-   raccordé à une plateforme agréée)
-4. Le paiement passe par un **lien Stripe** joint au devis ou à la facture
-5. Webhook Stripe → la commande passe en « payée » dans l'admin
+1. Le vendeur valide la demande dans l'admin : prix ferme, délai, frais de port
+2. Il clique **« Préparer pour Cirrion »** → le dossier part avec tous les champs remplis
+3. **Cirrion** émet le devis puis la facture et porte la conformité
+4. Le paiement passe par un **lien Stripe**
+5. Webhook Stripe → la commande passe en « payée » → suivi de livraison activé
 
-**Stripe Invoicing reste utilisable** comme page de paiement et pour les relances d'impayés,
-mais ce n'est **pas** la facture légale du client : ne pas construire le projet comme si
-c'était le cas.
+Le détail de la passation et du suivi de livraison est dans **`passation-gestion.md`**.
 
-> ⚠️ À vérifier au questionnaire : avec quel outil le client facture-t-il aujourd'hui, et
-> est-il raccordé à une plateforme agréée ? S'il ne l'est pas, c'est une démarche à faire de
-> son côté — ça ne se règle pas dans le code du site.
+> ⚠️ À vérifier au questionnaire : quel outil de gestion le client utilise-t-il, et est-il
+> raccordé à une plateforme agréée ? S'il n'a aucun outil, c'est une démarche de son côté —
+> ça ne se règle pas dans le code du site.
 
 ### 4. Le paiement — espace client ou email ?
 
@@ -111,6 +108,10 @@ transmis par email, lui, se forwarde et se paie en deux clics.
 | À développer | rien, Stripe le fait | comptes, mots de passe, RGPD, maintenance |
 | Relances impayés | automatiques (Stripe) | à coder |
 | PDF de facture | fourni | à générer |
+
+Même logique pour le **suivi de livraison** : un lien `/suivi/[token]` envoyé par email, pas
+un compte. Le client le transfère à son magasinier ou à son comptable sans partager de mot de
+passe. Cf. `passation-gestion.md`.
 
 L'espace client reste pertinent en **phase 2**, pour l'historique des commandes, le
 retéléchargement des factures et les fiches techniques du matériel acheté — c'est un service
