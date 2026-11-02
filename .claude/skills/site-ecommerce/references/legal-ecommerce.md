@@ -17,6 +17,31 @@
 Vendre aux deux publics = porter les deux régimes. Possible, mais les CGV doivent le dire
 explicitement et le site doit afficher HT **et** TTC.
 
+### Segmentation par gamme — la solution recommandée
+
+Plutôt que de porter la rétractation sur des machines lourdes, **réserver les machines aux
+professionnels** et ouvrir les consommables à tous :
+
+| Gamme | Public | Prix affiché | Rétractation |
+|---|---|---|---|
+| **Machines** | Professionnels uniquement | HT (TTC indicatif) | Non |
+| **Consommables, pièces, petit matériel** | Tous publics | **HT et TTC** | Oui pour les particuliers |
+
+Pourquoi : un retour de palette sur une machine à 8 000 € coûte plusieurs centaines d'euros
+de transport, et le vendeur doit reprendre un matériel potentiellement déjà utilisé.
+
+**Ce qu'il faut pour que la restriction tienne** — l'écrire ne suffit pas :
+- mention visible sur la fiche produit et en catégorie (« réservé aux professionnels »)
+- **SIREN obligatoire** dans le formulaire de demande d'achat
+- case à cocher : « Je déclare agir dans le cadre de mon activité professionnelle »
+- CGV qui distinguent explicitement les deux régimes
+
+> ⚠️ **Nuance à faire valider par un juriste** : le Code de la consommation étend certaines
+> protections (dont la rétractation) à un professionnel qui achète **hors de son domaine
+> d'activité principal** et emploie **5 salariés ou moins**. Un artisan peintre qui achète
+> une autolaveuse peut entrer dans ce cas. La restriction « réservé aux pros » réduit
+> fortement le risque, elle ne l'annule pas complètement.
+
 > 🔴 L'erreur la plus fréquente du secteur : un site « pro » qui affiche du HT et vend en
 > réalité à des particuliers. En cas de contrôle DGCCRF, c'est une infraction.
 

@@ -37,32 +37,47 @@ conditions de règlement · note interne
 Ces champs ne sont pas décoratifs : ce sont les **mentions obligatoires** de la facture
 (cf. `legal-ecommerce.md`). Les collecter au formulaire, c'est éviter un aller-retour par vente.
 
-## Le bouton « Préparer pour Cirrion »
+## L'espace vendeur et le bouton d'envoi
 
-Dans l'admin, sur une demande validée. Trois modes, par ordre de préférence :
-
-| Mode | Comment | Quand |
-|---|---|---|
-| **A — API** | Un bouton, un appel, la référence Cirrion revient et se stocke | si Cirrion expose une API |
-| **B — Export structuré** | JSON / CSV / Factur-X téléchargé, importé dans Cirrion | si Cirrion sait importer |
-| **C — Récapitulatif prêt à envoyer** | Bloc formaté, copiable en un clic, ou message prêt pour **WhatsApp** (Cirrion crée des devis depuis WhatsApp) | toujours possible, aucun prérequis |
-
-> ⚠️ **Aucune API Cirrion publiquement documentée à ce jour.** Ne pas promettre au client un
-> « envoi en un clic » avant d'avoir la réponse de leur support. Partir du **mode C**, qui
-> fonctionne de toute façon, et garder la porte ouverte.
-
-**Écrire la passation derrière une interface**, pour que passer de C à A soit un adaptateur
-à écrire, pas le projet à refaire :
+La commande arrive dans l'espace du vendeur, et **un seul bouton l'envoie à Cirrion**.
 
 ```ts
 interface GestionAdapter {
-  prepare(quote: Quote): DossierGestion;        // mise en forme des champs
-  send?(dossier: DossierGestion): Promise<{ externalRef: string }>;  // mode A seulement
+  prepare(quote: Quote): DossierGestion;                             // mise en forme
+  send(dossier: DossierGestion): Promise<{ externalRef: string }>;   // appel API
 }
 ```
 
-Statut `passation`: `a-preparer` → `envoye-a-cirrion` → `facture-emise`.
-Le vendeur ressaisit la référence Cirrion (mode B/C) ou elle revient de l'API (mode A).
+Garder l'adaptateur même avec une API maîtrisée : il isole le format d'échange du reste du
+code, et c'est ce qui permet de faire évoluer Cirrion sans toucher la boutique.
+
+Statut `passation` : `a-preparer` → `envoye` → `accepte` → `facture-emise`.
+
+**L'appel doit être rejouable.** Si Cirrion ne répond pas, la commande ne doit ni être perdue
+ni partir en double : identifiant d'idempotence côté Cirrion, et un bouton « renvoyer » visible
+dans l'espace vendeur plutôt qu'un échec silencieux.
+
+### Le délai d'acceptation
+Quand le PDF annonce un **temps d'acceptation** au client, le compteur part au moment de la
+commande, pas au moment où le vendeur se connecte. Deux conséquences :
+
+1. **La commande part vers Cirrion dès la validation du client**, en statut « en attente
+   d'acceptation » — le dossier existe côté Cirrion avant toute intervention humaine.
+2. Le clic du vendeur **fait passer le dossier en « accepté »**. Le temps d'acceptation est
+   l'écart entre les deux horodatages, et il est mesuré, pas déclaré.
+
+Afficher le délai restant dans l'espace vendeur : s'il s'engage sous 24 h, il doit voir à
+quelle heure l'échéance tombe.
+
+### Où vit cet espace
+Le vendeur a besoin d'un accès **public avec mot de passe** : il ne sera jamais sur un tailnet.
+
+- **Un seul Payload sur Vercel, avec des rôles** est la solution la plus simple : rôle
+  `admin` (catalogue + commandes) et rôle `vendeur` (commandes uniquement). C'est de la
+  configuration, pas du développement.
+- Monter un Payload privé derrière Tailscale **et** un second espace vendeur public avec sa
+  propre authentification, c'est deux bases de code et deux surfaces d'attaque pour protéger
+  un catalogue qui n'est pas secret. À éviter sauf raison précise.
 
 ## Le suivi de livraison côté client
 
@@ -94,4 +109,5 @@ intéresse l'acheteur.
 - ❌ Générer un numéro de facture côté boutique — il appartient à Cirrion
 - ❌ Recalculer la TVA des deux côtés : les montants divergeront
 - ❌ Un espace client avec mot de passe pour voir un suivi de livraison
-- ❌ Promettre une intégration API avant de l'avoir confirmée avec Cirrion
+- ❌ Faire partir le compteur du délai d'acceptation au clic du vendeur plutôt qu'à la commande
+- ❌ Un envoi vers Cirrion qui échoue en silence, sans trace ni bouton pour rejouer

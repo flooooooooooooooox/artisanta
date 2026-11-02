@@ -9,6 +9,12 @@ l'affichage des prix sur tout le site.
 - [ ] **Particuliers uniquement** (B2C) → prix **TTC**, **rétractation 14 jours obligatoire**,
       garantie légale de conformité, médiateur de la consommation
 - [ ] **Les deux** → afficher HT **et** TTC, et prévoir les deux régimes dans les CGV
+- [ ] **Segmenté** ⭐ → machines réservées aux pros, consommables ouverts à tous.
+      Évite la rétractation sur du matériel lourd. Cf. `legal-ecommerce.md`.
+
+Si « les deux » ou « segmenté », poser aussi : **qui paie les frais de retour** en cas de
+rétractation ? (possible de les mettre à la charge de l'acheteur, mais **uniquement si c'est
+annoncé avant la commande** — décisif sur une machine livrée en palette)
 
 > C'est l'erreur la plus coûteuse du secteur : afficher du HT à un particulier est une
 > infraction, et promettre 14 jours de rétractation à un pro fait perdre de l'argent.
