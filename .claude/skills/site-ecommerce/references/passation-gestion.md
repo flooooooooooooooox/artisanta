@@ -69,6 +69,46 @@ commande, pas au moment où le vendeur se connecte. Deux conséquences :
 Afficher le délai restant dans l'espace vendeur : s'il s'engage sous 24 h, il doit voir à
 quelle heure l'échéance tombe.
 
+### Le contrat d'échange
+
+À définir **avant** de coder des deux côtés, et à transmettre à qui développe l'outil de
+gestion. La boutique envoie :
+
+```json
+{
+  "idempotencyKey": "quote_01HX…",        // rejouable sans créer de doublon
+  "reference": "DA-2026-0042",            // référence boutique, lisible
+  "createdAt": "2026-11-02T14:31:00Z",    // ⚠️ départ du délai d'acceptation
+  "acceptanceDeadline": "2026-11-04T14:31:00Z",
+  "customer": {
+    "type": "professionnel",
+    "company": "…", "siren": "123456789",
+    "firstName": "…", "lastName": "…",
+    "email": "…", "phone": "…",
+    "billingAddress":  { "line1": "…", "postalCode": "…", "city": "…", "country": "FR" },
+    "shippingAddress": { "line1": "…", "postalCode": "…", "city": "…", "country": "FR" }
+  },
+  "operationCategory": "biens",           // biens | services | mixte
+  "lines": [
+    { "reference": "T600", "label": "Autolaveuse autoportée T600",
+      "quantity": 1, "unitPriceHT": 499000, "vatRate": 20, "ecoTax": 1500 }
+  ],
+  "shippingCostHT": 25000,
+  "totals": { "ht": 524000, "vat": 104800, "ttc": 628800 },
+  "paymentTerms": "virement à 30 jours",
+  "note": "livraison avec hayon demandée"
+}
+```
+
+Réponse attendue : `{ "externalRef": "…", "status": "en-attente-acceptation" }`
+
+Et **en retour**, un webhook de l'outil de gestion vers la boutique à chaque étape :
+`accepte` (avec l'horodatage), `facture-emise` (avec la référence), `payee`, `annulee`.
+C'est ce qui évite au vendeur de saisir deux fois la même information.
+
+Montants **en centimes, en entier**, des deux côtés. Un flottant sur de la monnaie finit
+toujours par produire un écart d'un centime sur une facture.
+
 ### Où vit cet espace
 Le vendeur a besoin d'un accès **public avec mot de passe** : il ne sera jamais sur un tailnet.
 
