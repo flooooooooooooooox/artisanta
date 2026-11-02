@@ -67,6 +67,18 @@ l'affichage des prix sur tout le site.
 - [ ] Avis clients
 - [ ] Blog / conseils (excellent pour le SEO du secteur)
 
+## 7 bis. Facturation ⚠️ BLOQUANT — à poser tôt
+- **Avec quel outil facture-t-il aujourd'hui ?** (Pennylane, Sellsy, Tiime, EBP, Excel…)
+- **Est-il raccordé à une plateforme agréée** (PA, anciennement PDP) ? C'est une obligation
+  depuis le 1er septembre 2026 pour **recevoir** les factures électroniques.
+- Son comptable est-il au courant de la réforme ? Qui pilote le raccordement ?
+- Veut-il que la boutique génère les **devis** ? (oui en général — les devis ne sont pas
+  concernés par la réforme, contrairement aux factures)
+
+> La boutique n'émettra **pas** la facture légale : elle émet les devis et encaisse via
+> Stripe. Si le client n'a aucun outil de facturation raccordé, le signaler immédiatement —
+> c'est une démarche de son côté, à lancer en parallèle du développement.
+
 ## 8. Légal ⚠️ BLOQUANT avant publication
 Cf. `legal-ecommerce.md` pour le détail. À collecter :
 - Mentions légales complètes (SIRET, RCS, TVA, siège, directeur de publication, hébergeur)
@@ -90,4 +102,5 @@ Cf. `legal-ecommerce.md` pour le détail. À collecter :
 2. Les **délais de livraison réels** par produit
 3. Les **CGV** rédigées
 4. L'adhésion **DEEE**
-5. De bonnes **photos** produit
+5. Le **raccordement à une plateforme agréée** pour la facturation électronique
+6. De bonnes **photos** produit

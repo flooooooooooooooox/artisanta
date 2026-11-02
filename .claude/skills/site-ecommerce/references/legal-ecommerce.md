@@ -51,12 +51,46 @@ le vendeur sur un prix et un délai qu'il n'a pas encore fixés.
 
 Le contrat se forme quand le client **accepte le devis ou paie la facture**, pas avant.
 
-### Mentions obligatoires sur la facture
-Stripe Invoicing gère la numérotation séquentielle et le PDF, mais **pas** les mentions
-françaises : elles doivent être configurées dans les réglages de facturation Stripe
-(champs personnalisés + pied de facture), sinon les factures sont non conformes.
+### 🔴 Facturation électronique — Stripe ne suffit pas
 
-Numéro séquentiel · date d'émission · date de la vente · identité et adresse du vendeur ·
+La réforme française de la facturation électronique impose que les factures entre
+professionnels passent par une **plateforme agréée** (PA, anciennement PDP) dans un
+**format structuré** : Factur-X, UBL ou CII (socle EN 16931). Un PDF envoyé par email
+n'est plus une facture conforme entre assujettis.
+
+**Stripe n'est pas une plateforme agréée.** Stripe Invoicing produit des PDF et ne fait pas
+le e-reporting à la DGFiP ; la documentation de Stripe elle-même renvoie vers un prestataire
+agréé (son partenaire mis en avant est Billit ; Pennylane et Invopop sont aussi cités).
+
+Calendrier (à reconfirmer sur impots.gouv.fr, il a déjà été reporté plusieurs fois) :
+
+| Date | Obligation |
+|---|---|
+| **1er sept. 2026** | **Toutes** les entreprises doivent pouvoir **recevoir** une facture électronique → être raccordées à une plateforme agréée. Émission obligatoire pour les grandes entreprises et les ETI. |
+| **1er sept. 2027** | Émission obligatoire pour les **PME, TPE et micro-entreprises** |
+
+> Un client TPE/PME n'émet donc en format structuré qu'à partir de septembre 2027, **mais il
+> doit déjà être raccordé pour recevoir**. À vérifier avec lui et son comptable — ce n'est pas
+> un sujet de développement web, mais ça détermine l'architecture du projet.
+
+**Conséquence sur le projet** : la boutique émet des **devis** (non concernés par la réforme)
+et encaisse via Stripe. La **facture légale** sort de l'outil comptable du client, raccordé à
+une plateforme agréée. Ne pas faire du site le système de facturation.
+
+### Mentions obligatoires sur la facture
+
+Depuis le 1er septembre 2026, **quatre mentions s'ajoutent** aux mentions classiques :
+- le **SIREN du client** (9 chiffres) — sert de clé de routage entre plateformes
+- l'**adresse de livraison**, si elle diffère de l'adresse de facturation
+- la **catégorie de l'opération** : livraison de biens, prestation de services, ou mixte
+- la mention de l'**option pour la TVA sur les débits**, le cas échéant
+
+> Pour une boutique de machines, les deux premières sont structurantes : il faut **collecter
+> le SIREN du client et son adresse de livraison dès la demande d'achat**, sinon la facture
+> ne pourra pas être émise correctement. C'est la raison de les demander au formulaire.
+
+Mentions classiques, toujours dues :
+numéro séquentiel · date d'émission · date de la vente · identité et adresse du vendeur ·
 **SIRET** · **RCS** · **TVA intracommunautaire** du vendeur (et de l'acheteur si pertinent) ·
 identité et adresse de l'acheteur · désignation et quantité des produits · prix unitaire HT ·
 **taux et montant de TVA** · total HT, TVA, TTC · **éco-participation DEEE** ligne à part ·
@@ -65,9 +99,10 @@ date d'échéance et conditions de règlement · **taux des pénalités de retar
 (ou son absence).
 
 ### Conservation
-Les factures doivent être conservées **10 ans**. Stripe les archive, mais ne pas en faire la
-seule copie : prévoir un export régulier, ou enregistrer le PDF côté R2 à la réception du
-webhook `invoice.paid`.
+Les factures doivent être conservées **10 ans**. La conservation incombe à l'outil de
+facturation du client et à sa plateforme agréée, pas à la boutique. Côté site, conserver
+quand même la trace de la vente (demande, devis, montant, paiement Stripe) : c'est ce qui
+permet de reconstituer un dossier en cas de litige.
 
 ## ⚠️ DEEE — éco-participation (spécifique au matériel électrique)
 
@@ -127,7 +162,9 @@ Si le client vend à des particuliers :
 - [ ] Case d'acceptation des CGV avant paiement (non pré-cochée)
 - [ ] Récapitulatif de commande + double clic (parcours sous le seuil)
 - [ ] Mention « ceci n'est pas une commande, aucun paiement n'est prélevé » sur la demande d'achat
-- [ ] Mentions obligatoires configurées dans les réglages de facturation Stripe
+- [ ] **Client raccordé à une plateforme agréée** (obligatoire depuis le 1er sept. 2026 pour
+      recevoir) et outil de facturation identifié
+- [ ] SIREN du client et adresse de livraison collectés dès la demande d'achat
 - [ ] Pénalités de retard + indemnité de 40 € présentes sur la facture
 - [ ] **Adhésion DEEE vérifiée et éco-participation affichée**
 - [ ] Frais de port et délais clairs **avant** le paiement

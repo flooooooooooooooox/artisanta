@@ -29,6 +29,8 @@ Ce que j'ai déjà
 - Seuil de bascule devis/facture : [1 000 € HT / autre]
 - CGV : [oui / non]
 - Adhésion DEEE : [oui / non / à vérifier]
+- Outil de facturation : [Pennylane / Sellsy / Tiime / autre / aucun]
+- Raccordé à une plateforme agréée (facturation électronique) : [oui / non / à vérifier]
 
 Stack imposée
 Next.js sur Vercel · Payload CMS · Neon (Postgres) · Stripe Checkout · Cloudflare R2
@@ -42,11 +44,14 @@ Ce que j'attends
    - sous le seuil → panier + Stripe Checkout, paiement immédiat
    - au-dessus → « Confirmer ma demande d'achat » (pas « Commander », et la page précise
      qu'aucun paiement n'est prélevé) → enregistrement en base → email au vendeur →
-     le vendeur fixe le prix ferme et le délai dans l'admin → « Valider et envoyer » →
-     facture Stripe Invoicing envoyée au client → paiement CB ou virement SEPA →
-     webhook invoice.paid → commande confirmée.
-   Pas d'espace client en v1 : le lien de facture Stripe part par email, transmissible à
-   la comptabilité. Factures envoyées depuis le domaine du client, pas depuis un Gmail.
+     le vendeur fixe le prix ferme et le délai dans l'admin → « Valider et envoyer le devis »
+     → le client accepte → facture émise depuis l'outil comptable du client →
+     encaissement par lien Stripe (CB ou virement SEPA) → webhook → commande confirmée.
+   La boutique émet les devis, PAS la facture légale : Stripe n'est pas une plateforme
+   agréée et une facture entre pros doit passer par une PA en format structuré.
+   Collecte le SIREN et l'adresse de livraison dès la demande (mentions obligatoires).
+   Pas d'espace client en v1 : les liens partent par email, transmissibles à la
+   comptabilité, depuis le domaine du client et pas depuis un Gmail.
 3. Les caractéristiques techniques sont structurées et comparables (largeur de travail,
    rendement m²/h, autonomie, capacités des réservoirs, alimentation, puissance, poids).
 4. N'invente aucune caractéristique, aucun délai, aucune garantie, aucun prix :

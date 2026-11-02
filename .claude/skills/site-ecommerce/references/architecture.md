@@ -28,7 +28,8 @@ R2      → images produit, fiches techniques PDF
 | **Payload CMS** | Catalogue + back-office + rôles | Admin complet livré, schéma typé, adaptateur S3 natif |
 | **Neon** | Postgres managé | Joignable par Vercel **et** par un admin privé — c'est la clé de voûte |
 | **Stripe Checkout** | Paiement immédiat sous le seuil | Page hébergée par Stripe → **aucune obligation PCI** à porter |
-| **Stripe Invoicing** | Factures au-dessus du seuil | Facture hébergée + PDF + envoi + relances + **virement SEPA**, rien à coder |
+| **Stripe Invoicing / Payment Links** | **Encaissement** au-dessus du seuil | Page de paiement hébergée, **virement SEPA**, relances d'impayés. ⚠️ Pas la facture légale : Stripe n'est pas une plateforme agréée |
+| **Outil comptable du client** (raccordé à une plateforme agréée) | **La facture légale** | Obligation française de facturation électronique — hors périmètre du site |
 | **Cloudflare R2** | Images + PDF | Pas de frais de sortie, compatible S3 |
 
 ## ⚠️ Vercel et Tailscale ne se combinent pas

@@ -63,12 +63,37 @@ C'est l'étape qui donne la main au vendeur. Dans Payload, sur la demande :
 Statuts : `à valider` → `facture envoyée` → `payée` → `en préparation` → `expédiée`
 (+ `refusée` / `annulée`). Rien ne part au client sans ce clic.
 
-### 3. La facture
-Utiliser **Stripe Invoicing**, pas Checkout. Stripe héberge la page de facture, génère le PDF,
-envoie l'email, relance automatiquement et encaisse **par carte ou par virement SEPA**.
-Le webhook `invoice.paid` referme la boucle.
+### 3. Le devis, puis la facture — et surtout : qui émet quoi
 
-C'est exactement l'outil pour ce cas : une facture à payer, pas un panier à régler.
+> 🔴 **La boutique n'émet pas la facture légale.** En France, depuis la réforme de la
+> facturation électronique, une facture entre professionnels doit transiter par une
+> **plateforme agréée** (PA, anciennement PDP) dans un format structuré (Factur-X, UBL, CII).
+> **Stripe n'est pas une plateforme agréée** et produit des PDF, pas des factures
+> structurées. Cf. `legal-ecommerce.md`.
+
+Répartition des rôles qui tient dans le temps :
+
+| Qui | Fait quoi |
+|---|---|
+| **La boutique (Payload)** | Demande d'achat, validation, **devis** (les devis ne sont pas concernés par la réforme), suivi de commande |
+| **L'outil de facturation du client**, raccordé à une plateforme agréée | **La facture légale** |
+| **Stripe** | **L'encaissement** : lien de paiement, carte ou virement SEPA, et le webhook qui marque la commande payée |
+
+Parcours concret :
+1. Le vendeur valide la demande dans l'admin → la boutique génère un **devis** PDF et l'envoie
+2. Le client accepte le devis
+3. Le vendeur émet la **facture depuis son outil comptable** (Pennylane, Sellsy, Tiime… —
+   raccordé à une plateforme agréée)
+4. Le paiement passe par un **lien Stripe** joint au devis ou à la facture
+5. Webhook Stripe → la commande passe en « payée » dans l'admin
+
+**Stripe Invoicing reste utilisable** comme page de paiement et pour les relances d'impayés,
+mais ce n'est **pas** la facture légale du client : ne pas construire le projet comme si
+c'était le cas.
+
+> ⚠️ À vérifier au questionnaire : avec quel outil le client facture-t-il aujourd'hui, et
+> est-il raccordé à une plateforme agréée ? S'il ne l'est pas, c'est une démarche à faire de
+> son côté — ça ne se règle pas dans le code du site.
 
 ### 4. Le paiement — espace client ou email ?
 

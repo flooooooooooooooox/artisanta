@@ -83,7 +83,9 @@ travaillée de l'admin : c'est là que le vendeur reprend la main.
 ```ts
 {
   // Ce que le client a envoyé
-  contact: { firstName, lastName, company, email, phone, siret? }
+  contact: { firstName, lastName, company, email, phone, siren }
+  // ⚠️ le SIREN (9 chiffres) est une mention obligatoire de facturation depuis sept. 2026
+  // et sert de clé de routage entre plateformes agréées : le collecter dès la demande
   shippingAddress: { … }
   lines: [{ product: relation, quantity: number, priceHTIndicatif: number }]
   message: string
@@ -98,10 +100,11 @@ travaillée de l'admin : c'est là que le vendeur reprend la main.
   internalNote: string            // non visible du client
 
   // Suivi
-  status: "a-valider" | "facture-envoyee" | "payee" | "en-preparation"
-        | "expediee" | "refusee" | "annulee"
-  stripeInvoiceId: string
-  stripeInvoiceUrl: string        // lien hébergé, transmissible à la compta
+  status: "a-valider" | "devis-envoye" | "accepte" | "facture-emise" | "payee"
+        | "en-preparation" | "expediee" | "refusee" | "annulee"
+  quotePdf: upload                // le devis émis par la boutique
+  stripePaymentUrl: string        // lien de paiement, transmissible à la compta
+  externalInvoiceRef: string      // n° de la facture émise par l'outil comptable du client
   validatedBy: relation           // → users
   validatedAt: date
   createdAt: date
@@ -113,8 +116,8 @@ travaillée de l'admin : c'est là que le vendeur reprend la main.
 > ce qu'il faut pouvoir montrer en cas de litige.
 
 **`orders`** — ventes encaissées, des deux parcours : lignes, montants HT/TVA/TTC,
-éco-participation, client, adresse de livraison, statut, et **soit** `stripeSessionId`
-(Checkout, sous le seuil) **soit** `stripeInvoiceId` (facture, au-dessus).
+éco-participation, client (dont **SIREN** et adresse de livraison), statut, référence
+Stripe de l'encaissement, et la référence de la facture émise côté comptabilité.
 
 **`users`** — rôles : `admin` (tout) · `gestionnaire` (catalogue + validation des demandes) ·
 `client` (phase 2, si espace client)

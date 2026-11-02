@@ -26,7 +26,7 @@ Un **seuil configurable** (par défaut **1 000 € HT**) décide du parcours :
 | Montant | Parcours | Pourquoi |
 |---|---|---|
 | **Sous le seuil** (consommables, pièces, petits accessoires) | **Panier → Stripe Checkout**, paiement immédiat | Réassort, décision rapide, faible montant |
-| **Au-dessus du seuil** (machines) | **Demande d'achat → validation dans l'admin → facture Stripe envoyée → paiement** | L'acheteur veut un prix ferme, un délai, une facture à faire payer par sa compta |
+| **Au-dessus du seuil** (machines) | **Demande d'achat → validation dans l'admin → devis → facture côté comptabilité → encaissement Stripe** | L'acheteur veut un prix ferme, un délai, une facture à faire payer par sa compta |
 
 **Aucun paiement par carte au-dessus du seuil.** Le bouton ne dit pas « Commander » mais
 **« Confirmer ma demande d'achat »**, et la page le précise : ce n'est pas une commande, c'est
@@ -78,10 +78,10 @@ et présentes dans les données structurées.
 2. Payload : collections `products`, `categories`, `brands`, `quotes`, `orders`, `users`.
 3. Pages : accueil, catégories, **fiche produit**, comparateur, demande de devis, panier,
    checkout, compte, légales.
-4. Stripe : **Checkout** sous le seuil + **Invoicing** au-dessus, et un webhook qui traite
-   `checkout.session.completed` **et** `invoice.paid`. Seuil vérifié côté serveur.
-   Dans l'admin : écran de validation d'une demande d'achat (prix ferme, délai, frais de
-   port) avec un bouton « Valider et envoyer la facture ».
+4. Stripe : **Checkout** sous le seuil, **lien de paiement / Invoicing** au-dessus, et un
+   webhook qui traite `checkout.session.completed` **et** `invoice.paid`, de façon idempotente.
+   Seuil vérifié côté serveur. Dans l'admin : écran de validation d'une demande d'achat
+   (prix ferme, délai, frais de port) avec un bouton « Valider et envoyer le devis ».
 5. R2 : adaptateur S3 pour images et PDF de fiches techniques.
 6. SEO/GEO complet (`seo-produit.md`).
 
@@ -104,8 +104,12 @@ en mode test puis en réel avant d'annoncer la mise en ligne.
 - **Ne jamais inventer** une caractéristique technique, un délai de livraison, une garantie
   ou une certification → demander au client, placeholder `[à compléter]` sinon.
 - **Pas de paiement sans CGV acceptées** (case à cocher obligatoire avant commande).
-- **Aucune facture envoyée sans validation humaine** dans l'admin. C'est tout l'intérêt du
+- **Aucun devis envoyé sans validation humaine** dans l'admin. C'est tout l'intérêt du
   parcours au-dessus du seuil : le vendeur fixe le prix ferme avant que quoi que ce soit parte.
+- **La boutique n'émet pas la facture légale.** En France, une facture entre professionnels
+  doit passer par une **plateforme agréée** en format structuré, et **Stripe n'en est pas une**.
+  La boutique émet les devis et encaisse ; la facture sort de l'outil comptable du client.
+  Collecter le **SIREN** et l'adresse de livraison dès la demande. Cf. `legal-ecommerce.md`.
 - **Ne jamais écrire « Commander »** sur une demande d'achat : juridiquement, une demande
   confirmée sans réserve peut s'analyser en commande ferme.
 - **Emails transactionnels depuis le domaine du client** (Resend ou Stripe), jamais depuis un
