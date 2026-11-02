@@ -22,7 +22,10 @@ annoncé avant la commande** — décisif sur une machine livrée en palette)
 ## 2. L'entreprise
 - Nom commercial, forme juridique, SIRET, TVA intracommunautaire
 - Adresse, téléphone, email
-- Est-elle **fabricant, importateur ou revendeur** ? (détermine les obligations DEEE)
+- Est-elle **fabricant, importateur, revendeur, ou simple mise en relation** ?
+  ⚠️ Question décisive pour les obligations DEEE — et « mise en relation » n'exonère de rien
+  (cf. `legal-ecommerce.md`). Demander aussi **d'où vient le matériel** : un achat hors
+  France fait du client un importateur, donc un « producteur » au sens de la loi.
 - Marques distribuées (exclusivité ou non)
 - Zone de livraison : France, UE, DOM-TOM ?
 
@@ -91,8 +94,9 @@ annoncé avant la commande** — décisif sur une machine livrée en palette)
 Cf. `legal-ecommerce.md` pour le détail. À collecter :
 - Mentions légales complètes (SIRET, RCS, TVA, siège, directeur de publication, hébergeur)
 - **CGV** : les a-t-il déjà rédigées ? Par un juriste ?
-- **Éco-participation DEEE** : est-il adhérent à un éco-organisme (Ecologic, Ecosystem) ?
-  **Obligatoire** pour vendre du matériel électrique.
+- **Éco-participation DEEE** : adhérent à un éco-organisme (Ecologic, Ecosystem), ou
+  identifiant unique du fournisseur, selon le montage. **Obligatoire** pour vendre du
+  matériel électrique, quel que soit le montage.
 - Médiateur de la consommation (si vente à des particuliers)
 - Assurance responsabilité civile professionnelle
 

@@ -144,6 +144,26 @@ Le client doit :
 > ❌ Ne pas publier de boutique de matériel électrique sans avoir vérifié ce point avec le
 > client. C'est une obligation réglementaire, pas une bonne pratique.
 
+### Qui porte l'obligation selon le montage
+
+| Montage | Adhésion à son nom | Ce qu'il doit faire |
+|---|---|---|
+| **Fabricant ou importateur** (achat hors France, même sans stock) | **Oui** — il est « producteur » | Adhérer, déclarer, afficher l'éco-participation, informer sur la reprise |
+| **Revendeur** d'un fournisseur français qui paie déjà | Non | Afficher et **répercuter à l'identique** l'éco-participation, récupérer l'**identifiant unique** du fournisseur, informer sur la reprise |
+| **Mise en relation / place de marché** (le fournisseur facture l'acheteur) | Non… sauf défaut | **Vérifier l'identifiant unique de chaque vendeur.** À défaut, l'obligation lui retombe dessus |
+
+> 🔴 Le montage « je mets juste en relation » **n'exonère de rien**. L'article L541-10-9 du
+> Code de l'environnement (loi AGEC) vise toute personne qui facilite, via une interface
+> électronique, des ventes à distance de produits sous REP pour le compte d'un tiers. La FAQ
+> du ministère indique que la responsabilité de la place de marché peut être engagée,
+> notamment si elle n'a pas vérifié l'identifiant du vendeur.
+
+**Dans les trois cas, l'éco-participation s'affiche sur chaque fiche produit** et en ligne
+distincte sur la facture. Le champ `ecoTax` du modèle produit est donc toujours nécessaire.
+
+> ⚠️ Sources datées et évolutives sur ce point : faire confirmer par l'expert-comptable du
+> client ou directement par l'éco-organisme avant la mise en ligne.
+
 ## B2B — pénalités de retard
 
 Mentions **obligatoires** sur les factures et dans les CGV :
