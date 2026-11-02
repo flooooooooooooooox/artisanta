@@ -36,7 +36,12 @@ l'affichage des prix sur tout le site.
 - Remises par quantité ? Tarifs négociés par client ?
 - Moyens de paiement souhaités : CB (Stripe), **virement**, chèque, à réception de facture ?
 - Propose-t-il du **financement / leasing** ? (argument fort en B2B)
+- **À partir de quel montant veut-il reprendre la main** plutôt que laisser payer par carte ?
+  (seuil par défaut : 1 000 € HT sur le total du panier)
 - **Qui traite les devis**, et sous quel délai s'engage-t-il à répondre ?
+- Veut-il **un espace client** dès le départ, ou les factures envoyées par email suffisent ?
+  → par défaut : email avec lien de facture Stripe. L'espace client vient en phase 2.
+  Cf. `conversion-b2b.md` — en B2B, le comptable qui paie n'a pas les identifiants.
 
 ## 5. Logistique ⚠️ souvent sous-estimé
 - Les machines partent en **palette** → transporteur spécialisé, pas un colis classique

@@ -4,24 +4,97 @@ Un acheteur professionnel n'achète pas comme un particulier. Il compare, il dem
 vérifie le SAV, il fait valider par sa direction. Le site doit l'accompagner dans **ce**
 parcours-là, pas forcer un tunnel d'achat impulsif.
 
-## Les deux parcours
+## Le seuil
+
+Une seule variable décide du parcours : **`PAYMENT_THRESHOLD_HT`**, par défaut **1 000 € HT**.
+Elle s'applique au **total du panier**, pas au prix unitaire — 20 bidons de détergent à 60 €
+dépassent le seuil et doivent basculer en demande d'achat.
 
 ```
-MACHINE (> 1 000 €)                    CONSOMMABLE (brosse, disque, filtre)
+TOTAL < seuil                          TOTAL ≥ seuil
    ↓                                      ↓
-Fiche technique complète               Fiche courte + compatibilité
+Panier                                 Panier
    ↓                                      ↓
-« Demander un devis »  ← principal     « Ajouter au panier »
-« Être rappelé »                          ↓
-« Télécharger la fiche PDF »           Panier → Stripe Checkout
+Stripe Checkout (CB)                   « Confirmer ma demande d'achat »
    ↓                                      ↓
-Email + enregistrement en base         Webhook → commande + email
-   ↓
-Rappel du vendeur sous 24-48 h
+Webhook checkout.session.completed     Récapitulatif + « Voulez-vous confirmer
+   ↓                                       votre demande d'achat ? »
+Commande payée + email                    ↓
+                                       Enregistrement en base (statut : à valider)
+                                          ↓
+                                       Email au vendeur
+                                          ↓
+                                       ─── ADMIN ─────────────────────────
+                                       Le vendeur ouvre la demande,
+                                       fixe prix ferme, délai, frais de port,
+                                       puis clique « Valider et envoyer »
+                                       ───────────────────────────────────
+                                          ↓
+                                       Facture Stripe créée et envoyée au client
+                                          ↓
+                                       Le client paie (CB ou virement SEPA)
+                                          ↓
+                                       Webhook invoice.paid
+                                          ↓
+                                       Commande confirmée + préparation
 ```
 
-Le paiement direct d'une machine peut rester possible (certains clients équipés veulent
-commander vite), mais **jamais comme seul chemin**.
+> ⚠️ **Au-dessus du seuil, pas de carte bancaire.** Le bouton ne dit **pas** « Commander » :
+> une demande d'achat n'est pas une commande, et le site doit l'écrire noir sur blanc
+> (« Nous validons votre demande et vous envoyons une facture sous 24 h ouvrées. Aucun
+> paiement n'est prélevé maintenant. »). Sinon la demande peut être lue comme un bon de
+> commande ferme, ce qui engage le vendeur sur un prix qu'il n'a pas encore fixé.
+
+## Le parcours au-dessus du seuil, en détail
+
+### 1. La confirmation côté client
+Récapitulatif avant validation : produits, quantités, montant **indicatif** HT, et la phrase
+qui lève l'ambiguïté. Champs demandés : nom · société · email · téléphone · adresse de
+livraison · message. Le SIRET peut être demandé ici (il servira sur la facture), mais rester
+optionnel pour ne pas bloquer la demande.
+
+### 2. La validation dans l'admin
+C'est l'étape qui donne la main au vendeur. Dans Payload, sur la demande :
+- il voit le détail et le contact
+- il **fixe le prix ferme**, les frais de port, le délai réel, l'éco-participation
+- il peut ajouter une ligne (mise en service, formation, consommable de démarrage)
+- il clique **« Valider et envoyer la facture »**
+
+Statuts : `à valider` → `facture envoyée` → `payée` → `en préparation` → `expédiée`
+(+ `refusée` / `annulée`). Rien ne part au client sans ce clic.
+
+### 3. La facture
+Utiliser **Stripe Invoicing**, pas Checkout. Stripe héberge la page de facture, génère le PDF,
+envoie l'email, relance automatiquement et encaisse **par carte ou par virement SEPA**.
+Le webhook `invoice.paid` referme la boucle.
+
+C'est exactement l'outil pour ce cas : une facture à payer, pas un panier à régler.
+
+### 4. Le paiement — espace client ou email ?
+
+**Recommandation : par email, avec le lien de facture hébergé par Stripe. Pas d'espace client
+en v1.**
+
+La raison est concrète : en B2B, **celui qui commande n'est pas celui qui paie**. La demande
+vient du responsable technique, la facture est réglée par la comptabilité. Un espace client
+avec identifiants **bloque** le comptable, qui n'a pas le mot de passe. Un lien de facture
+transmis par email, lui, se forwarde et se paie en deux clics.
+
+| | Lien de facture par email ⭐ | Espace client |
+|---|---|---|
+| Le comptable peut payer | ✅ il forwarde le lien | ❌ il faut un compte |
+| À développer | rien, Stripe le fait | comptes, mots de passe, RGPD, maintenance |
+| Relances impayés | automatiques (Stripe) | à coder |
+| PDF de facture | fourni | à générer |
+
+L'espace client reste pertinent en **phase 2**, pour l'historique des commandes, le
+retéléchargement des factures et les fiches techniques du matériel acheté — c'est un service
+de fidélisation, pas un prérequis pour vendre.
+
+> 📧 **Ne pas envoyer les factures depuis une adresse Gmail personnelle.** Les emails
+> transactionnels partent de Stripe ou de Resend avec le domaine du client
+> (`facturation@domaine.fr`), SPF et DKIM configurés. Un devis parti d'un Gmail perso finit
+> en spam ou fait mauvais effet — dans les deux cas la vente est perdue.
 
 ## La fiche produit machine
 
@@ -32,7 +105,8 @@ Ordre qui convertit :
 3. **Les 4 caractéristiques décisives en évidence** — largeur de travail, rendement m²/h,
    autonomie, capacité des réservoirs. Un acheteur les cherche en 5 secondes.
 4. **Prix HT** (ou « sur demande ») + éco-participation affichée à part
-5. **Les deux boutons** : *Demander un devis* (principal) · *Ajouter au panier* (secondaire)
+5. **L'action** : au-dessus du seuil, *Demander un devis* (principal) et *Ajouter à ma demande*
+   — jamais « Commander ». Sous le seuil, *Ajouter au panier*.
 6. **Disponibilité et délai réel**
 7. **Tableau complet des caractéristiques**
 8. **Fiche technique PDF** à télécharger — très demandé, sert aussi à justifier un budget en interne
@@ -85,8 +159,11 @@ convertit mieux qu'une page catégorie.
 
 ## À ne pas faire
 
-- ❌ Un bouton « Ajouter au panier » seul sur une machine à 8 000 €
+- ❌ Un paiement par carte sur une machine à 8 000 €
+- ❌ Écrire « Commander » sur ce qui n'est qu'une demande d'achat
+- ❌ Envoyer la facture automatiquement, sans validation humaine dans l'admin
+- ❌ Imposer un compte client pour payer une facture — le comptable ne l'aura pas
 - ❌ Cacher le prix **et** le délai **et** le SAV — il ne reste rien pour décider
-- ❌ Un formulaire de devis en 15 champs
+- ❌ Un formulaire de demande en 15 champs
 - ❌ Promettre un délai qu'on ne tient pas
-- ❌ Un compte obligatoire pour demander un devis
+- ❌ Facturer depuis un Gmail personnel

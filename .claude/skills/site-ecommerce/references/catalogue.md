@@ -77,11 +77,51 @@ diamètre (mm) · vitesse (tr/min) · pression (bar) · débit (L/h) · eau chau
 
 **`categories`** — nom, slug, description (texte SEO réel, pas deux lignes), image, parent
 **`brands`** — nom, slug, logo, description, lien fabricant
-**`quotes`** — demandes de devis : contact, société, SIRET, produits + quantités, message,
-statut (`nouveau` / `traité` / `gagné` / `perdu`), date
-**`orders`** — commandes Stripe : lignes, montants HT/TVA/TTC, éco-participation, client,
-adresse de livraison, statut, `stripeSessionId`
-**`users`** — rôles : `admin` (tout) · `gestionnaire` (catalogue + commandes) · `client`
+**`quotes`** — **demandes d'achat** (au-dessus du seuil). C'est la collection la plus
+travaillée de l'admin : c'est là que le vendeur reprend la main.
+
+```ts
+{
+  // Ce que le client a envoyé
+  contact: { firstName, lastName, company, email, phone, siret? }
+  shippingAddress: { … }
+  lines: [{ product: relation, quantity: number, priceHTIndicatif: number }]
+  message: string
+  totalHTIndicatif: number        // calculé au moment de la demande, jamais contractuel
+
+  // Ce que le vendeur fixe à la validation
+  priceHTFerme: number            // le prix réellement facturé, en centimes
+  shippingCostHT: number
+  ecoTaxTotal: number
+  extraLines: [{ label, priceHT }]  // mise en service, formation, consommables
+  leadTimeDays: number
+  internalNote: string            // non visible du client
+
+  // Suivi
+  status: "a-valider" | "facture-envoyee" | "payee" | "en-preparation"
+        | "expediee" | "refusee" | "annulee"
+  stripeInvoiceId: string
+  stripeInvoiceUrl: string        // lien hébergé, transmissible à la compta
+  validatedBy: relation           // → users
+  validatedAt: date
+  createdAt: date
+}
+```
+
+> Le **prix indicatif** et le **prix ferme** sont deux champs distincts. Les écraser l'un
+> avec l'autre fait perdre la trace de ce que le client croyait acheter — et c'est exactement
+> ce qu'il faut pouvoir montrer en cas de litige.
+
+**`orders`** — ventes encaissées, des deux parcours : lignes, montants HT/TVA/TTC,
+éco-participation, client, adresse de livraison, statut, et **soit** `stripeSessionId`
+(Checkout, sous le seuil) **soit** `stripeInvoiceId` (facture, au-dessus).
+
+**`users`** — rôles : `admin` (tout) · `gestionnaire` (catalogue + validation des demandes) ·
+`client` (phase 2, si espace client)
+
+**`settings`** (global) — **`paymentThresholdHT`** (défaut 100000, soit 1 000 €),
+engagement de délai de réponse, coordonnées, frais de port par défaut.
+Le seuil doit être **modifiable sans redéploiement** : le client voudra l'ajuster.
 
 ## Règles
 

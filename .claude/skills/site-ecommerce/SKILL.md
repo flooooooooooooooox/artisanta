@@ -21,13 +21,17 @@ Ce n'est pas un site vitrine (→ `/site-artisan`) ni une boutique grand public.
 Une autolaveuse coûte 3 000 à 15 000 €. **Aucun acheteur professionnel ne paie ça par carte
 sans échange préalable.** Imposer un tunnel « panier → CB » fait fuir la majorité des prospects.
 
-| Gamme | Parcours | Pourquoi |
-|---|---|---|
-| **Machines** (> 1 000 €) | Fiche technique + **« Demander un devis »** · paiement direct en option | L'acheteur veut un conseil, une facture, parfois du leasing |
-| **Consommables** (brosses, disques, raclettes, filtres, détergents) | **Panier → Stripe Checkout** | Achat de réassort, décision rapide, faible montant |
+Un **seuil configurable** (par défaut **1 000 € HT**) décide du parcours :
 
-Le **devis est le produit d'appel**, pas le panier. Toute la page machine doit converger vers
-lui. Ne jamais livrer une boutique où une machine à 8 000 € n'a qu'un bouton « Ajouter au panier ».
+| Montant | Parcours | Pourquoi |
+|---|---|---|
+| **Sous le seuil** (consommables, pièces, petits accessoires) | **Panier → Stripe Checkout**, paiement immédiat | Réassort, décision rapide, faible montant |
+| **Au-dessus du seuil** (machines) | **Demande d'achat → validation dans l'admin → facture Stripe envoyée → paiement** | L'acheteur veut un prix ferme, un délai, une facture à faire payer par sa compta |
+
+**Aucun paiement par carte au-dessus du seuil.** Le bouton ne dit pas « Commander » mais
+**« Confirmer ma demande d'achat »**, et la page le précise : ce n'est pas une commande, c'est
+une demande qui sera validée et chiffrée. Le parcours complet est détaillé dans
+`conversion-b2b.md`.
 
 ## Fichiers de référence (à lire au démarrage)
 - `references/questionnaire.md` — toutes les questions à poser au client
@@ -74,13 +78,19 @@ et présentes dans les données structurées.
 2. Payload : collections `products`, `categories`, `brands`, `quotes`, `orders`, `users`.
 3. Pages : accueil, catégories, **fiche produit**, comparateur, demande de devis, panier,
    checkout, compte, légales.
-4. Stripe : Checkout pour les consommables + webhook de confirmation de commande.
+4. Stripe : **Checkout** sous le seuil + **Invoicing** au-dessus, et un webhook qui traite
+   `checkout.session.completed` **et** `invoice.paid`. Seuil vérifié côté serveur.
+   Dans l'admin : écran de validation d'une demande d'achat (prix ferme, délai, frais de
+   port) avec un bouton « Valider et envoyer la facture ».
 5. R2 : adaptateur S3 pour images et PDF de fiches techniques.
 6. SEO/GEO complet (`seo-produit.md`).
 
 ### 5. Vérification
-`npx tsc --noEmit && npm run build`. Tester : un devis part bien en email, un achat de
-consommable passe bout en bout en mode test Stripe, les PDF se téléchargent.
+`npx tsc --noEmit && npm run build`. Tester **les deux parcours bout en bout en mode test
+Stripe** : un achat sous le seuil (panier → CB → commande enregistrée) **et** un achat
+au-dessus (demande → email reçu → validation dans l'admin → facture reçue → payée →
+`invoice.paid` traité). Vérifier aussi qu'un panier dépassant le seuil ne peut pas créer
+une session Checkout, et que les PDF de fiches techniques se téléchargent.
 Puis dérouler les checklists de `/controle-final` **plus** celles de `legal-ecommerce.md`.
 
 ### 6. Déploiement
@@ -94,6 +104,12 @@ en mode test puis en réel avant d'annoncer la mise en ligne.
 - **Ne jamais inventer** une caractéristique technique, un délai de livraison, une garantie
   ou une certification → demander au client, placeholder `[à compléter]` sinon.
 - **Pas de paiement sans CGV acceptées** (case à cocher obligatoire avant commande).
+- **Aucune facture envoyée sans validation humaine** dans l'admin. C'est tout l'intérêt du
+  parcours au-dessus du seuil : le vendeur fixe le prix ferme avant que quoi que ce soit parte.
+- **Ne jamais écrire « Commander »** sur une demande d'achat : juridiquement, une demande
+  confirmée sans réserve peut s'analyser en commande ferme.
+- **Emails transactionnels depuis le domaine du client** (Resend ou Stripe), jamais depuis un
+  Gmail personnel : délivrabilité et crédibilité.
 - **Sécurité** : clés Stripe et identifiants Neon/R2 uniquement en variables d'environnement.
 - **Stripe Checkout hébergé** par défaut : évite toute obligation de conformité PCI.
 - Confirmer avant toute action irréversible (passage en mode live Stripe, mise en ligne).

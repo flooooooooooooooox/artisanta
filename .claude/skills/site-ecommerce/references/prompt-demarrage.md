@@ -26,6 +26,7 @@ Ce que j'ai déjà
 - Caractéristiques complètes : [oui / partiellement / non]
 - Prix : [affichés / sur demande / mixte]
 - Compte Stripe : [oui / non]
+- Seuil de bascule devis/facture : [1 000 € HT / autre]
 - CGV : [oui / non]
 - Adhésion DEEE : [oui / non / à vérifier]
 
@@ -36,8 +37,16 @@ Admin : [le client gère son catalogue → auth classique avec rôles]
 
 Ce que j'attends
 1. Déroule le questionnaire et dis-moi précisément ce qui manque avant de coder.
-2. Parcours hybride obligatoire : machines → fiche technique + « Demander un devis » ;
-   consommables → panier + Stripe Checkout.
+2. Parcours à seuil obligatoire (seuil par défaut 1 000 € HT sur le total du panier,
+   modifiable dans l'admin sans redéploiement) :
+   - sous le seuil → panier + Stripe Checkout, paiement immédiat
+   - au-dessus → « Confirmer ma demande d'achat » (pas « Commander », et la page précise
+     qu'aucun paiement n'est prélevé) → enregistrement en base → email au vendeur →
+     le vendeur fixe le prix ferme et le délai dans l'admin → « Valider et envoyer » →
+     facture Stripe Invoicing envoyée au client → paiement CB ou virement SEPA →
+     webhook invoice.paid → commande confirmée.
+   Pas d'espace client en v1 : le lien de facture Stripe part par email, transmissible à
+   la comptabilité. Factures envoyées depuis le domaine du client, pas depuis un Gmail.
 3. Les caractéristiques techniques sont structurées et comparables (largeur de travail,
    rendement m²/h, autonomie, capacités des réservoirs, alimentation, puissance, poids).
 4. N'invente aucune caractéristique, aucun délai, aucune garantie, aucun prix :

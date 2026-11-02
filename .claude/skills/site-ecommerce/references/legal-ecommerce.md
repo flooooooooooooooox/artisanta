@@ -39,6 +39,35 @@ applicable et juridiction · médiation (B2C).
 **Case à cocher obligatoire** : l'acheteur doit accepter les CGV *avant* de payer.
 Pas de case pré-cochée. Le bouton final doit porter une mention sans ambiguïté
 (« Commander — paiement de X € »), conformément à l'obligation de **double clic**.
+Cela vaut pour le parcours de paiement immédiat (sous le seuil).
+
+## Demande d'achat et facture (parcours au-dessus du seuil)
+
+### La demande d'achat n'est pas une commande
+Le site doit l'écrire explicitement, à côté du bouton de confirmation : la demande ne vaut
+pas commande, le montant affiché est indicatif, aucun paiement n'est prélevé. À défaut, une
+« demande d'achat » confirmée par le client peut s'analyser en **commande ferme**, et engager
+le vendeur sur un prix et un délai qu'il n'a pas encore fixés.
+
+Le contrat se forme quand le client **accepte le devis ou paie la facture**, pas avant.
+
+### Mentions obligatoires sur la facture
+Stripe Invoicing gère la numérotation séquentielle et le PDF, mais **pas** les mentions
+françaises : elles doivent être configurées dans les réglages de facturation Stripe
+(champs personnalisés + pied de facture), sinon les factures sont non conformes.
+
+Numéro séquentiel · date d'émission · date de la vente · identité et adresse du vendeur ·
+**SIRET** · **RCS** · **TVA intracommunautaire** du vendeur (et de l'acheteur si pertinent) ·
+identité et adresse de l'acheteur · désignation et quantité des produits · prix unitaire HT ·
+**taux et montant de TVA** · total HT, TVA, TTC · **éco-participation DEEE** ligne à part ·
+date d'échéance et conditions de règlement · **taux des pénalités de retard** ·
+**indemnité forfaitaire de 40 €** pour frais de recouvrement · mention de l'escompte
+(ou son absence).
+
+### Conservation
+Les factures doivent être conservées **10 ans**. Stripe les archive, mais ne pas en faire la
+seule copie : prévoir un export régulier, ou enregistrer le PDF côté R2 à la réception du
+webhook `invoice.paid`.
 
 ## ⚠️ DEEE — éco-participation (spécifique au matériel électrique)
 
@@ -96,7 +125,10 @@ Si le client vend à des particuliers :
 - [ ] Mentions légales complètes et exactes
 - [ ] CGV rédigées, relues par le client, **validées par un juriste si B2C**
 - [ ] Case d'acceptation des CGV avant paiement (non pré-cochée)
-- [ ] Récapitulatif de commande + double clic
+- [ ] Récapitulatif de commande + double clic (parcours sous le seuil)
+- [ ] Mention « ceci n'est pas une commande, aucun paiement n'est prélevé » sur la demande d'achat
+- [ ] Mentions obligatoires configurées dans les réglages de facturation Stripe
+- [ ] Pénalités de retard + indemnité de 40 € présentes sur la facture
 - [ ] **Adhésion DEEE vérifiée et éco-participation affichée**
 - [ ] Frais de port et délais clairs **avant** le paiement
 - [ ] Pénalités de retard dans les CGV (B2B)

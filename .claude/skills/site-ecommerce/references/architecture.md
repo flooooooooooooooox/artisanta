@@ -18,7 +18,7 @@
 │  Vercel OU machine privée   │
 └─────────────────────────────┘
 
-Stripe  → Checkout hébergé + webhooks (paiement, commandes)
+Stripe  → Checkout (sous le seuil) + Invoicing (au-dessus) + webhooks
 R2      → images produit, fiches techniques PDF
 ```
 
@@ -27,7 +27,8 @@ R2      → images produit, fiches techniques PDF
 | **Next.js / Vercel** | Boutique publique | ISR : pages produit statiques et rapides, régénérées à chaque modif |
 | **Payload CMS** | Catalogue + back-office + rôles | Admin complet livré, schéma typé, adaptateur S3 natif |
 | **Neon** | Postgres managé | Joignable par Vercel **et** par un admin privé — c'est la clé de voûte |
-| **Stripe Checkout** | Paiement | Page hébergée par Stripe → **aucune obligation PCI** à porter |
+| **Stripe Checkout** | Paiement immédiat sous le seuil | Page hébergée par Stripe → **aucune obligation PCI** à porter |
+| **Stripe Invoicing** | Factures au-dessus du seuil | Facture hébergée + PDF + envoi + relances + **virement SEPA**, rien à coder |
 | **Cloudflare R2** | Images + PDF | Pas de frais de sortie, compatible S3 |
 
 ## ⚠️ Vercel et Tailscale ne se combinent pas
@@ -93,6 +94,16 @@ CONTACT_TO_EMAIL=
   `next.config.ts`, sinon les images ne s'affichent pas.
 - **Webhook Stripe** : la route doit lire le **corps brut** de la requête pour vérifier la
   signature. C'est l'erreur n°1 — un webhook mal configuré laisse des commandes non confirmées.
+- **Deux événements à traiter**, pas un : `checkout.session.completed` (paiement sous le
+  seuil) **et** `invoice.paid` (facture au-dessus). Oublier le second, c'est ne jamais voir
+  qu'une machine a été payée. Traiter aussi `invoice.payment_failed`.
+- **Idempotence du webhook** : Stripe réémet les événements. Vérifier que la commande n'est
+  pas déjà enregistrée avant de la créer, sinon doublons et stock décrémenté deux fois.
+- **Seuil appliqué côté serveur**, sur le total du panier. Un seuil vérifié uniquement dans
+  le navigateur se contourne : il faut refuser la création d'une session Checkout dont le
+  total dépasse `paymentThresholdHT`.
+- **Facture créée seulement après validation humaine** dans l'admin. Jamais de création
+  automatique à la réception de la demande — c'est tout l'intérêt du parcours.
 - **ISR** : régénérer les pages produit sur modification Payload (hook `afterChange` →
   `revalidatePath`), sinon le catalogue affiche des prix périmés.
 - **Stock** : décrémenter **dans le webhook Stripe** (paiement confirmé), jamais à la mise au
