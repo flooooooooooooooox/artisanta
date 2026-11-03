@@ -45,6 +45,11 @@ annoncé avant la commande** — décisif sur une machine livrée en palette)
 - Remises par quantité ? Tarifs négociés par client ?
 - Moyens de paiement souhaités : CB (Stripe), **virement**, chèque, à réception de facture ?
 - Propose-t-il du **financement / leasing** ? (argument fort en B2B)
+- **Subvention CARSAT** : accepte-t-il de fournir l'**attestation fournisseur** d'éligibilité
+  technique ? Quelles machines de sa gamme sont éligibles ?
+  ⚠️ L'aide vise les autolaveuses **accompagnées**, pas les autoportées. Cf. `conversion-b2b.md`.
+- Vend-il aux **collectivités** ? Si oui, est-il inscrit sur **Chorus Pro** ? La facturation
+  des entités publiques passe obligatoirement par ce portail.
 - **À partir de quel montant veut-il reprendre la main** plutôt que laisser payer par carte ?
   (seuil par défaut : 1 000 € HT sur le total du panier)
 - **Qui traite les devis**, et sous quel délai s'engage-t-il à répondre ?

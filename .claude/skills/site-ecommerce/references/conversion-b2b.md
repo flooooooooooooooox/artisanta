@@ -171,6 +171,41 @@ Ce qui rassure un pro n'est pas ce qui rassure un particulier :
 Afficher le **téléphone en permanence** (en-tête + fiche produit). En B2B, beaucoup d'achats
 se décident au téléphone, pas au clic.
 
+## Financement et subventions — le levier le plus sous-exploité
+
+Une machine à 8 000 € subventionnée à 70 % revient à 2 400 €. C'est un argument qui change
+une décision d'achat, et la plupart des acheteurs ignorent que l'aide existe.
+
+**La subvention CARSAT** (Assurance Maladie — risques professionnels) finance du matériel qui
+réduit les risques ergonomiques. D'après les distributeurs du secteur : **70 % du montant HT**,
+plafonné à **25 000 €** par type d'investissement sur la période en cours, avec un montant
+minimum d'achat et un plafond global par entreprise.
+
+> ⚠️ **Le point qui change tout pour le catalogue** : l'aide vise les **autolaveuses
+> accompagnées** (avec conducteur accompagnant). Les modèles **autoportés en sont exclus**.
+> Une boutique qui met en avant ses autoportées passe donc à côté du produit le plus
+> finançable de sa gamme.
+
+Ce que le vendeur doit fournir : une **attestation fournisseur** d'éligibilité technique.
+Ce que l'acheteur doit remplir : être à jour de ses cotisations Urssaf, adhérer à un service
+de prévention et de santé au travail, ne pas avoir de contrat de prévention récent, et avoir
+mis à jour son DUERP.
+
+À mettre en place sur le site :
+- une **page dédiée** à l'aide, qui capte une recherche très qualifiée
+- un **badge « éligible CARSAT »** sur les fiches concernées, et seulement celles-là
+- un **simulateur** : prix HT → subvention → reste à charge
+- la mention que le vendeur fournit l'attestation — c'est un service, donc un argument
+
+> 🔴 Les sources publiques sur cette aide sont presque toutes des revendeurs, et elles
+> divergent sur le montant minimum, le plafond global et les accessoires couverts. **Faire
+> confirmer les chiffres par la CARSAT** avant de les afficher : un taux erroné sur le site
+> d'un client est une promesse qu'il ne pourra pas tenir.
+
+Autres leviers à proposer : **leasing / LOA**, paiement à réception de facture, et
+**Chorus Pro** si le client vend aux collectivités — la facturation des entités publiques
+passe obligatoirement par ce portail.
+
 ## Le comparateur
 
 Fort sur ce type de catalogue : l'acheteur hésite entre 2-3 modèles.

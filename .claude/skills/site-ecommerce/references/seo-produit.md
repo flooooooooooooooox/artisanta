@@ -19,6 +19,34 @@ gros distributeurs). Se battre sur « autolaveuse » est perdu d'avance. On gagn
 Les requêtes par **usage** et par **surface** sont les plus rentables : elles attrapent
 l'acheteur au moment où il ne sait pas encore quel modèle choisir.
 
+## L'arborescence : le vocabulaire métier est la longue traîne
+
+Les distributeurs installés du secteur découpent très finement, et ce découpage **est** leur
+SEO : chaque sous-catégorie est une requête. Reprendre ce niveau de détail, en se limitant
+aux familles réellement vendues.
+
+| Famille | Sous-catégories réellement utilisées dans le métier |
+|---|---|
+| **Nettoyeurs haute pression** | eau froide · eau chaude · autonomes · stationnaires · libre-service · agroalimentaire · très haute pression (350 à 1100 bars) · pompes et moteurs |
+| **Aspirateurs** | poussières · eau et poussières · batterie · dorsaux · industriels · **classes M, H, ATEX** · amiante |
+| **Autolaveuses** | compactes · **accompagnées** · autotractées · autoportées · robots · moquette · orbitales · vapeur |
+| **Balayeuses** | manuelles · thermiques · électriques · autoportées |
+| **Monobrosses** | basse vitesse · haute vitesse · injection-extraction |
+| **Accessoires et pièces** | buses · lances · flexibles · détergents · disques · brosses · filtres · batteries · pièces de pompes |
+
+Les **classes de filtration (M, H, ATEX, amiante)** sont des requêtes réglementaires à très
+forte intention d'achat : un chantier amiante impose un aspirateur certifié, l'acheteur n'a
+pas le choix et cherche exactement ce terme.
+
+## Les outils qui captent du trafic
+
+Les distributeurs qui performent proposent des **calculateurs**, pas seulement des pages :
+calibre de buse à partir de la pression et du débit, machine recommandée à partir de la
+surface et du type de sol, **simulateur de subvention** (prix → aide → reste à charge).
+
+Un outil se partage, se met en favori et génère des liens entrants — précisément ce qui
+manque à une boutique qui débute. C'est le meilleur rapport effort/acquisition du secteur.
+
 ## Architecture éditoriale
 
 ```
