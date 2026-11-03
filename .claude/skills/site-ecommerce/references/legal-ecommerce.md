@@ -164,6 +164,44 @@ distincte sur la facture. Le champ `ecoTax` du modèle produit est donc toujours
 > ⚠️ Sources datées et évolutives sur ce point : faire confirmer par l'expert-comptable du
 > client ou directement par l'éco-organisme avant la mise en ligne.
 
+## 🔴 Le client importe hors UE — il devient responsable comme un fabricant
+
+Acheter des machines en Chine (ou ailleurs hors UE) et les revendre en France fait
+du client un **importateur**. Ce n'est pas un détail de logistique : il endosse
+l'essentiel des obligations du fabricant, parce qu'il est la personne qui met le
+produit sur le marché européen.
+
+| Obligation | Ce que ça implique concrètement |
+|---|---|
+| **Marquage CE et déclaration UE de conformité** | Il doit la détenir et pouvoir la produire. Un certificat fourni par l'usine ne vaut rien s'il ne correspond pas aux directives applicables. |
+| **Dossier technique** | À tenir à disposition des autorités, généralement 10 ans. |
+| **Notice d'instructions en français** | Obligatoire. Une notice en anglais ou traduite à la machine ne suffit pas. |
+| **Directives applicables** | Machines, basse tension, CEM, RoHS, et le règlement batteries pour les modèles sur batterie. |
+| **Responsabilité du fait des produits défectueux** | En cas d'accident, c'est vers lui qu'on se retourne, pas vers l'usine. |
+| **DEEE** | Il **est** le producteur : adhésion à un éco-organisme et identifiant unique **obligatoires**, pas « à vérifier ». |
+| **Filière batteries** | REP distincte de la DEEE, à ne pas oublier sur les machines sur batterie. |
+| **Garantie et SAV** | Aucun réseau constructeur en France : garantie, réparations et pièces détachées reposent entièrement sur lui. |
+
+> ⚠️ **Règlement Machines (UE) 2023/1230** : applicable au **20 janvier 2027**, il
+> remplace la directive 2006/42/CE et précise les obligations de l'importateur
+> (articles 13 et 14), qui doit vérifier avant mise sur le marché que le fabricant
+> a rempli les siennes. Les machines mises sur le marché avant cette date restent
+> sous la directive.
+
+### Ce que ça change pour le site
+
+- **Ne pas écrire « garantie constructeur »** : il n'y en a pas. La garantie est la
+  sienne, et elle doit être décrite telle qu'elle est.
+- **Les pièces détachées deviennent un sujet de premier plan.** C'est la première
+  question d'un acheteur professionnel, et un stock de pièces en France est un
+  argument de vente autant qu'une nécessité pratique.
+- **Les subventions de type CARSAT sont peu probables** : seuls les modèles
+  référencés au cahier des charges de l'Assurance Maladie sont financés, et les
+  marques citées sont européennes et installées. À vérifier avant de bâtir un
+  argumentaire dessus.
+- **Ne jamais afficher une conformité sans l'avoir vue.** Demander la déclaration
+  UE de conformité et la notice française **avant** de publier la fiche produit.
+
 ## B2B — pénalités de retard
 
 Mentions **obligatoires** sur les factures et dans les CGV :
